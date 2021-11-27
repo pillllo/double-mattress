@@ -1,12 +1,12 @@
-export type Category = 'Income' | 'Expense';
+export type Category = "Income" | "Expense";
 export type ExpenseCategory =
-  | 'Income'
-  | 'Rent'
-  | 'Bills and Services'
-  | 'Shopping'
-  | 'Entertainment'
-  | 'Eating Out'
-  | 'Others';
+  | "Income"
+  | "Rent"
+  | "Bills and Services"
+  | "Shopping"
+  | "Entertainment"
+  | "Eating Out"
+  | "Others";
 
 export interface SentTransaction {
   transactionType: string;
