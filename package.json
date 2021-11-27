@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "View, manage and predict financial information for couples (Codeworks thesis project)",
   "main": "",
-  "scripts": {},
+  "scripts": {
+    "format": "prettier --write 'client' 'server'"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pillllo/double-mattress.git"
@@ -15,17 +17,12 @@
   },
   "homepage": "https://github.com/pillllo/double-mattress#readme",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
-    "eslint": "^8.3.0",
-    "eslint-config-airbnb": "^19.0.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.27.1",
-    "eslint-plugin-react-hooks": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "prettier": "^2.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
