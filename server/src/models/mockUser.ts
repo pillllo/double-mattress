@@ -7,11 +7,11 @@ const mockUser = [
     linkedUserId: "user_b",
   },
   {
-    userId: "user_a",
+    userId: "user_b",
     firstName: "Davina",
     paid: true,
     currency: "EUR",
-    linkedUserId: "user_b",
+    linkedUserId: "user_a",
   },
 ];
 
