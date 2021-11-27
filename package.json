@@ -1,0 +1,17 @@
+{
+  "name": "double-mattress",
+  "version": "1.0.0",
+  "description": "View, manage and predict financial information for couples (Codeworks thesis project)",
+  "main": "",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pillllo/double-mattress.git"
+  },
+  "author": "Natalie Pilling, Liam Morris, David Longaron, James Foxlee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pillllo/double-mattress/issues"
+  },
+  "homepage": "https://github.com/pillllo/double-mattress#readme"
+}
