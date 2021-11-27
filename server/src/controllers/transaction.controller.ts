@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
+import * as mockTransactions from "../models/mockTransactions.json";
 
 export function getAll(req: Request, res: Response) {
   try {
-    const transactions = {};
+    const transactions = mockTransactions;
     res.status(200).send(transactions);
   } catch (error) {
     console.error(error);
@@ -20,16 +21,15 @@ export function addTransaction(req: Request, res: Response) {
   }
 }
 
-export function editTransaction(req: Request, res: Response) {
-  try {
-    const {} = req.params;
-    const transaction = {};
-    res.status(200).send(transaction);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Could not edit the transaction.");
-  }
-}
+// export function editTransaction(req: Request, res: Response) {
+//   try {
+//     const transaction = {};
+//     res.status(200).send(transaction);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send("Could not edit the transaction.");
+//   }
+// }
 
 export function deleteTransaction(req: Request, res: Response) {
   try {
@@ -44,7 +44,7 @@ export function deleteTransaction(req: Request, res: Response) {
 const transactionController = {
   getAll,
   addTransaction,
-  editTransaction,
+  // editTransaction,
   deleteTransaction,
 };
 

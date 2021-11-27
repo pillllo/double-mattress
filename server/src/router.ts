@@ -10,7 +10,7 @@ router.get("/transactions", transactionController.getAll);
 router.post("/transactions", transactionController.addTransaction);
 
 // Edit a transaction
-router.put("/transactions/:id", transactionController.editTransaction);
+// router.put("/transactions/:id", transactionController.editTransaction);
 
 // Remove a transaction
 router.delete("/transactions/:id", transactionController.deleteTransaction);
