@@ -1,43 +1,7 @@
 {
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.colorTheme": "Atom One Dark",
-  "workbench.iconTheme": "material-icon-theme",
-  "files.trimTrailingWhitespace": true,
-  "editor.tabSize": 2,
-  "workbench.editor.untitled.hint": "hidden",
-  "editor.rulers": [],
-  "todo-tree.highlights.defaultHighlight": {
-    "type": "tag",
-    "opacity": 50
-  },
-  "todo-tree.highlights.customHighlight": {
-    "TODO": {
-      "icon": "calendar",
-      "iconColour": "yellow",
-      "foreground": "black",
-      "background": "yellow",
-      "gutterIcon": true
-    },
-    "FIXME": {
-      "icon": "flame",
-      "iconColour": "red",
-      "foreground": "black",
-      "background": "red",
-      "gutterIcon": true
-    },
-    "IMPR": {
-      "icon": "arrow-up-right",
-      "iconColour": "green",
-      "foreground": "black",
-      "background": "green",
-      "gutterIcon": true
-    }
-  },
-  "todo-tree.general.tags": ["TODO", "FIXME", "IMPR"],
   "editor.formatOnSave": true,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -48,6 +12,5 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "window.zoomLevel": 2
+  "javascript.updateImportsOnFileMove.enabled": "always"
 }
