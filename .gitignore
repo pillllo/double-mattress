@@ -30,4 +30,4 @@ client/node_modules
 
 # server-specific files
 server/node_modules
-server/output
+server/scripts/output
