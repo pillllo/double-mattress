@@ -1,6 +1,7 @@
 import { Flex, Box, Divider, Button } from "@chakra-ui/react";
 import DoubleSwitch from "./atoms/DoubleSwitch";
 import MainButton from "./atoms/MainButton";
+import DashboardPieChart from "./atoms/DashboardPieChart";
 
 const App = function () {
   return (
