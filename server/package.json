@@ -4,9 +4,11 @@
   "description": "Express back end for the double-mattress project",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
+    "start": "node build/index.js",
+    "postinstall": "tsc",
     "serve": "nodemon ./build/index.js",
-    "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts"
+    "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
+    "test": "jest"
   },
   "author": "Natalie Pilling, James Foxlee, David Longaron, Liam Morris",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/node": "^16.11.10",
+    "prisma": "^3.5.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.2"
   },
@@ -23,6 +26,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.15",
+    "pg": "^8.7.1",
     "uuid": "^8.3.2"
   }
 }

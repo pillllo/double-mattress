@@ -2,19 +2,8 @@ import { Request, Response } from "express";
 import mockTransactions from "../models/mockTransactions";
 import mockUser from "../models/mockUser";
 
-// Get all transactions from the db
-function getAll(req: Request, res: Response) {
-  try {
-    const transactions = mockTransactions;
-    res.status(200).send(transactions);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Could not get the list of transactions.");
-  }
-}
-
 // Get all transactions of the user
-function getAllUser(req: Request, res: Response) {
+async function getAllUser(req: Request, res: Response) {
   try {
     const { userId } = req.body;
     const userTransactions = mockTransactions.filter(
@@ -28,9 +17,10 @@ function getAllUser(req: Request, res: Response) {
 }
 
 // Get all transactions of the couple (user and the partner)
-function getAllCouple(req: Request, res: Response) {
+async function getAllCouple(req: Request, res: Response) {
   try {
-    const { userId } = req.body;
+    // const { userId } = req.body;
+    const userId: string = req.body.id;
     // Get id of the partner account linked to the user
     const partnerId = mockUser.find(
       (user) => user.userId === userId
@@ -53,7 +43,7 @@ function getAllCouple(req: Request, res: Response) {
 }
 
 // Add a transaction to the db
-function addTransaction(req: Request, res: Response) {
+async function addTransaction(req: Request, res: Response) {
   try {
     const transaction = req.body;
     mockTransactions.push(transaction);
@@ -65,7 +55,7 @@ function addTransaction(req: Request, res: Response) {
 }
 
 // Delete a transaction from the db
-function deleteTransaction(req: Request, res: Response) {
+async function deleteTransaction(req: Request, res: Response) {
   try {
     const { id } = req.params;
     const transaction = mockTransactions.find(
@@ -83,7 +73,6 @@ function deleteTransaction(req: Request, res: Response) {
 }
 
 const transactionController = {
-  getAll,
   getAllUser,
   getAllCouple,
   addTransaction,
