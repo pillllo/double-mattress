@@ -4,6 +4,7 @@
   "description": "View, manage and predict financial information for couples (Codeworks thesis project)",
   "main": "",
   "scripts": {
+    "start": "node build/index.js",
     "format": "prettier --write 'client' 'server'"
   },
   "repository": {
