@@ -1,4 +1,4 @@
-import { Flex, Box, Divider, Button } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import DoubleSwitch from "./atoms/DoubleSwitch";
 import MainButton from "./atoms/MainButton";
 import DashboardCategory from "./atoms/DashboardCategory";
