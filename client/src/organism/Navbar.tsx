@@ -10,22 +10,25 @@ import {
     Link,
     Divider,
     Text,
+    useBreakpointValue
   } from '@chakra-ui/react';
-  import { FaHome, FaClock, FaCogs, FaAngleDoubleRight } from 'react-icons/fa';
+  import { FaHome, FaClock, FaCogs, FaAngleDoubleDown } from 'react-icons/fa';
 
 export default function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const buttonSize = useBreakpointValue(['sm', 'md', 'lg']);
 
   return (
     <Flex h="75px" m="5">
       <Flex>
         <IconButton
           aria-label="Open NavMenu"
-          icon={<FaAngleDoubleRight />}
-          size="lg"
+          icon={<FaAngleDoubleDown />}
+          size={buttonSize}
           onClick={onOpen}
         />
-        <Text ml="5" fontSize="3xl">
+        <Text ml="5" fontSize={['xl', '2xl', '3xl']}>
           Dashboard
         </Text>
       </Flex>
