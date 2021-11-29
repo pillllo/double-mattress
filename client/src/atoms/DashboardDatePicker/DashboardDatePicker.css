@@ -1,0 +1,23 @@
+.react-datepicker__header {
+  color: beige;
+  text-align: center;
+  background-color: #3e82cf;
+  border-bottom: 0px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.react-datepicker {
+  display: flex !important;
+  flex-direction: column;
+  font-size: 1.5rem;
+  color: #000;
+  border: 0px;
+}
+.react-datepicker__month-container {
+  border-radius: 5px;
+}
+.react-datepicker__input-container {
+  text-align: center;
+  color: black;
+}
