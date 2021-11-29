@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import mockUser from "../models/mockUser";
 
 // Get user profile
-function getUserProfile(req: Request, res: Response) {
+async function getUserProfile(req: Request, res: Response) {
   try {
     const { userId } = req.body;
     const userProfile = mockUser.find((user) => user.userId === userId);
@@ -14,7 +14,7 @@ function getUserProfile(req: Request, res: Response) {
 }
 
 // Get couple profile (user profile and partner's profile)
-function getCoupleProfile(req: Request, res: Response) {
+async function getCoupleProfile(req: Request, res: Response) {
   try {
     // Find profile of the user
     const { userId } = req.body;
