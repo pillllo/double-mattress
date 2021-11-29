@@ -1,15 +1,16 @@
 import { Flex, Spacer, Box } from "@chakra-ui/react";
+import {Transaction} from '../types/Transaction'
 type Props = {
   title: string;
   price: number;
   currency: string;
-  date: string;
+  transactionList: Transaction[];
 };
 export default function DashboardCategory({
   title,
   price,
   currency,
-  date,
+  transactionList
 }: Props) {
   return (
     <Flex border="1px" borderColor="gray-700" width="150px" >
