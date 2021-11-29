@@ -5,7 +5,7 @@ type Props = {
   currency: string;
   date: string;
 };
-export default function DashboardTransaction({
+export default function DashboardCategory({
   title,
   price,
   currency,
