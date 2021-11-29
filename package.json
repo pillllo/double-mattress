@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "View, manage and predict financial information for couples (Codeworks thesis project)",
   "main": "",
-  "scripts": {},
+  "scripts": {
+    "format": "prettier --write 'client' 'server'"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pillllo/double-mattress.git"
@@ -13,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/pillllo/double-mattress/issues"
   },
-  "homepage": "https://github.com/pillllo/double-mattress#readme"
+  "homepage": "https://github.com/pillllo/double-mattress#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "prettier": "^2.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
