@@ -5,20 +5,16 @@ type Props = {
   currency: string;
   date: string;
 };
-export default function DashboardCategory({
-  title,
-  price,
-  currency,
-  date,
-}: Props) {
+export default function DashboardTransaction({title,price,currency,date}:Props) {
   return (
-    <Flex border="1px" borderColor="gray-700" width="150px" >
-      <Box  mr={2} ml={2}>
-      </Box >
+    <div>
+      <Flex border="1px" borderColor="gray-700" width="150px" >
+      <Box  mr={2} ml={2}>02/11</Box >
       <Spacer/>
       <Box  mr={2}>Home</Box>
       <Spacer/>
       <Box  mr={2}> $123.52</Box>
     </Flex>
-  );
+    </div>
+  )
 }

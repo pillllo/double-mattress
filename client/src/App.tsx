@@ -4,10 +4,11 @@ import MainButton from "./atoms/MainButton";
 import DashboardTransaction from "./atoms/DashboardCategory";
 import DashboardPieChart from "./atoms/DashboardPieChart";
 import ProjectionLineChart from "./atoms/ProjectionLineChart";
+import DateRangeSelector from "./atoms/DateRangeSelector";
 const App = function () {
   return (
     <Flex bg="gray.400" justify="center" h="100vh">
-      <ProjectionLineChart avgInc={200} avgExp={100} balance={1000}/>
+     <DateRangeSelector/>
       <header className="">
         <DashboardTransaction date={"12321"}  price={1234} currency={"Eur"} title={"Home"}/>
         <Flex
