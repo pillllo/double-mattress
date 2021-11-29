@@ -5,9 +5,13 @@
   "main": "",
   "scripts": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "start": "node build/index.js",
 =======
 >>>>>>> main
+=======
+    "start": "node build/index.js",
+>>>>>>> dev
     "format": "prettier --write 'client' 'server'"
   },
   "repository": {
