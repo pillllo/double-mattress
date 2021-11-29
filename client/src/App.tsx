@@ -1,36 +1,22 @@
 import { Flex, Box, Divider, Button } from "@chakra-ui/react";
-import DoubleSwitch from "./atoms/DoubleSwitch";
-import MainButton from "./atoms/MainButton";
-import DashboardCategory from "./atoms/DashboardCategory";
-import DashboardPieChart from "./atoms/DashboardPieChart";
-import ProjectionLineChart from "./atoms/ProjectionLineChart";
+import Navbar from "./organism/Navbar";
+import Dashboard from "./organism/Dashboard";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from 'react-router-dom';
 const App = function () {
   return (
-    <Flex bg="gray.400" justify="center" h="100vh">
-      <ProjectionLineChart avgInc={200} avgExp={100} balance={1000}/>
-      <header className="">
-        <Flex
-          direction="column"
-          w={[320, 480, 700, 990, 1280]}
-          h="100%"
-          align="center"
-          justify="space-evenly"
-          bgColor="gray.500"
-        >
-          <DoubleSwitch
-            passedFunction={() => {}}
-            text="RWETRHYSF"
-            text2="HADSFGASF"
-          />
-          <MainButton text="Button Text" passedFunction={() => {}} />
-
-          <Divider />
-          <Flex justify="space-evenly" align="center" w="full">
-            <Button bgGradient="linear(to-l, #7928CA, #FF0080)">Button</Button>
-            <Button bgGradient="linear(to-b, #7928CA, #FF0080)">Button</Button>
-          </Flex>
-        </Flex>
-      </header>
+    <Flex
+      bgGradient="linear(to-b, gray.600, gray.900)"
+      direction="column"
+      h="100vh"
+    >
+      <Router>
+      <Route path={`/`} element={<Navbar/>}/>
+      <Route path={`/dashboard`} element={<Dashboard/>}/>
+      </Router>
     </Flex>
   );
 };

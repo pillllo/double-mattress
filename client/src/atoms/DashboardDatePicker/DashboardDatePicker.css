@@ -21,3 +21,9 @@
   text-align: center;
   color: black;
 }
+input {
+  text-align: center;
+  width: 225px;
+  border-radius: 7.5px;
+  height: 3.5vh;
+}
