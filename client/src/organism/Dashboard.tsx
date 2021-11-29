@@ -4,6 +4,7 @@ import DoubleSwitch from "../atoms/DoubleSwitch";
 import DashboardDatePicker from "../atoms/DashboardDatePicker/DashboardDatePicker";
 import DashboardPieChart from "../atoms/DashboardPieChart";
 import DashboardCategoryBox from "../molecules/DashboardCategoryBox/DashboardCategoryBox";
+import DashboardVisxPie from "../atoms/DashboardVisxPie";
 
 export default function Dashboard() {
   return (
@@ -15,8 +16,9 @@ export default function Dashboard() {
       justify="space-evenly"
     >
       <DoubleSwitch passedFunction={() => {}} text="EXPENSES" text2="INCOME" />
-      <DashboardDatePicker />
-      <DashboardPieChart />
+      <DashboardDatePicker double={false} />
+      {/* <DashboardPieChart /> */}
+      <DashboardVisxPie />
       <DashboardCategoryBox transactions={dataObject.mockTransactions} />
     </Flex>
   );
