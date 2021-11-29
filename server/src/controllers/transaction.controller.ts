@@ -17,6 +17,7 @@ async function getAllUser(req: Request, res: Response) {
 }
 
 // Get all transactions of the couple (user and the partner)
+
 async function getAllCouple(req: Request, res: Response) {
   try {
     // const { userId } = req.body;

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import mockUser from "../models/mockUser";
 
 // Get user profile
+
 async function getUserProfile(req: Request, res: Response) {
   try {
     const { userId } = req.body;
