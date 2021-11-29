@@ -2,6 +2,8 @@ import { Flex, Box, Divider, Button } from "@chakra-ui/react";
 import DoubleSwitch from "./atoms/DoubleSwitch";
 import MainButton from "./atoms/MainButton";
 import DashboardTransaction from "./atoms/DashboardTransaction";
+import DashboardPieChart from "./atoms/DashboardPieChart";
+
 const App = function () {
   return (
     <Flex bg="gray.400" justify="center" h="100vh">
