@@ -4,7 +4,10 @@
   "description": "View, manage and predict financial information for couples (Codeworks thesis project)",
   "main": "",
   "scripts": {
+<<<<<<< HEAD
     "start": "node build/index.js",
+=======
+>>>>>>> main
     "format": "prettier --write 'client' 'server'"
   },
   "repository": {
