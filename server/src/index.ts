@@ -16,6 +16,11 @@ const corsConfig = {
 
 app.use(cors(corsConfig));
 app.use(express.json());
+// Logging middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} request received for url ${req.url}`);
+  next();
+});
 app.use(router);
 app.get("*", (req, res) => {
   res.status(404).send("Sorry, this page could not be found.");
