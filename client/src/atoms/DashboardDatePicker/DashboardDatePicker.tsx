@@ -4,8 +4,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./DashboardDatePicker.css";
 
+type Props={
+  double:boolean;
+}
 
-function DashboardDatePicker() {
+function DashboardDatePicker({double}:Props) {
   const [startDate, setStartDate] = useState(new Date());
 
   return (
@@ -14,7 +17,8 @@ function DashboardDatePicker() {
       onChange={(date: Date) => {
         return setStartDate(date);
       }}
-      maxDate={new Date()}
+      maxDate={double? null:new Date()}
+      minDate={double? new Date(): null}
       withPortal
       dateFormat="MM/yyyy"
       showMonthYearPicker

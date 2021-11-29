@@ -27,8 +27,8 @@ export default function DashboardCategory({
       color="white"
     >
       <Box>I</Box>
-      <Box>Home</Box>
-      <Box> $123.52</Box>
+      <Box>{title||"Home"}</Box>
+      <Box> ${price||123.5}</Box>
     </Flex>
   );
 }
