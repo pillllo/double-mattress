@@ -2,17 +2,6 @@ import { Request, Response } from "express";
 import mockTransactions from "../models/mockTransactions";
 import mockUser from "../models/mockUser";
 
-// Get all transactions from the db
-async function getAll(req: Request, res: Response) {
-  try {
-    const transactions = mockTransactions;
-    res.status(200).send(transactions);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Could not get the list of transactions.");
-  }
-}
-
 // Get all transactions of the user
 async function getAllUser(req: Request, res: Response) {
   try {
@@ -84,7 +73,6 @@ async function deleteTransaction(req: Request, res: Response) {
 }
 
 const transactionController = {
-  getAll,
   getAllUser,
   getAllCouple,
   addTransaction,
