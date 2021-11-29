@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { PieChart, Pie, Cell } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { Transaction, PieTransaction } from "../types/Transaction";
 import { User, PieUser } from "../types/User";
 import dataObject from "../MockData";
@@ -78,33 +78,36 @@ function DashboardPieChart() {
   }, []);
 
   return (
-    <Flex h="750">
-      <PieChart width={730} height={250}>
-        <Pie
-          data={couple}
-          dataKey="value"
-          nameKey="name"
-          cx="50%"
-          cy="50%"
-          outerRadius={30}
-          fill="#8884d8"
-          label={renderLabel}
-        />
-        <Pie
-          data={transact}
-          dataKey="value"
-          nameKey="name"
-          cx="50%"
-          cy="50%"
-          innerRadius={60}
-          outerRadius={80}
-          fill="#82ca9d"
-          label={renderLabel}
-        >
-          <Cell key={`cell-0`} fill="#E53E3E" />
-          <Cell key={`cell-1`} fill="#DD6B20" />
-        </Pie>
-      </PieChart>
+    <Flex w="100%" h="300">
+      <ResponsiveContainer>
+        <PieChart>
+          {/* <Pie
+            data={couple}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={30}
+            fill="#8884d8"
+            // label={renderLabel}
+            label
+          /> */}
+          <Pie
+            data={transact}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            innerRadius={60}
+            outerRadius={80}
+            fill="#82ca9d"
+            label={renderLabel}
+          >
+            <Cell key={`cell-0`} fill="#E53E3E" />
+            <Cell key={`cell-1`} fill="#DD6B20" />
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
     </Flex>
   );
 }
