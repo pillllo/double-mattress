@@ -1,11 +1,12 @@
 import { Flex, Box, Divider, Button } from "@chakra-ui/react";
 import DoubleSwitch from "./atoms/DoubleSwitch";
 import MainButton from "./atoms/MainButton";
-
+import DashboardTransaction from "./atoms/DashboardTransaction";
 const App = function () {
   return (
     <Flex bg="gray.400" justify="center" h="100vh">
       <header className="">
+        <DashboardTransaction date={"12321"}  price={1234} currency={"Eur"} title={"Home"}/>
         <Flex
           direction="column"
           w={[320, 480, 700, 990, 1280]}
