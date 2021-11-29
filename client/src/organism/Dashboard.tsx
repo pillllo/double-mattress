@@ -16,7 +16,7 @@ export default function Dashboard() {
       justify="space-evenly"
     >
       <DoubleSwitch passedFunction={() => {}} text="EXPENSES" text2="INCOME" />
-      <DashboardDatePicker />
+      <DashboardDatePicker double={false} />
       {/* <DashboardPieChart /> */}
       <DashboardVisxPie />
       <DashboardCategoryBox transactions={dataObject.mockTransactions} />
