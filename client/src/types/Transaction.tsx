@@ -15,4 +15,5 @@ export interface Transaction {
 export interface PieTransaction {
   name: string;
   value: number;
+  color?: string;
 }
