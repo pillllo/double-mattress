@@ -1,40 +1,43 @@
 import {
-    Flex,
-    IconButton,
-    Drawer,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerBody,
-    useDisclosure,
-    DrawerHeader,
-    Link,
-    Divider,
-    Text,
-    useBreakpointValue
-  } from '@chakra-ui/react';
-  import { FaHome, FaClock, FaCogs, FaAngleDoubleDown } from 'react-icons/fa';
+  Flex,
+  IconButton,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerBody,
+  useDisclosure,
+  DrawerHeader,
+  Link,
+  Divider,
+  Text,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import { FaHome, FaClock, FaCogs, FaAngleDoubleRight } from "react-icons/fa";
 
 export default function Navbar() {
-    const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const buttonSize = useBreakpointValue(['sm', 'md', 'lg']);
+  const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
 
   return (
-    <Flex h="75px" m="5">
-      <Flex>
+    <Flex w="full" h="10vh" bg="blue.700">
+      <Flex align="center" p="5px">
         <IconButton
           aria-label="Open NavMenu"
-          icon={<FaAngleDoubleDown />}
+          icon={<FaAngleDoubleRight />}
           size={buttonSize}
           onClick={onOpen}
+          bgColor={"blue.800"}
+          color={"white"}
+          dropShadow={"large"}
         />
-        <Text ml="5" fontSize={['xl', '2xl', '3xl']}>
+        <Text ml="5" fontSize={["xl", "2xl", "3xl"]}>
           Dashboard
         </Text>
       </Flex>
       <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent bgColor={"blue.700"} color={"white"}>
           <DrawerHeader borderBottomWidth="1px" fontSize="1.5rem">
             Navbar
           </DrawerHeader>

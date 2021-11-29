@@ -1,5 +1,6 @@
-import { Flex, Spacer, Box } from "@chakra-ui/react";
-import {Transaction} from '../types/Transaction'
+import { Flex, Box, Button } from "@chakra-ui/react";
+import { Transaction } from "../types/Transaction";
+import "./DashboardCategory.css";
 type Props = {
   title: string;
   price: number;
@@ -10,16 +11,24 @@ export default function DashboardCategory({
   title,
   price,
   currency,
-  transactionList
+  transactionList,
 }: Props) {
   return (
-    <Flex border="1px" borderColor="gray-700" width="150px" >
-      <Box  mr={2} ml={2}>
-      </Box >
-      <Spacer/>
-      <Box  mr={2}>Home</Box>
-      <Spacer/>
-      <Box  mr={2}> $123.52</Box>
+    <Flex
+      direction="row"
+      borderBottom="1px"
+      py="3px"
+      justify="space-between"
+      borderColor="gray-700"
+      width="80%"
+      px="1rem"
+      onClick={() => {}}
+      className="category-box"
+      color="white"
+    >
+      <Box>I</Box>
+      <Box>Home</Box>
+      <Box> $123.52</Box>
     </Flex>
   );
 }
