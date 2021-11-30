@@ -17,7 +17,7 @@ export default function DashboardVisxPie() {
     const transactions: PieTransaction[] = [
       {
         name: "Income",
-        value: 0,
+        value: 75685,
         color: "#E53E3E",
       },
       {
@@ -27,27 +27,27 @@ export default function DashboardVisxPie() {
       },
       {
         name: "Bills",
-        value: 0,
+        value: 300,
         color: "#D69E2E",
       },
       {
         name: "Shopping",
-        value: 0,
+        value: 90000,
         color: "#38A169",
       },
       {
         name: "Entertainment",
-        value: 0,
+        value: 55000,
         color: "#3182CE",
       },
       {
         name: "Eating Out",
-        value: 0,
+        value: 100000,
         color: "#805AD5",
       },
       {
         name: "Others",
-        value: 0,
+        value: 48000,
         color: "#D53F8C",
       },
     ];
@@ -63,7 +63,6 @@ export default function DashboardVisxPie() {
         finishedTransactions.push(category);
       }
     }
-    console.log("huh?", transactions);
     setTransact(() => finishedTransactions);
   }
 
@@ -83,7 +82,7 @@ export default function DashboardVisxPie() {
               const size = active && active.name === data.name ? 20 : 10;
               return half - size;
             }}
-            padAngle={0.015}
+            padAngle={0.01}
           >
             {(pie) => {
               return pie.arcs.map((arc) => {

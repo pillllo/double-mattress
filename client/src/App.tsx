@@ -1,11 +1,7 @@
 import { Flex, Box, Divider, Button } from "@chakra-ui/react";
 import Navbar from "./organism/Navbar";
 import Dashboard from "./organism/Dashboard";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 const App = function () {
   return (
     <Flex
@@ -14,8 +10,10 @@ const App = function () {
       h="100vh"
     >
       <Router>
-      <Route path={`/`} element={<Navbar/>}/>
-      <Route path={`/dashboard`} element={<Dashboard/>}/>
+        <Navbar />
+        <Routes>
+          <Route path={`/dashboard`} element={<Dashboard />} />
+        </Routes>
       </Router>
     </Flex>
   );
