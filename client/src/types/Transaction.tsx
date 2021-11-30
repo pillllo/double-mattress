@@ -7,7 +7,7 @@ export interface Transaction {
   amount: number;
   currency: string;
   category: string;
-  date: number;
+  date: string;
   description: string;
   includeAvg: boolean;
 }

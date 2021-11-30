@@ -14,6 +14,7 @@ export default function DashboardCategory({
   transactionList,
 }: Props) {
   return (
+<>
     <Flex
       direction="row"
       borderBottom="1px"
@@ -30,5 +31,7 @@ export default function DashboardCategory({
       <Box>{title||"Home"}</Box>
       <Box> ${price||123.5}</Box>
     </Flex>
+
+</>
   );
 }

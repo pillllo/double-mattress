@@ -2,67 +2,36 @@ import { useState, useEffect } from "react";
 import { Pie } from "@visx/shape";
 import { Group } from "@visx/group";
 import { Text } from "@visx/text";
-import { Transaction, PieTransaction } from "../types/Transaction";
+import { User, PieUser } from "../types/User";
 import dataObject from "../MockData";
 /*
  Abandon hope all ye who enter here
 */
 export default function DashboardVisxPie() {
-  const [transact, setTransact] = useState<PieTransaction[]>();
-  const [active, setActive] = useState<PieTransaction | undefined>(undefined);
+  const [transact, setTransact] = useState<PieUser[]>();
+  const [active, setActive] = useState<PieUser | undefined>(undefined);
   const width = 250;
   const half = width / 2;
 
-  function transactionCreation(transactionData: Transaction[]) {
-    const transactions: PieTransaction[] = [
+  function transactionCreation(transactionData: User[]) {
+    const transactions: PieUser[] = [
       {
-        name: "Rent",
-        value: 0,
+        name: `${transactionData[0].firstName}`,
+        value: 150000,
+        color: "#E53E3E",
+      },
+      {
+        name: `${transactionData[1].firstName}`,
+        value: 200000,
         color: "#DD6B20",
-      },
-      {
-        name: "Bills",
-        value: 300,
-        color: "#D69E2E",
-      },
-      {
-        name: "Shopping",
-        value: 90000,
-        color: "#38A169",
-      },
-      {
-        name: "Entertainment",
-        value: 55000,
-        color: "#3182CE",
-      },
-      {
-        name: "Eating Out",
-        value: 100000,
-        color: "#805AD5",
-      },
-      {
-        name: "Others",
-        value: 48000,
-        color: "#D53F8C",
-      },
+      }
     ];
-    const finishedTransactions: PieTransaction[] = [];
 
-    for (let category of transactions) {
-      for (let unit of transactionData) {
-        if (category.name === unit.category) {
-          category.value += unit.amount;
-        }
-      }
-      if (category.value) {
-        finishedTransactions.push(category);
-      }
-    }
-    setTransact(() => finishedTransactions);
+    setTransact(() => transactions);
   }
 
   useEffect(() => {
-    transactionCreation(dataObject.mockTransactions); // Can't import outside src folder
+    transactionCreation(dataObject.mockUser); // Can't import outside src folder
   }, []);
 
   return (
