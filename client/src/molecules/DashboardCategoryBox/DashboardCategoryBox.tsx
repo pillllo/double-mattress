@@ -1,6 +1,6 @@
 import { DashboardCategory } from "../../atoms/index";
 import { Transaction } from "../../types/Transaction";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./DashboardCategoryBox.css";
 import { State } from "../../reducers/displayReducers";
 

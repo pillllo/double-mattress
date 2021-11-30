@@ -11,6 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Transaction } from "../types/Transaction";
+
 interface TransactionType {
   transaction: Transaction;
 }

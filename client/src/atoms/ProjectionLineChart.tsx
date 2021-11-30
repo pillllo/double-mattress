@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+// import { PureComponent } from "react";
 import { useState, useEffect } from "react";
 import {
   LineChart,
@@ -10,7 +10,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { Transaction } from "../types/Transaction";
+import { useSelector } from "react-redux";
+import { State } from "../reducers/displayReducers";
 type Props = {
   avgInc: number;
   avgExp: number;
@@ -44,6 +45,27 @@ export default function ProjectionLineChart({
     "Dec",
   ];
   const [data, setData] = useState<Data[]>([]);
+
+  const incomesAvg = useSelector((state: State) => {
+    let incomeAvg = 0;
+    //@ts-ignore
+    for (let el of state.displayCategories.incomes) {
+      incomeAvg += el.amount;
+    }
+    return incomeAvg;
+  });
+  const expensesAvg = useSelector((state: State) => {
+    let expenseAvg = 0;
+    //@ts-ignore
+    for (let el of state.displayCategories.expenses) {
+      expenseAvg += el.amount;
+    }
+    return expenseAvg;
+  });
+  useEffect(() => {
+    setData(createChartData());
+  }, []);
+
   const createChartData = () => {
     return months.map((month, i) => {
       let dataBalance = balance + i * (avgInc - avgExp);
@@ -55,9 +77,6 @@ export default function ProjectionLineChart({
       };
     });
   };
-  useEffect(() => {
-    setData(createChartData());
-  }, []);
 
   return (
     <ResponsiveContainer width="100%" height="100%">
