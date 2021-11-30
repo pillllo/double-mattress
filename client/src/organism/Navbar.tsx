@@ -13,7 +13,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { FaHome, FaClock, FaCogs, FaAngleDoubleRight } from "react-icons/fa";
-import {Link as routerLink} from 'react-router-dom';
+import { Link as routerLink } from "react-router-dom";
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,7 +43,13 @@ export default function Navbar() {
             Navbar
           </DrawerHeader>
           <DrawerBody>
-            <Link as={routerLink} to="/" fontSize="1.25rem" display="flex" alignItems="center">
+            <Link
+              as={routerLink}
+              to="/dashboard"
+              fontSize="1.25rem"
+              display="flex"
+              alignItems="center"
+            >
               <FaHome />
               <Divider orientation="vertical" mx="5px" /> Dashboard
             </Link>
