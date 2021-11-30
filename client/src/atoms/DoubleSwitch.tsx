@@ -1,20 +1,22 @@
 import { useState } from "react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
 
 type IProps = {
-  passedFunction: () => void;
   text: string;
   text2: string;
 };
 
-export default function DoubleSwitch({ passedFunction, text, text2 }: IProps) {
+export default function DoubleSwitch({ text, text2 }: IProps) {
   const [backgroundColor, setBGColor] = useState(true);
+
+  const dispatch = useDispatch();
 
   return (
     <ButtonGroup isAttached mb="5">
       <Button
         onClick={() => {
-          passedFunction();
+          dispatch({ type: "SWITCH_DISPLAY" });
           setBGColor(!backgroundColor);
         }}
         colorScheme={backgroundColor ? "blue" : "blackAlpha"}
@@ -26,7 +28,7 @@ export default function DoubleSwitch({ passedFunction, text, text2 }: IProps) {
       </Button>
       <Button
         onClick={() => {
-          passedFunction();
+          dispatch({ type: "SWITCH_DISPLAY" });
           setBGColor(!backgroundColor);
         }}
         colorScheme={backgroundColor ? "blackAlpha" : "blue"}

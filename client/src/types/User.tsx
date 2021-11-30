@@ -8,4 +8,5 @@ export interface User {
 export interface PieUser {
   name: string;
   value: number;
+  color?: string;
 }

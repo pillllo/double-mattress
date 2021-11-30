@@ -3,7 +3,7 @@ type Props = {
   title: string;
   price: number;
   currency: string;
-  date: number;
+  date: string;
 };
 export default function DashboardTransaction({
   title,
