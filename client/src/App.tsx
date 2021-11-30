@@ -1,6 +1,7 @@
 import { Flex, Box, Divider, Button } from "@chakra-ui/react";
 import Navbar from "./organism/Navbar";
 import Dashboard from "./organism/Dashboard";
+import Projection from "./organism/Projection";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,7 +35,7 @@ const App = function () {
         <Navbar />
         <Routes>
           <Route path={`/dashboard`} element={<Dashboard />} />
-          <Route path={`/projections`} element={<Dashboard />} />
+          <Route path={`/projections`} element={<Projection />} />
         </Routes>
       </Router>
     </Flex>

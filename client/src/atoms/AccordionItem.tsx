@@ -7,6 +7,7 @@ interface TransactionType {
 
 export default function AccordionItem({ transaction }: TransactionType) {
     return (
+<>
         <Accordion allowToggle>
           <TheAccordionItem>
             <h2>
@@ -24,5 +25,6 @@ export default function AccordionItem({ transaction }: TransactionType) {
             </AccordionPanel>
           </TheAccordionItem>
         </Accordion>
+</>
     )
 }

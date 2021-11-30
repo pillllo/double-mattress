@@ -1,9 +1,8 @@
-import DashboardCategory from "../../atoms/DashboardCategory";
+import { DashboardCategory } from "../../atoms/index";
 import { Transaction } from "../../types/Transaction";
 import { useDispatch, useSelector } from "react-redux";
 import "./DashboardCategoryBox.css";
-import { State } from'../../reducers/displayReducers'
-
+import { State } from "../../reducers/displayReducers";
 
 export default function DashboardCategoryBox() {
   const switchDisp = useSelector((state: State) => {
@@ -28,7 +27,7 @@ export default function DashboardCategoryBox() {
   const transactions = switchDisp ? expenses : incomes;
 
   const categories = categoryArr.map((category) => {
-    console.log(category, transactions)
+    console.log(category, transactions);
     let totalCategory = 0;
     const transactionsFiltered = transactions.filter((transac: Transaction) => {
       if (transac.category === category) {

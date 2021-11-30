@@ -1,4 +1,4 @@
-import DashboardTransaction from '../../atoms/DashboardTransaction'
+import {DashboardTransaction} from '../../atoms/index'
 import {Transaction} from '../../types/Transaction'
 import"./DashboardTransactionBox.css"
 type Props={
