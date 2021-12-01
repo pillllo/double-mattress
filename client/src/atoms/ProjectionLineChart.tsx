@@ -30,6 +30,7 @@ export default function ProjectionLineChart({
   avgExp,
   balance,
 }: Props) {
+
   const months = [
     "Jan",
     "Feb",
@@ -44,30 +45,33 @@ export default function ProjectionLineChart({
     "Nov",
     "Dec",
   ];
+  const date= new Date();
+  const now= date.getMonth();
   const [data, setData] = useState<Data[]>([]);
 
-  const incomesAvg = useSelector((state: State) => {
-    let incomeAvg = 0;
-    //@ts-ignore
-    for (let el of state.displayCategories.incomes) {
-      incomeAvg += el.amount;
+  useEffect(() => {
+    setData(createChartData());
+  }, []);
+
+
+
+  const updMonths= (ten:number): string[]=>{
+    let arr=[];
+    for(let i=ten;i<12;i++){
+      arr.push(months[i])
     }
-    return incomeAvg;
-  });
-  const expensesAvg = useSelector((state: State) => {
-    let expenseAvg = 0;
-    //@ts-ignore
-    for (let el of state.displayCategories.expenses) {
-      expenseAvg += el.amount;
+    for(let i=0;i<ten;i++){
+      arr.push(months[i])
     }
-    return expenseAvg;
-  });
+    return arr
+  }
+
   useEffect(() => {
     setData(createChartData());
   }, []);
 
   const createChartData = () => {
-    return months.map((month, i) => {
+    return updMonths(now).map((month, i) => {
       let dataBalance = balance + i * (avgInc - avgExp);
       return {
         name: month,
@@ -106,3 +110,20 @@ export default function ProjectionLineChart({
     </ResponsiveContainer>
   );
 }
+
+  // const incomesAvg = useSelector((state: State) => {
+  //   let incomeAvg = 0;
+  //   //@ts-ignore
+  //   for (let el of state.displayCategories.incomes) {
+  //     incomeAvg += el.amount;
+  //   }
+  //   return incomeAvg;
+  // });
+  // const expensesAvg = useSelector((state: State) => {
+  //   let expenseAvg = 0;
+  //   //@ts-ignore
+  //   for (let el of state.displayCategories.expenses) {
+  //     expenseAvg += el.amount;
+  //   }
+  //   return expenseAvg;
+  // });
