@@ -1,12 +1,14 @@
 import { combineReducers } from "redux";
-import { switchDisplay, getData, dateChange } from "../actions/displayActions";
+import { switchDisplay,dataSwitchDisplay, getData, dashboardDateChange,projectionDateChange } from "../actions/displayActions";
 import { Transaction } from "../types/Transaction";
 export type State = {
   transactions: Transaction[] | [];
   incomes: Transaction[] | [];
   expenses: Transaction[] | [];
   switch: boolean;
-  date: Date;
+  dataSwitch:boolean;
+  projectionDate: Date;
+  dashboardDate: Date;
 };
 
 const initialState: State = {
@@ -14,12 +16,14 @@ const initialState: State = {
   incomes: [],
   expenses: [],
   switch: true,
-  date:new Date(),
+  dataSwitch: true,
+  projectionDate:new Date(),
+  dashboardDate: new Date()
 };
 
 const displayCategories = (
   state = initialState,
-  action: switchDisplay | getData | dateChange
+  action: switchDisplay | getData | dashboardDateChange| projectionDateChange|dataSwitchDisplay
 ) => {
   switch (action.type) {
     case "GET_DATA": {
@@ -39,8 +43,14 @@ const displayCategories = (
     case "SWITCH_DISPLAY": {
       return { ...state, switch: !state.switch };
     }
-    case "DATE_CHANGE": {
+    case "DASHBOARDDATE_CHANGE": {
       return{...state, date: action.payload}
+    }
+    case "PROJECTIONDATE_CHANGE": {
+      return{...state, date: action.payload}
+    }
+    case "DATASWITCH_DISPLAY": {
+      return { ...state, switch: !state.switch };
     }
     default:
       return state;

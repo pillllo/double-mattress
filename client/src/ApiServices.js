@@ -6,12 +6,12 @@ function fetchRequest(path, options) {
             console.log("Error:", err)
         })
 }
-function getTransactions() {
-  return fetchRequest('/transactions');
-};
 
-function createUser(body) {
-  return fetchRequest("/user", {
+{userId:string
+ 
+}
+function getTransactions(body) {
+  return fetchRequest("/transactions", {
       method: "POST",
       headers: {
           "Content-Type": "application/json"
