@@ -57,21 +57,7 @@ export default function Projection() {
               </Flex>
             </TabPanel>
             <TabPanel>
-              <AccordionItem
-                transaction={{
-                  _id: 1,
-                  transactionId: "1",
-                  transactionType: "income",
-                  userId: "user_a",
-                  otherUserId: "user_b",
-                  amount: 10000,
-                  currency: "EUR",
-                  category: "salary",
-                  date: "2021-12-01T00:00:00.000Z",
-                  description: "Monthly salary",
-                  includeAvg: true,
-                }}
-              />
+              <AccordionItem />
             </TabPanel>
           </TabPanels>
         </Tabs>
