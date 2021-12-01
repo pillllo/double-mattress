@@ -14,24 +14,24 @@ export default function DashboardCategory({
   transactionList,
 }: Props) {
   return (
-<>
-    <Flex
-      direction="row"
-      borderBottom="1px"
-      py="3px"
-      justify="space-between"
-      borderColor="gray-700"
-      width="80%"
-      px="1rem"
-      onClick={() => {}}
-      className="category-box"
-      color="white"
-    >
-      <Box>I</Box>
-      <Box>{title||"Home"}</Box>
-      <Box> ${price||123.5}</Box>
-    </Flex>
-
-</>
+    <>
+      <Flex
+        direction="row"
+        borderBottom="1px"
+        py="3px"
+        justify="space-between"
+        borderColor="gray-700"
+        width="80%"
+        px="1rem"
+        onClick={() => {}}
+        className="category-box"
+        color="white"
+        my="1"
+      >
+        <Box>I</Box>
+        <Box>{title || "Home"}</Box>
+        <Box> ${price || 123.5}</Box>
+      </Flex>
+    </>
   );
 }
