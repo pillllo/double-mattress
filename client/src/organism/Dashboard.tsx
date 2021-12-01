@@ -28,8 +28,8 @@ export default function Dashboard() {
       mt="15px"
       justify="space-evenly"
     >
-      <DoubleSwitch text="EXPENSES" text2="INCOME" />
       <DashboardDatePicker double={false} />
+      <DoubleSwitch text="EXPENSES" text2="INCOME" />
       {muhBoolean ? <DashboardVisxPie /> : <DashboardUserPie />}
       {/* <DashboardVisxPie /> */}
       <DashboardCategoryBox />

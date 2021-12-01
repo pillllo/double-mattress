@@ -17,12 +17,12 @@ export default function DashboardVisxPie() {
     const transactions: PieTransaction[] = [
       {
         name: "Rent",
-        value: 0,
+        value: 500,
         color: "#DD6B20",
       },
       {
         name: "Bills",
-        value: 300,
+        value: 9500,
         color: "#D69E2E",
       },
       {
