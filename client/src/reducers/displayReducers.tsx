@@ -17,13 +17,18 @@ const initialState: State = {
   expenses: [],
   switch: true,
   dataSwitch: true,
-  projectionDate:new Date(),
-  dashboardDate: new Date()
+  projectionDate: new Date(),
+  dashboardDate: new Date(),
 };
 
 const displayCategories = (
   state = initialState,
-  action: switchDisplay | getData | dashboardDateChange| projectionDateChange|dataSwitchDisplay
+  action:
+    | switchDisplay
+    | getData
+    | dashboardDateChange
+    | projectionDateChange
+    | dataSwitchDisplay
 ) => {
   switch (action.type) {
     case "GET_DATA": {
@@ -44,11 +49,11 @@ const displayCategories = (
       return { ...state, switch: !state.switch };
     }
     case "DASHBOARD_DATE_CHANGE": {
-      return{...state, date: action.payload}
+      return{...state, dashboardDate: action.payload}
     }
     case "PROJECTION_DATE_CHANGE": {
       console.log(action.payload)
-      return{...state, date: action.payload}
+      return{...state, projectionDate: action.payload}
     }
     case "DATASWITCH_DISPLAY": {
       return { ...state, switch: !state.switch };

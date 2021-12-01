@@ -45,13 +45,18 @@ export default function ProjectionLineChart({
     "Nov",
     "Dec",
   ];
-  const date= new Date();
-  const now= date.getMonth();
   const [data, setData] = useState<Data[]>([]);
 
+
+  const now = useSelector((state: State) => {
+    //@ts-ignore
+    //@ts-ignore
+    return state.displayCategories.projectionDate;
+  }).getMonth();
+  console.log(now);
   useEffect(() => {
-    setData(createChartData());
-  }, []);
+    setData(createChartData())
+  }, [now]);
 
 
 
@@ -66,9 +71,6 @@ export default function ProjectionLineChart({
     return arr
   }
 
-  useEffect(() => {
-    setData(createChartData());
-  }, []);
 
   const createChartData = () => {
     return updMonths(now).map((month, i) => {
