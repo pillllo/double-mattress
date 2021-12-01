@@ -3,6 +3,7 @@ import { Transaction } from "../../types/Transaction";
 import { useSelector } from "react-redux";
 import "./DashboardCategoryBox.css";
 import { State } from "../../reducers/displayReducers";
+import { Flex, VStack } from "@chakra-ui/react";
 
 export default function DashboardCategoryBox() {
   const switchDisp = useSelector((state: State) => {
@@ -27,7 +28,6 @@ export default function DashboardCategoryBox() {
   const transactions = switchDisp ? expenses : incomes;
 
   const categories = categoryArr.map((category) => {
-    console.log(category, transactions);
     let totalCategory = 0;
     const transactionsFiltered = transactions.filter((transac: Transaction) => {
       if (transac.category === category) {
@@ -46,5 +46,10 @@ export default function DashboardCategoryBox() {
     );
   });
 
-  return <div className="category-box">{categories}</div>;
+  // return <div className="category-box">{categories}</div>;
+  return (
+    <Flex align="center" direction="column" h="35vh" w="75vw" overflowY="auto">
+      {categories}
+    </Flex>
+  );
 }
