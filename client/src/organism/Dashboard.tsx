@@ -13,6 +13,7 @@ import {
   DateRangeSelector,
   MainButton,
   DashboardDatePicker,
+  DashboardSavingsChart,
 } from "../atoms/index";
 
 export default function Dashboard() {
@@ -29,8 +30,16 @@ export default function Dashboard() {
       justify="space-evenly"
     >
       <DashboardDatePicker double={false} />
-      <DoubleSwitch text="EXPENSES" text2="INCOME" />
-      {muhBoolean ? <DashboardVisxPie /> : <DashboardUserPie />}
+      <Flex w="100vw" justify="space-evenly">
+        <DoubleSwitch text="EXPENSES" text2="INCOME" />
+
+        <MainButton
+          text={muhBoolean ? "Expenses" : "Income"}
+          passedFunction={() => alert("Change")}
+        />
+      </Flex>
+      <DashboardSavingsChart />
+      {/* {muhBoolean ? <DashboardVisxPie /> : <DashboardUserPie />} */}
       {/* <DashboardVisxPie /> */}
       <DashboardCategoryBox />
     </Flex>
