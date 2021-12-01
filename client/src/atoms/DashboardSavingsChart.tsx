@@ -21,26 +21,25 @@ export default function DashboardSavingsChart() {
     { type: "Monthly", savings: 500, color: "#D69E2E" },
     { type: "Monthly Avg.", savings: 450, color: "#38A169" },
   ];
-  const width = 300;
-  const height = 250;
-  const x = (data: IProps) => data.type;
-  const y = (data: IProps) => data.savings;
+
+  const width = 450;
+  const height = 215;
+  const getType = (data: IProps) => data.type;
+  const getValue = (data: IProps) => data.savings;
 
   const xScale = scaleBand({
     range: [0, width],
-    round: true,
-    domain: data.map(x),
+    domain: data.map(getType),
     padding: 0.4,
   });
   const yScale = scaleLinear({
     range: [height, 0],
-    round: true,
-    domain: [0, Math.max(...data.map(y))],
+    domain: [0, Math.max(...data.map(getValue))],
   });
   const compose = (scale: any, accessor: any) => (data: any) =>
     scale(accessor(data));
-  const xPoint = compose(xScale, x);
-  const yPoint = compose(yScale, y);
+  const xPoint = compose(xScale, getType);
+  const yPoint = compose(yScale, getValue);
 
   let highestNum: number = 0;
   for (let el of data) {
@@ -50,37 +49,43 @@ export default function DashboardSavingsChart() {
   }
 
   return (
-    <svg width={width} height={height}>
-      <Group>
-        {data.map((d, i) => {
-          const barHeight = height - yPoint(d);
+    <svg width={450} height={250}>
+      <Group left={40} top={10}>
+        {data.map((datapoint) => {
+          const barHeight = height - yPoint(datapoint);
+          const type = getType(datapoint);
           return (
             <Bar
-              key={`bar-${i}`}
-              x={xPoint(d)}
+              key={`bar-${type}`}
+              x={xPoint(datapoint)}
               y={height - barHeight}
               height={barHeight}
               width={xScale.bandwidth()}
-              fill={d.color}
+              fill={datapoint.color}
             />
           );
         })}
         <AxisBottom
-          //   numTicks={data.length}
+          numTicks={data.length}
           top={height}
           scale={xScale}
+          tickLabelProps={(e) => ({
+            fill: "#eee",
+            textAnchor: "middle",
+            y: 22.5,
+          })}
         />
         <AxisLeft
-          scale={yScale.nice()}
-          numTicks={10}
-          //   top={0}
-          //   tickLabelProps={(e) => ({
-          //     fill: "#ffeb3b",
-          //     fontSize: 10,
-          //     textAnchor: "end",
-          //     x: -12,
-          //     y: (yScale(e) ?? 0) + 3,
-          //   })}
+          scale={yScale}
+          numTicks={5}
+          top={0}
+          tickLabelProps={(e) => ({
+            fill: "#eee",
+            fontSize: 12,
+            textAnchor: "end",
+            x: -12,
+            y: (yScale(e) ?? 0) + 3,
+          })}
         />
       </Group>
     </svg>
