@@ -43,10 +43,11 @@ const displayCategories = (
     case "SWITCH_DISPLAY": {
       return { ...state, switch: !state.switch };
     }
-    case "DASHBOARDDATE_CHANGE": {
+    case "DASHBOARD_DATE_CHANGE": {
       return{...state, date: action.payload}
     }
-    case "PROJECTIONDATE_CHANGE": {
+    case "PROJECTION_DATE_CHANGE": {
+      console.log(action.payload)
       return{...state, date: action.payload}
     }
     case "DATASWITCH_DISPLAY": {
