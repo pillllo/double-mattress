@@ -9,8 +9,6 @@ export default function MainButton({ passedFunction, text }: IProps) {
   return (
     <Button
       colorScheme="blue"
-      bgColor="blue.700"
-      color="white"
       onClick={() => {
         passedFunction();
       }}

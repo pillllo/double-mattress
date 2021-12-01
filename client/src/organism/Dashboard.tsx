@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import DashboardCategoryBox from "../molecules/DashboardCategoryBox/DashboardCategoryBox";
 
 import {
@@ -13,12 +13,18 @@ import {
   DateRangeSelector,
   MainButton,
   DashboardDatePicker,
+  DashboardSavingsChart,
 } from "../atoms/index";
 
 export default function Dashboard() {
   const muhBoolean = useSelector(
     (state: any) => state.displayCategories.switch
   );
+  const dataSwitch = useSelector(
+    (state: any) => state.displayCategories.dataSwitch
+  );
+
+  const dispatch = useDispatch();
 
   return (
     <Flex
@@ -29,8 +35,21 @@ export default function Dashboard() {
       justify="space-evenly"
     >
       <DashboardDatePicker double={false} />
-      <DoubleSwitch text="EXPENSES" text2="INCOME" />
-      {muhBoolean ? <DashboardVisxPie /> : <DashboardUserPie />}
+      <Flex w="100vw" justify="space-evenly">
+        <DoubleSwitch text="EXPENSES" text2="INCOME" />
+
+        <MainButton
+          text={muhBoolean ? "Expenses" : "Income"}
+          passedFunction={() => dispatch({ type: "DATASWITCH_DISPLAY" })}
+        />
+      </Flex>
+      {dataSwitch ? (
+        <DashboardSavingsChart />
+      ) : muhBoolean ? (
+        <DashboardVisxPie />
+      ) : (
+        <DashboardUserPie />
+      )}
       {/* <DashboardVisxPie /> */}
       <DashboardCategoryBox />
     </Flex>
