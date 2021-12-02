@@ -35,6 +35,7 @@ export default function DashboardCategory({
   currency,
   transactionList,
 }: Props) {
+
   function iconDecider(cat: string) {
     switch (cat) {
       case "Rent":
@@ -64,10 +65,12 @@ export default function DashboardCategory({
     }
   }
   const buttonSize = useBreakpointValue(["2rem", "3rem"]);
+
   return (
     <>
       <Flex
         direction="row"
+
         py="3px"
         justify="space-between"
         align="center"
@@ -95,6 +98,7 @@ export default function DashboardCategory({
         </Tooltip>
       </Flex>
       <Divider />
+
     </>
   );
 }
