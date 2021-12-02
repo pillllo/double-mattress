@@ -1,25 +1,16 @@
 import { combineReducers } from "redux";
 import { switchDisplay,dataSwitchDisplay, getData, dashboardDateChange,projectionDateChange,getProjectionData,getDashboardData } from "../actions/displayActions";
-import { Transaction } from "../types/Transaction";
-export type State = {
-  userId: string;
-  partnerId: string;
-  projectionData: any,
-  dashboardData: any,
-  switch: boolean;
-  dataSwitch:boolean;
-  projectionDate: Date;
-  dashboardDate: Date;
-};
+import {State} from "../types/State"
+
 
 const initialState: State = {
-  userId: "",
+  userId: "504de0d3-083c-4266-af33-2b71184d0c80",
   partnerId:"",
-  projectionData: {},
+  projectionData: [],
   dashboardData:{},
   switch: true,
   dataSwitch: true,
-  projectionDate: new Date(),
+  projectionDate:new Date(),
   dashboardDate: new Date(),
 };
 
@@ -48,7 +39,6 @@ const displayCategories = (
       return{...state, dashboardDate: action.payload}
     }
     case "PROJECTION_DATE_CHANGE": {
-      console.log(action.payload)
       return{...state, projectionDate: action.payload}
     }
     case "DATASWITCH_DISPLAY": {

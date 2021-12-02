@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 // import { PureComponent } from "react";
 import { useState, useEffect } from "react";
 import {
@@ -12,75 +12,93 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useSelector } from "react-redux";
-import { State } from "../reducers/displayReducers";
+import { ReduxState} from "../types/ReduxState";
 
 type Data = {
   name: string;
-  Balance: number;
-  Income: number;
-  Expenses: number;
+  Savings:number,
+  SavingsRate:number
 };
 
 export default function ProjectionLineChart() {
-  const projectionData = useSelector((state: State) => {
-    //@ts-ignore
-    //@ts-ignore
+  const projectionData = useSelector((state: ReduxState) => {
+
     return state.displayCategories.projectionData;
   });
-  const months = [
-    ["Jan",projectionData["0"]],
-    ["Feb",projectionData["1"]],
-    ["Mar",projectionData["2"]],
-    ["Apr",projectionData["3"]],
-    ["May",projectionData["4"]],
-    ["Jun",projectionData["5"]],
-    ["Jul",projectionData["6"]],
-    ["Aug",projectionData["7"]],
-    ["Sep",projectionData["8"]],
-    ["Oct",projectionData["9"]],
-    ["Nov",projectionData["10"]],
-    ["Dec",projectionData["11"]],
-  ];
+  const stateObject = useSelector((state: ReduxState) => {
+
+    return state.displayCategories;
+  });
+
+
   const [chartData, setChartData] = useState<Data[]>([]);
 
+  const now = useSelector((state: ReduxState) => {
 
-  const now = useSelector((state: State) => {
-    //@ts-ignore
-    //@ts-ignore
     return state.displayCategories.projectionDate;
   }).getMonth();
 
-  const projectionData= useSelector((state:any)=>{
-    return state.displayCategories.projectionData
-  })
+useEffect(()=>{
 
-  useEffect(() => {
-    setChartData(createChartData())
-  }, [now]);
-
-
-
-  const updMonths= (ten:number): any[][]=>{
-    let arr=[];
-    for(let i=ten;i<12;i++){
-      arr.push(months[i])
-    }
-    for(let i=0;i<ten;i++){
-      arr.push(months[i])
-    }
-    return arr
+  if(projectionData.length>0){
+    console.log("DATA",projectionData);
+     setChartData(createChartData())
+    // setMonths([
+    //   ["Jan",projectionData[0]],
+    //   ["Feb",projectionData[1]],
+    //   ["Mar",projectionData[2]],
+    //   ["Apr",projectionData[3]],
+    //   ["May",projectionData[4]],
+    //   ["Jun",projectionData[5]],
+    //   ["Jul",projectionData[6]],
+    //   ["Aug",projectionData[7]],
+    //   ["Sep",projectionData[8]],
+    //   ["Oct",projectionData[9]],
+    //   ["Nov",projectionData[10]],
+    //   ["Dec",projectionData[11]],
+    // ])
   }
+},[projectionData])
 
 
-  const createChartData = () => {
 
 
-    return updMonths(now).map((month, i) => {
+
+
+  const createChartData =  () => {
+    const months = [
+      ["Jan",projectionData[0]],
+      ["Feb",projectionData[1]],
+      ["Mar",projectionData[2]],
+      ["Apr",projectionData[3]],
+      ["May",projectionData[4]],
+      ["Jun",projectionData[5]],
+      ["Jul",projectionData[6]],
+      ["Aug",projectionData[7]],
+      ["Sep",projectionData[8]],
+      ["Oct",projectionData[9]],
+      ["Nov",projectionData[10]],
+      ["Dec",projectionData[11]],
+    ];
+    console.log("MONTHS",months);
+    const updMonths= (ten:number): any[][]=>{
+      let arr=[];
+      for(let i=ten;i<12;i++){
+        arr.push(months[i])
+      }
+      for(let i=0;i<ten;i++){
+        arr.push(months[i])
+      }
+      return arr
+    }
+
+
+    return  updMonths(now).map((month, i) => {
 
       return {
         name: month[0],
-        Savings: month[1].Savings,
-        SavingsRate: (month[1].typeAverages.income-month[1].typeAverages.expenses),
+        Savings: month[1].savings.totalSinceJoining,
+        SavingsRate: ((month[1].typeAverages.income) - (month[1].typeAverages.expense)),
       };
     });
   };

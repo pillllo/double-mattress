@@ -2,21 +2,22 @@ import { DashboardCategory } from "../../atoms/index";
 import { Transaction } from "../../types/Transaction";
 import { useSelector } from "react-redux";
 import "./DashboardCategoryBox.css";
-import { State } from "../../reducers/displayReducers";
 import { Flex, VStack } from "@chakra-ui/react";
 
+import { ReduxState } from "../../types/ReduxState";
+
 export default function DashboardCategoryBox() {
-  const switchDisp = useSelector((state: State) => {
+  const switchDisp = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.switch;
   });
 
-  const incomes = useSelector((state: State) => {
+  const incomes = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.incomes;
   });
 
-  const expenses = useSelector((state: State) => {
+  const expenses = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.expenses;
   });

@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { Transaction } from "../types/Transaction";
+import { ReduxState } from '../types/ReduxState';
 
 interface TransactionType {
   transaction: Transaction;
@@ -20,11 +21,11 @@ interface TransactionType {
 export default function AccordionItem() {
   const transactions = useSelector(
     //@ts-ignore
-    (state) => state.displayCategories.transactions
+    (state: ReduxState) => state.displayCategories.transactions
   );
 
   return (
-    <>
+    <div>
       <Flex direction="column" align="center">
         <Text fontSize={[12, 14, 16, 18]}>Howdy Pardner</Text>
         <HStack>
@@ -32,7 +33,7 @@ export default function AccordionItem() {
           <Text fontSize={[14, 16, 18, 20]}>EASY AS 123</Text>
         </HStack>
       </Flex>
-      {transactions.length ? (
+      {transactions && transactions.length ? (
         <Accordion allowToggle>
           <TheAccordionItem>
             <h2>
@@ -53,6 +54,6 @@ export default function AccordionItem() {
       ) : (
         <h3>Nada</h3>
       )}
-    </>
+    </div>
   );
 }

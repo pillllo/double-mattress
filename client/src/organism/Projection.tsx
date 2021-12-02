@@ -10,38 +10,41 @@ import {
 } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  DashboardTransaction,
-  DashboardCategory,
   AccordionItem,
   ProjectionLineChart,
-  DashboardVisxPie,
-  DashboardUserPie,
-  DoubleSwitch,
   DateRangeSelector,
   MainButton,
-  DashboardDatePicker,
   ProjectionForm,
+
 } from "../atoms/index";
+import ProjectionCategoryBox from "../molecules/ProjectionCategoryBox/ProjectionCategoryBox"
 import {useEffect} from 'react';
 import ApiServices from '../ApiServices'
+import {ReduxState} from '../types/ReduxState'
 export default function Projection() {
   const dispatch= useDispatch();
-  const userId = useSelector((state:any) => {
-    //@ts-ignore
-    //@ts-ignore
+  const userId = useSelector((state:ReduxState) => {
+
     return state.displayCategories.userId;
   })
-  const date= useSelector((state:any)=>{
+  const date= useSelector((state:ReduxState)=>{
     return state.displayCategories.projectionDate
   })
+
+  // const stateObject= useSelector((state:ReduxState)=>{
+  //   return state.displayCategories
+  // })
+
   useEffect(() => {
-    (async function () {
-      const data = await ApiServices.getProjections({userId,date})
+    if(userId && date){
+      ApiServices.getProjections({userId,date}).then((data)=>{
+        console.log("HELLO?");
+        console.log(data);
       dispatch({type:"GET_PROJECTION_DATA",payload:data})
+      })
+    }
 
-    })();
-
-  }, [userId]);
+  }, [userId,date]);
 
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -61,8 +64,10 @@ export default function Projection() {
           <TabList>
             <Tab>Monkey</Tab>
             <Tab>Madness</Tab>
+            <Tab>Categories</Tab>
           </TabList>
           <TabPanels>
+
             <TabPanel>
               <Flex
                 direction="column"
@@ -77,9 +82,15 @@ export default function Projection() {
                 <DateRangeSelector />
               </Flex>
             </TabPanel>
+
             <TabPanel>
               <AccordionItem />
             </TabPanel>
+
+            <TabPanel>
+               <ProjectionCategoryBox/>
+            </TabPanel>
+
           </TabPanels>
         </Tabs>
         <ProjectionForm isOpen={isOpen} onClose={onClose} onOpen={onOpen} />

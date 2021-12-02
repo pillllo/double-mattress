@@ -1,48 +1,54 @@
 import { ProjectionCategory } from "../../atoms/index";
 import { useSelector } from "react-redux";
 import "./ProjectionCategoryBox.css";
-import { State } from "../../reducers/displayReducers";
+import { ReduxState } from "../../types/ReduxState";
 import { Flex, VStack } from "@chakra-ui/react";
-
+import {useEffect,useState } from "react";
 export default function ProjectionCategoryBox() {
 
-  const projectionData = useSelector((state: State) => {
-    //@ts-ignore
+  const projectionData = useSelector((state: ReduxState) => {
+
     return state.displayCategories.projectionData;
   });
-  const date = useSelector((state: State) => {
-    //@ts-ignore
+  const date = useSelector((state: ReduxState) => {
+
     return state.displayCategories.projectionDate;
   }).getMonth();
 
+ const [categories,setCategories]=useState<any[]>([])
+//@ts-ignore
 
-  const categoryArr =
+useEffect(()=>{
+   const categoryArr =
      [
-        "Rent",
+        "Home",
         "Bills and Services",
         "Shopping",
         "Entertainment",
         "Eating Out",
         "Others",
       ];
-
-
-  const categories = categoryArr.map((category) => {
+    if(projectionData.length){
+    const newCategories = categoryArr.map((category) => {
+      //@ts-ignore
+    console.log("DEEZ PROJECT DATA",category,projectionData[date].categoryAverages[category])
+    //@ts-ignore
+    const price= projectionData[date].categoryAverages[category]
 
     return (
       <ProjectionCategory
         category={category}
         currency={"eur"}
-        price={projectionData[date].categoryAverage[category]}
+        price={price}
       />
     );
   });
+  setCategories(newCategories);
+}
+},[projectionData])
 
-  // return <div className="category-box">{categories}</div>;
   return (
-
     <Flex align="center" direction="column" h="35vh" w="90vw" overflowY="auto">
-
       {categories}
     </Flex>
   );
