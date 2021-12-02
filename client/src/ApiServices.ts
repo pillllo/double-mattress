@@ -1,5 +1,5 @@
 const BASE_URL = 'http://localhost:3001';
-function fetchRequest(path, options) {
+function fetchRequest(path:any, options:any) {
     return fetch(BASE_URL + path, options).then(res => res.status < 400 ? res : Promise.reject())
         .then(res => res.status !== 204 ? res.json() : res)
         .catch(err => {
@@ -12,9 +12,9 @@ function fetchRequest(path, options) {
 //   userId: string,("1")
 //   date: string,("Mon Aug 01 2022 18:14:45 GMT+0200 (Central European Summer Time)")
 // }
-function getDashboard(body) {
+function getDashboard(body:any) {
   return fetchRequest("/dashboard", {
-      method: "GET",
+      method: "POST",
       headers: {
           "Content-Type": "application/json"
           // "Client-Jwt":
@@ -59,9 +59,9 @@ function getDashboard(body) {
   //   date: string,("Mon Aug 01 2022 18:14:45 GMT+0200 (Central European Summer Time)")
   // }
 
-function getProjections(body) {
+function getProjections(body:any) {
   return fetchRequest("/projections", {
-      method: "GET",
+      method: "POST",
       headers: {
           "Content-Type": "application/json"
           // "Client-Jwt":
@@ -94,7 +94,7 @@ function getProjections(body) {
 // }
 
 
-function addProjections(body) {
+function addProjections(body:any) {
   return fetchRequest("/projections", {
       method: "POST",
       headers: {

@@ -8,7 +8,7 @@ import {
   TabPanel,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   DashboardTransaction,
   DashboardCategory,
@@ -22,7 +22,28 @@ import {
   DashboardDatePicker,
   ProjectionForm,
 } from "../atoms/index";
+import {useEffect} from 'react';
+import ApiServices from '../ApiServices'
 export default function Projection() {
+  const dispatch= useDispatch();
+  const userId = useSelector((state:any) => {
+    //@ts-ignore
+    //@ts-ignore
+    return state.displayCategories.userId;
+  })
+  const date= useSelector((state:any)=>{
+    return state.displayCategories.projectionDate
+  })
+  useEffect(() => {
+    (async function () {
+      const data = await ApiServices.getProjections({userId,date})
+      dispatch({type:"GET_PROJECTION_DATA",payload:data})
+
+    })();
+
+  }, [userId]);
+
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>

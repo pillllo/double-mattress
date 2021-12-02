@@ -1,10 +1,11 @@
 import { combineReducers } from "redux";
-import { switchDisplay,dataSwitchDisplay, getData, dashboardDateChange,projectionDateChange } from "../actions/displayActions";
+import { switchDisplay,dataSwitchDisplay, getData, dashboardDateChange,projectionDateChange,getProjectionData,getDashboardData } from "../actions/displayActions";
 import { Transaction } from "../types/Transaction";
 export type State = {
-  transactions: Transaction[] | [];
-  incomes: Transaction[] | [];
-  expenses: Transaction[] | [];
+  userId: string;
+  partnerId: string;
+  projectionData: any,
+  dashboardData: any,
   switch: boolean;
   dataSwitch:boolean;
   projectionDate: Date;
@@ -12,9 +13,10 @@ export type State = {
 };
 
 const initialState: State = {
-  transactions: [],
-  incomes: [],
-  expenses: [],
+  userId: "",
+  partnerId:"",
+  projectionData: {},
+  dashboardData:{},
   switch: true,
   dataSwitch: true,
   projectionDate: new Date(),
@@ -29,21 +31,15 @@ const displayCategories = (
     | dashboardDateChange
     | projectionDateChange
     | dataSwitchDisplay
+    | getDashboardData
+    | getProjectionData
 ) => {
   switch (action.type) {
-    case "GET_DATA": {
-      const expenses = action.payload.filter(
-        (transac) => transac.transactionType === "expense"
-      );
-      const incomes = action.payload.filter(
-        (transac) => transac.transactionType === "income"
-      );
-      return {
-        ...state,
-        transactions: action.payload,
-        incomes: incomes,
-        expenses: expenses,
-      };
+    case "GET_DASHBOARD_DATA": {
+      return {...state, dashboardData:action.payload}
+    }
+    case "GET_PROJECTION_DATA":{
+      return {...state, projectionData:action.payload}
     }
     case "SWITCH_DISPLAY": {
       return { ...state, switch: !state.switch };

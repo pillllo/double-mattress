@@ -20,3 +20,11 @@ export type projectionDateChange = {
   type:"PROJECTION_DATE_CHANGE";
   payload: Date;
 }
+export type getProjectionData = {
+  type:"GET_PROJECTION_DATA";
+  payload: any;
+}
+export type getDashboardData = {
+  type:"GET_DASHBOARD_DATA";
+  payload: any;
+}

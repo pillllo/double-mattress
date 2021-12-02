@@ -12,12 +12,7 @@ import {
 } from "recharts";
 import { useSelector } from "react-redux";
 import { State } from "../reducers/displayReducers";
-type Props = {
-  avgInc: number;
-  avgExp: number;
-  // futureTransac: Transaction[],
-  balance: number;
-};
+
 type Data = {
   name: string;
   Balance: number;
@@ -25,11 +20,7 @@ type Data = {
   Expenses: number;
 };
 
-export default function ProjectionLineChart({
-  avgInc,
-  avgExp,
-  balance,
-}: Props) {
+export default function ProjectionLineChart() {
 
   const months = [
     "Jan",
@@ -53,7 +44,11 @@ export default function ProjectionLineChart({
     //@ts-ignore
     return state.displayCategories.projectionDate;
   }).getMonth();
-  console.log(now);
+
+  const projectionData= useSelector((state:any)=>{
+    return state.displayCategories.projectionData
+  })
+
   useEffect(() => {
     setData(createChartData())
   }, [now]);
@@ -107,7 +102,6 @@ export default function ProjectionLineChart({
           activeDot={{ r: 8 }}
         />
         <Line type="monotone" dataKey="Balance" stroke="#82ca9d" />
-        <Line type="monotone" dataKey="Expenses" stroke="#009a9d" />
       </LineChart>
     </ResponsiveContainer>
   );
