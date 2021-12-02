@@ -1,14 +1,21 @@
 import {
   Flex,
-  Box,
   Icon,
-  Button,
   Text,
   HStack,
   IconButton,
   Divider,
   useBreakpointValue,
+  useDisclosure,
   Tooltip,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  Button,
 } from "@chakra-ui/react";
 import { Transaction } from "../types/Transaction";
 import "./DashboardCategory.css";
@@ -35,6 +42,8 @@ export default function DashboardCategory({
   currency,
   transactionList,
 }: Props) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   function iconDecider(cat: string) {
     switch (cat) {
       case "Rent":
@@ -57,13 +66,13 @@ export default function DashboardCategory({
     switch (cur) {
       case "eur":
         return "€";
-        break;
 
       default:
         break;
     }
   }
   const buttonSize = useBreakpointValue(["2rem", "3rem"]);
+
   return (
     <>
       <Flex
@@ -90,10 +99,25 @@ export default function DashboardCategory({
             aria-label="Category Info"
             icon={<FaInfoCircle />}
             boxSize={buttonSize}
-            onClick={() => alert("hi")}
+            onClick={() => onOpen()}
           />
         </Tooltip>
       </Flex>
+      <Modal onClose={onClose} size={"xl"} isOpen={isOpen}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{title}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {transactionList.map((transaction) => {
+              return <p>{transaction.amount}</p>;
+            })}
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       <Divider />
     </>
   );
