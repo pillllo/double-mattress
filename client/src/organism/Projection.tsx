@@ -55,7 +55,7 @@ export default function Projection() {
         justify="space-evenly"
       >
         <Flex h="35vh" w="90vw">
-          <ProjectionLineChart avgExp={500} avgInc={1200} balance={4000} />
+          <ProjectionLineChart  />
         </Flex>
         <Tabs isFitted variant="enclosed" w="100%" h="50%">
           <TabList>

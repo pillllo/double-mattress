@@ -39,7 +39,7 @@ export default function Dashboard() {
         <DoubleSwitch text="EXPENSES" text2="INCOME" />
 
         <MainButton
-          text={muhBoolean ? "Expenses" : "Income"}
+          text={dataSwitch ? "EXPENSE" : "SAVINGS"}
           passedFunction={() => dispatch({ type: "DATASWITCH_DISPLAY" })}
         />
       </Flex>
@@ -50,7 +50,7 @@ export default function Dashboard() {
       ) : (
         <DashboardUserPie />
       )}
-      {/* <DashboardVisxPie /> */}
+
       <DashboardCategoryBox />
     </Flex>
   );

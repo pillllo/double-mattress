@@ -24,16 +24,14 @@ import {
 } from "react-icons/fa";
 
 type Props = {
-  title: string;
+  category: string;
   price: number;
   currency: string;
-  transactionList: Transaction[];
 };
-export default function DashboardCategory({
-  title,
+export default function ProjectionCategory({
+  category,
   price,
   currency,
-  transactionList,
 }: Props) {
 
   function iconDecider(cat: string) {
@@ -80,9 +78,9 @@ export default function DashboardCategory({
         color="white"
         my="2"
       >
-        <Icon as={iconDecider(title)} w={[4, 6]} h={[4, 6]} />
+        <Icon as={iconDecider(category)} w={[4, 6]} h={[4, 6]} />
         <HStack justify="space-between" w="50%">
-          <Text fontSize={[14, 18]}>{title || "Home"}</Text>
+          <Text fontSize={[14, 18]}>{category || "Home"}</Text>
           <Text fontSize={[14, 18]}>
             {currencyDecider(currency)}
             {price || 123.5}

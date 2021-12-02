@@ -1,3 +1,4 @@
+//@ts-nocheck
 // import { PureComponent } from "react";
 import { useState, useEffect } from "react";
 import {
@@ -21,22 +22,26 @@ type Data = {
 };
 
 export default function ProjectionLineChart() {
-
+  const projectionData = useSelector((state: State) => {
+    //@ts-ignore
+    //@ts-ignore
+    return state.displayCategories.projectionData;
+  });
   const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    ["Jan",projectionData["0"]],
+    ["Feb",projectionData["1"]],
+    ["Mar",projectionData["2"]],
+    ["Apr",projectionData["3"]],
+    ["May",projectionData["4"]],
+    ["Jun",projectionData["5"]],
+    ["Jul",projectionData["6"]],
+    ["Aug",projectionData["7"]],
+    ["Sep",projectionData["8"]],
+    ["Oct",projectionData["9"]],
+    ["Nov",projectionData["10"]],
+    ["Dec",projectionData["11"]],
   ];
-  const [data, setData] = useState<Data[]>([]);
+  const [chartData, setChartData] = useState<Data[]>([]);
 
 
   const now = useSelector((state: State) => {
@@ -50,12 +55,12 @@ export default function ProjectionLineChart() {
   })
 
   useEffect(() => {
-    setData(createChartData())
+    setChartData(createChartData())
   }, [now]);
 
 
 
-  const updMonths= (ten:number): string[]=>{
+  const updMonths= (ten:number): any[][]=>{
     let arr=[];
     for(let i=ten;i<12;i++){
       arr.push(months[i])
@@ -68,13 +73,14 @@ export default function ProjectionLineChart() {
 
 
   const createChartData = () => {
+
+
     return updMonths(now).map((month, i) => {
-      let dataBalance = balance + i * (avgInc - avgExp);
+
       return {
-        name: month,
-        Balance: dataBalance,
-        Income: avgInc,
-        Expenses: avgExp,
+        name: month[0],
+        Savings: month[1].Savings,
+        SavingsRate: (month[1].typeAverages.income-month[1].typeAverages.expenses),
       };
     });
   };
@@ -84,7 +90,7 @@ export default function ProjectionLineChart() {
       <LineChart
         width={750}
         height={50}
-        data={data}
+        data={chartData}
         margin={{
           right: 60,
           left: 20,
@@ -97,29 +103,12 @@ export default function ProjectionLineChart() {
         {/* <Legend /> */}
         <Line
           type="monotone"
-          dataKey="Income"
+          dataKey="Savings"
           stroke="#8884d8"
           activeDot={{ r: 8 }}
         />
-        <Line type="monotone" dataKey="Balance" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="SavingsRate" stroke="#82ca9d" />
       </LineChart>
     </ResponsiveContainer>
   );
 }
-
-  // const incomesAvg = useSelector((state: State) => {
-  //   let incomeAvg = 0;
-  //   //@ts-ignore
-  //   for (let el of state.displayCategories.incomes) {
-  //     incomeAvg += el.amount;
-  //   }
-  //   return incomeAvg;
-  // });
-  // const expensesAvg = useSelector((state: State) => {
-  //   let expenseAvg = 0;
-  //   //@ts-ignore
-  //   for (let el of state.displayCategories.expenses) {
-  //     expenseAvg += el.amount;
-  //   }
-  //   return expenseAvg;
-  // });
