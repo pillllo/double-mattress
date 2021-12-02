@@ -13,10 +13,18 @@ export type getData={
 }
 
 export type dashboardDateChange = {
-  type:"DASHBOARDDATE_CHANGE";
+  type:"DASHBOARD_DATE_CHANGE";
   payload: Date;
 }
 export type projectionDateChange = {
-  type:"PROJECTIONDATE_CHANGE";
+  type:"PROJECTION_DATE_CHANGE";
   payload: Date;
+}
+export type getProjectionData = {
+  type:"GET_PROJECTION_DATA";
+  payload: any;
+}
+export type getDashboardData = {
+  type:"GET_DASHBOARD_DATA";
+  payload: any;
 }

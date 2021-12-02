@@ -1,3 +1,4 @@
+
 // import { PureComponent } from "react";
 import { useState, useEffect } from "react";
 import {
@@ -11,73 +12,93 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useSelector } from "react-redux";
-import { State } from "../reducers/displayReducers";
-type Props = {
-  avgInc: number;
-  avgExp: number;
-  // futureTransac: Transaction[],
-  balance: number;
-};
+import { ReduxState} from "../types/ReduxState";
+
 type Data = {
   name: string;
-  Balance: number;
-  Income: number;
-  Expenses: number;
+  Savings:number,
+  SavingsRate:number
 };
 
-export default function ProjectionLineChart({
-  avgInc,
-  avgExp,
-  balance,
-}: Props) {
+export default function ProjectionLineChart() {
+  const projectionData = useSelector((state: ReduxState) => {
 
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const date= new Date();
-  const now= date.getMonth();
-  const [data, setData] = useState<Data[]>([]);
+    return state.displayCategories.projectionData;
+  });
+  const stateObject = useSelector((state: ReduxState) => {
 
-  useEffect(() => {
-    setData(createChartData());
-  }, []);
+    return state.displayCategories;
+  });
 
 
+  const [chartData, setChartData] = useState<Data[]>([]);
 
-  const updMonths= (ten:number): string[]=>{
-    let arr=[];
-    for(let i=ten;i<12;i++){
-      arr.push(months[i])
-    }
-    for(let i=0;i<ten;i++){
-      arr.push(months[i])
-    }
-    return arr
+  const now = useSelector((state: ReduxState) => {
+
+    return state.displayCategories.projectionDate;
+  }).getMonth();
+
+useEffect(()=>{
+
+  if(projectionData.length>0){
+    console.log("DATA",projectionData);
+     setChartData(createChartData())
+    // setMonths([
+    //   ["Jan",projectionData[0]],
+    //   ["Feb",projectionData[1]],
+    //   ["Mar",projectionData[2]],
+    //   ["Apr",projectionData[3]],
+    //   ["May",projectionData[4]],
+    //   ["Jun",projectionData[5]],
+    //   ["Jul",projectionData[6]],
+    //   ["Aug",projectionData[7]],
+    //   ["Sep",projectionData[8]],
+    //   ["Oct",projectionData[9]],
+    //   ["Nov",projectionData[10]],
+    //   ["Dec",projectionData[11]],
+    // ])
   }
+},[projectionData])
 
-  useEffect(() => {
-    setData(createChartData());
-  }, []);
 
-  const createChartData = () => {
-    return updMonths(now).map((month, i) => {
-      let dataBalance = balance + i * (avgInc - avgExp);
+
+
+
+
+  const createChartData =  () => {
+    const months = [
+      ["Jan",projectionData[0]],
+      ["Feb",projectionData[1]],
+      ["Mar",projectionData[2]],
+      ["Apr",projectionData[3]],
+      ["May",projectionData[4]],
+      ["Jun",projectionData[5]],
+      ["Jul",projectionData[6]],
+      ["Aug",projectionData[7]],
+      ["Sep",projectionData[8]],
+      ["Oct",projectionData[9]],
+      ["Nov",projectionData[10]],
+      ["Dec",projectionData[11]],
+    ];
+    console.log("MONTHS",months);
+    const updMonths= (ten:number): any[][]=>{
+      let arr=[];
+      for(let i=ten;i<12;i++){
+        arr.push(months[i])
+      }
+      for(let i=0;i<ten;i++){
+        arr.push(months[i])
+      }
+      return arr
+    }
+
+
+    return  updMonths(now).map((month, i) => {
+
       return {
-        name: month,
-        Balance: dataBalance,
-        Income: avgInc,
-        Expenses: avgExp,
+        name: month[0],
+        Savings: month[1].savings.totalSinceJoining,
+        SavingsRate: ((month[1].typeAverages.income) - (month[1].typeAverages.expense)),
       };
     });
   };
@@ -87,7 +108,7 @@ export default function ProjectionLineChart({
       <LineChart
         width={750}
         height={50}
-        data={data}
+        data={chartData}
         margin={{
           right: 60,
           left: 20,
@@ -100,30 +121,12 @@ export default function ProjectionLineChart({
         {/* <Legend /> */}
         <Line
           type="monotone"
-          dataKey="Income"
+          dataKey="Savings"
           stroke="#8884d8"
           activeDot={{ r: 8 }}
         />
-        <Line type="monotone" dataKey="Balance" stroke="#82ca9d" />
-        <Line type="monotone" dataKey="Expenses" stroke="#009a9d" />
+        <Line type="monotone" dataKey="SavingsRate" stroke="#82ca9d" />
       </LineChart>
     </ResponsiveContainer>
   );
 }
-
-  // const incomesAvg = useSelector((state: State) => {
-  //   let incomeAvg = 0;
-  //   //@ts-ignore
-  //   for (let el of state.displayCategories.incomes) {
-  //     incomeAvg += el.amount;
-  //   }
-  //   return incomeAvg;
-  // });
-  // const expensesAvg = useSelector((state: State) => {
-  //   let expenseAvg = 0;
-  //   //@ts-ignore
-  //   for (let el of state.displayCategories.expenses) {
-  //     expenseAvg += el.amount;
-  //   }
-  //   return expenseAvg;
-  // });

@@ -1,8 +1,12 @@
-import { Transaction } from "../types/Transaction";
+import { ProjectionApiResponse } from "./ApiResponses";
+import { DashboardResponseObject } from "./DashboardTypes";
 export interface State {
-  transactions: Transaction[] | [];
-  incomes: Transaction[] | [];
-  expenses: Transaction[] | [];
+  userId: string;
+  partnerId: string;
+  projectionData:ProjectionApiResponse[];
+  dashboardData: DashboardResponseObject|{};
   switch: boolean;
-  date: Date;
+  dataSwitch:boolean;
+  projectionDate: Date;
+  dashboardDate: Date;
 };

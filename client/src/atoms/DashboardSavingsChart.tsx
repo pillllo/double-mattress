@@ -2,20 +2,24 @@ import { useState, useEffect } from "react";
 import { Group } from "@visx/group";
 import { Bar } from "@visx/shape";
 import { scaleLinear, scaleBand } from "@visx/scale";
-
+import { useSelector } from "react-redux";
 import { AxisBottom, AxisLeft } from "@visx/axis";
-
+import {ReduxState} from "../types/ReduxState"
 type IProps = {
   type: string;
   savings: number;
   color: string;
 };
-
 export default function DashboardSavingsChart() {
+  const dashboardData = useSelector((state: ReduxState) => {
+
+    return state.displayCategories.dashboardData;
+  });
   const data = [
     {
       type: "Savings Total",
-      savings: 5000,
+      //@ts-ignore
+      savings: dashboardData?.savings.totalSinceJoining,
       color: "#DD6B20",
     },
     { type: "Monthly", savings: 500, color: "#D69E2E" },

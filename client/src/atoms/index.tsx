@@ -10,7 +10,7 @@ import MainButton from "./MainButton";
 import DashboardDatePicker from "./DashboardDatePicker/DashboardDatePicker";
 import ProjectionForm from "./ProjectionForm";
 import DashboardSavingsChart from "./DashboardSavingsChart";
-
+import ProjectionCategory from "./ProjectionCategory";
 export {
   DashboardTransaction,
   DashboardCategory,
@@ -24,4 +24,5 @@ export {
   DashboardDatePicker,
   ProjectionForm,
   DashboardSavingsChart,
+  ProjectionCategory
 };
