@@ -55,9 +55,7 @@ export default function DashboardCategoryBox() {
 
   // return <div className="category-box">{categories}</div>;
   return (
-
     <Flex align="center" direction="column" h="35vh" w="90vw" overflowY="auto">
-
       {categories}
     </Flex>
   );
