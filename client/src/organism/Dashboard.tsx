@@ -54,9 +54,9 @@ export default function Dashboard() {
       mt="15px"
       justify="space-evenly"
     >
-      <DashboardDatePicker double={false} />
+      <DashboardDatePicker isDouble={false} />
       <Flex w="100vw" justify="space-evenly">
-        <DoubleSwitch text="EXPENSES" text2="INCOME" />
+        <DoubleSwitch buttonText="EXPENSES" buttonText2="INCOME" />
 
         <MainButton
           text={dataSwitch ? "EXPENSE" : "SAVINGS"}

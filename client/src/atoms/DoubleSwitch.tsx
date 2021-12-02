@@ -3,11 +3,11 @@ import { Button, ButtonGroup } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 
 type IProps = {
-  text: string;
-  text2: string;
+  buttonText: string;
+  buttonText2: string;
 };
 
-export default function DoubleSwitch({ text, text2 }: IProps) {
+export default function DoubleSwitch({ buttonText, buttonText2 }: IProps) {
   const [backgroundColor, setBGColor] = useState(true);
 
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function DoubleSwitch({ text, text2 }: IProps) {
         fontSize={[12, 14, 16, 18]}
         shadow="lg"
       >
-        {text}
+        {buttonText}
       </Button>
       <Button
         onClick={() => {
@@ -36,7 +36,7 @@ export default function DoubleSwitch({ text, text2 }: IProps) {
         fontSize={[12, 14, 16, 18]}
         shadow="lg"
       >
-        {text2}
+        {buttonText2}
       </Button>
     </ButtonGroup>
   );
