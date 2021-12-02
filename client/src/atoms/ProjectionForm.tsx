@@ -16,6 +16,7 @@ import {
   InputGroup,
   InputLeftAddon,
 } from "@chakra-ui/react";
+import { useState } from "react";
 interface TheProp {
   onClose: () => void;
   onOpen: () => void;
@@ -23,6 +24,9 @@ interface TheProp {
 }
 
 export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
+  const [newProjection, setNewProjection] = useState({ transactionType:"", amount:0,currency:"eur",category: "",date:"", description:"",includeAvg:false })
+
+
   return (
     <Modal
       onClose={onClose}
@@ -36,13 +40,13 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
         <ModalCloseButton />
         <ModalBody>
           <FormControl>
-            <FormLabel>Absolute</FormLabel>
+            <FormLabel>Category</FormLabel>
             <Input type="text" size="md" variant="filled"></Input>
-            <FormLabel>Monkey</FormLabel>
-            <Input type="number" size="md" variant="filled"></Input>
-            <FormLabel>Madness</FormLabel>
+            <FormLabel>Description</FormLabel>
+            <Input type="text" size="md" variant="filled"></Input>
+            <FormLabel>Amount</FormLabel>
             <InputGroup>
-              <InputLeftAddon children="$" color="gray.200" />
+              <InputLeftAddon children="$" color="white" />
               <Input type="number"></Input>
             </InputGroup>
           </FormControl>

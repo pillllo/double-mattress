@@ -1,4 +1,4 @@
-import { Transaction } from "./types/Transaction";
+import { Transaction } from "./Transaction";
 
 export type Category = "Income" | "Expense";
 export type ExpenseCategory =
@@ -73,17 +73,8 @@ export interface ProjectionApiResponse {
   projectedChanges: ProjectionProjectedChanges;
 }
 
-export interface ProjectionApiResponseObject {
-  0: ProjectionApiResponse;
-  1: ProjectionApiResponse;
-  2: ProjectionApiResponse;
-  3: ProjectionApiResponse;
-  4: ProjectionApiResponse;
-  5: ProjectionApiResponse;
-  6: ProjectionApiResponse;
-  7: ProjectionApiResponse;
-  8: ProjectionApiResponse;
-  9: ProjectionApiResponse;
-  10: ProjectionApiResponse;
-  11: ProjectionApiResponse;
-}
+
+// export interface ProjectionApiResponseObject {
+//   [key:number]: ProjectionApiResponse;
+
+// }
