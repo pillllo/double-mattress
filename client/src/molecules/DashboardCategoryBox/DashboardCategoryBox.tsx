@@ -22,7 +22,14 @@ export default function DashboardCategoryBox() {
   });
 
   const categoryArr = switchDisp
-    ? ["Rent", "Utilites", "Shopping", "Entertainment", "Eating Out", "Others"]
+    ? [
+        "Rent",
+        "Bills and Services",
+        "Shopping",
+        "Entertainment",
+        "Eating Out",
+        "Others",
+      ]
     : ["Salary"];
 
   const transactions = switchDisp ? expenses : incomes;
@@ -48,7 +55,9 @@ export default function DashboardCategoryBox() {
 
   // return <div className="category-box">{categories}</div>;
   return (
-    <Flex align="center" direction="column" h="35vh" w="75vw" overflowY="auto">
+
+    <Flex align="center" direction="column" h="35vh" w="90vw" overflowY="auto">
+
       {categories}
     </Flex>
   );

@@ -50,7 +50,7 @@ export default function Dashboard() {
       ) : (
         <DashboardUserPie />
       )}
-      {/* <DashboardVisxPie /> */}
+
       <DashboardCategoryBox />
     </Flex>
   );

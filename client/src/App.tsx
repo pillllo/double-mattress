@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { State } from "./reducers/displayReducers";
+import ApiService from "./ApiServices";
 
 const App = function () {
   //1- Use fetch inside useEffect call API
@@ -16,8 +17,13 @@ const App = function () {
   });
   const dispatch = useDispatch();
   useEffect(() => {
+    // ApiService.getTransactions({
+    //   userId: "504de0d3-083c-4266-af33-2b71184d0c80",
+    //   transactionsPerUser: 100,
+    // })
     fetch("http://localhost:8888/transactions")
       .then((res) => {
+        console.log(res);
         return res.json();
       })
       .then((payload) => {
