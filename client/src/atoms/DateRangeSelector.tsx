@@ -6,11 +6,11 @@ export default function DateRangeSelector() {
       <Text color="white" alignSelf="center">
         Start Date:
       </Text>
-      <DashboardDatePicker double={true} />
+      <DashboardDatePicker isDouble={true} />
       <Text color="white" alignSelf="center">
         End Date:
       </Text>
-      <DashboardDatePicker double={true} />
+      <DashboardDatePicker isDouble={true} />
     </Flex>
   );
 }
