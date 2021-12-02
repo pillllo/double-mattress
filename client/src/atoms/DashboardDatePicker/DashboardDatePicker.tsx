@@ -5,10 +5,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./DashboardDatePicker.css";
 
 type Props = {
-  double: boolean;
+  isDouble: boolean;
 };
 
-function DashboardDatePicker({ double }: Props) {
+function DashboardDatePicker({ isDouble }: Props) {
   const [startDate, setStartDate] = useState(new Date());
 
   return (
@@ -17,8 +17,8 @@ function DashboardDatePicker({ double }: Props) {
       onChange={(date: Date) => {
         return setStartDate(date);
       }}
-      maxDate={double ? null : new Date()}
-      minDate={double ? new Date() : null}
+      maxDate={isDouble ? null : new Date()}
+      minDate={isDouble ? new Date() : null}
       withPortal
       dateFormat="MM/yyyy"
       showMonthYearPicker
