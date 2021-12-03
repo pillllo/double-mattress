@@ -12,7 +12,8 @@ import {
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { Transaction } from "../types/Transaction";
-import { ReduxState } from '../types/ReduxState';
+import { ReduxState } from "../types/ReduxState";
+import AccordianSingleItem from "./AccordianSingleItem";
 
 interface TransactionType {
   transaction: Transaction;
@@ -33,26 +34,14 @@ export default function AccordionItem() {
           <Text fontSize={[14, 16, 18, 20]}>Income</Text>
         </HStack>
       </Flex>
-      {transactions && transactions.length ? (
-        <Accordion allowToggle>
-          <TheAccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  {transactions.description}
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              {transactions.amount}
-              {transactions.category}
-              <CircularProgress height="100px" isIndeterminate />
-            </AccordionPanel>
-          </TheAccordionItem>
-        </Accordion>
+      {transactions.length ? (
+        transactions.map((transaction: any) => {
+          if (transaction) {
+            return <AccordianSingleItem transaction={transaction} />;
+          }
+        })
       ) : (
-        <h3>Nada</h3>
+        <h1>Nada</h1>
       )}
     </div>
   );
