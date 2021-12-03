@@ -4,7 +4,7 @@ import {State} from "../types/State"
 
 
 const initialState: State = {
-  userId: "504de0d3-083c-4266-af33-2b71184d0c80",
+  userId: "4c436f3d-f505-4e9f-b8b4-1c6c7e1d5713",
   partnerId:"",
   projectionData: [],
   dashboardData:{},
