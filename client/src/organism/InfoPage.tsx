@@ -34,7 +34,12 @@ export default function InfoPage() {
               <Flex w="14" h="14" aling="center" justify="center">
                 <Icon as={indiv.icon} w={10} h={10} color={indiv.color} />
               </Flex>
-              <Text fontWeight="700" letterSpacing="wide" fontSize="18">
+              <Text
+                fontWeight="700"
+                letterSpacing="wide"
+                fontSize="18"
+                align="center"
+              >
                 {indiv.title}
               </Text>
               <Text align="center" fontWeight="500" fontSize="14">

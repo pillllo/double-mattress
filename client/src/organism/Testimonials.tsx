@@ -30,6 +30,7 @@ export default function Testomonials() {
       justify="space-between"
       overflowY="auto"
       h="90%"
+      bgGradient="linear(to-r, blue.200, blue.400)"
     >
       {data.map((indiv, i) => {
         return (
@@ -40,6 +41,7 @@ export default function Testomonials() {
             maxW="75vw"
             my="1.5rem"
             key={i.toString()}
+            boxShadow="xl"
           >
             <Text
               py="1rem"
