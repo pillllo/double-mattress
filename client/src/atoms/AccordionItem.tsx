@@ -27,10 +27,10 @@ export default function AccordionItem() {
   return (
     <div>
       <Flex direction="column" align="center">
-        <Text fontSize={[12, 14, 16, 18]}>Howdy Pardner</Text>
+        <Text fontSize={[12, 14, 16, 18]}>Balance</Text>
         <HStack>
-          <Text fontSize={[14, 16, 18, 20]}>ABC</Text>
-          <Text fontSize={[14, 16, 18, 20]}>EASY AS 123</Text>
+          <Text fontSize={[14, 16, 18, 20]}>Expenses</Text>
+          <Text fontSize={[14, 16, 18, 20]}>Income</Text>
         </HStack>
       </Flex>
       {transactions && transactions.length ? (

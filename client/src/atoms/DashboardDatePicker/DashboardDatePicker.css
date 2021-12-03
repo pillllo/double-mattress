@@ -20,10 +20,14 @@
 .react-datepicker__input-container {
   text-align: center;
   color: black;
+
 }
 input {
   text-align: center;
   width: 225px;
   border-radius: 7.5px;
   height: 3.5vh;
+  background-color: rgba(255, 255, 255, 0.609);
+  border-color: rgb(153, 153, 153);
+  border:1px solid;
 }

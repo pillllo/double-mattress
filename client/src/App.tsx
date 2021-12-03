@@ -5,6 +5,7 @@ import Projection from "./organism/Projection";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer} from 'react-toastify';
 
 const App = function () {
   //1- Use fetch inside useEffect call API
