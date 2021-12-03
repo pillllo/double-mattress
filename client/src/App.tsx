@@ -22,7 +22,6 @@ const App = function () {
       direction="column"
       h="100vh"
     >
-
       <Router>
         <Navbar />
         <Routes>
