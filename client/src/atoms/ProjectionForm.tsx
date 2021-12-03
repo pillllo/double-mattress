@@ -36,6 +36,7 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
   const [newProjection, setNewProjection] = useState({ type:"expense", amount:0,currency:"eur",category: "",date:new Date(), description:"",includeAvg:false })
   const dispatch= useDispatch();
 
+
   const handleChange= (e:any)=>{
     const value= e.target.value
     console.log(value);
@@ -44,6 +45,7 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
     }
     else setNewProjection({...newProjection,[e.target.name]:value})
 
+
     console.log(newProjection)
   }
   const submitProjection=()=>{
@@ -51,6 +53,7 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
     //   console.log(data);
     // dispatch({type:"GET_PROJECTION_DATA",payload:data})
     // })
+
   }
 
   return (
