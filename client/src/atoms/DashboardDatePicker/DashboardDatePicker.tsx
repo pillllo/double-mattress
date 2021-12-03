@@ -24,10 +24,6 @@ function DashboardDatePicker({ isDouble }: Props) {
       selected={startDate}
       onChange={
         changeReduxDate
-        //   (date: Date) => {
-        //   console.log(Date)
-        //   return setStartDate(date);
-        // }
       }
       maxDate={isDouble ? null : new Date()}
       minDate={isDouble ? new Date() : null}

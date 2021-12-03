@@ -62,11 +62,20 @@ export default function Projection() {
         </Flex>
         <Tabs isFitted variant="enclosed" w="100%" h="50%">
           <TabList>
-            <Tab>Monkey</Tab>
-            <Tab>Madness</Tab>
+            <Tab>Projection List</Tab>
             <Tab>Categories</Tab>
+            <Tab>Settings</Tab>
           </TabList>
           <TabPanels>
+
+
+            <TabPanel>
+              <AccordionItem />
+            </TabPanel>
+
+            <TabPanel>
+               <ProjectionCategoryBox/>
+            </TabPanel>
 
             <TabPanel>
               <Flex
@@ -83,13 +92,6 @@ export default function Projection() {
               </Flex>
             </TabPanel>
 
-            <TabPanel>
-              <AccordionItem />
-            </TabPanel>
-
-            <TabPanel>
-               <ProjectionCategoryBox/>
-            </TabPanel>
 
           </TabPanels>
         </Tabs>

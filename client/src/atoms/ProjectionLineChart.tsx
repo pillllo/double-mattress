@@ -43,20 +43,6 @@ useEffect(()=>{
   if(projectionData.length>0){
     console.log("DATA",projectionData);
      setChartData(createChartData())
-    // setMonths([
-    //   ["Jan",projectionData[0]],
-    //   ["Feb",projectionData[1]],
-    //   ["Mar",projectionData[2]],
-    //   ["Apr",projectionData[3]],
-    //   ["May",projectionData[4]],
-    //   ["Jun",projectionData[5]],
-    //   ["Jul",projectionData[6]],
-    //   ["Aug",projectionData[7]],
-    //   ["Sep",projectionData[8]],
-    //   ["Oct",projectionData[9]],
-    //   ["Nov",projectionData[10]],
-    //   ["Dec",projectionData[11]],
-    // ])
   }
 },[projectionData])
 
@@ -67,18 +53,18 @@ useEffect(()=>{
 
   const createChartData =  () => {
     const months = [
-      ["Jan",projectionData[0]],
-      ["Feb",projectionData[1]],
-      ["Mar",projectionData[2]],
-      ["Apr",projectionData[3]],
-      ["May",projectionData[4]],
-      ["Jun",projectionData[5]],
-      ["Jul",projectionData[6]],
-      ["Aug",projectionData[7]],
-      ["Sep",projectionData[8]],
-      ["Oct",projectionData[9]],
-      ["Nov",projectionData[10]],
-      ["Dec",projectionData[11]],
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
     ];
     console.log("MONTHS",months);
     const updMonths= (ten:number): any[][]=>{
@@ -89,7 +75,9 @@ useEffect(()=>{
       for(let i=0;i<ten;i++){
         arr.push(months[i])
       }
-      return arr
+      return arr.map((name,i)=>{
+        return[name,projectionData[i]]
+      })
     }
 
 
