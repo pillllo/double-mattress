@@ -25,7 +25,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ApiServices from '../ApiServices'
 import {useDispatch } from "react-redux";
-import {toast } from 'react-toastify';
+import {toast,ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 interface TheProp {
   onClose: () => void;
   onOpen: () => void;
@@ -33,8 +34,21 @@ interface TheProp {
 }
 
 export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
-  const [newProjection, setNewProjection] = useState({ type:"expense", amount:0,currency:"eur",category: "",date:new Date(), description:"",includeAvg:false })
+  const defaultProjection={ type:"expense", amount:0,currency:"eur",category: "",date:new Date(), description:"",includeAvg:false }
+  const [newProjection, setNewProjection] = useState(defaultProjection)
   const dispatch= useDispatch();
+
+  const notify = () =>{
+    toast.info('Projection Created!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  };
 
 
   const handleChange= (e:any)=>{
@@ -45,7 +59,6 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
     }
     else setNewProjection({...newProjection,[e.target.name]:value})
 
-
     console.log(newProjection)
   }
   const submitProjection=()=>{
@@ -53,12 +66,15 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
     //   console.log(data);
     // dispatch({type:"GET_PROJECTION_DATA",payload:data})
     // })
-
+    setNewProjection(defaultProjection)
+    notify();
   }
 
   return (
+    <>
+    <ToastContainer/>
     <Modal
-      onClose={onClose}
+      onClose={()=>{setNewProjection(defaultProjection),onClose()}}
       isOpen={isOpen}
       isCentered
       motionPreset="slideInBottom"
@@ -97,7 +113,7 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
         Choose a date
       </Text>
     </DatePicker>
-            <Checkbox >Include Avg</Checkbox>
+            <Checkbox onChange={()=>{setNewProjection({...newProjection,includeAvg:!newProjection.includeAvg})}} >Make recurrent</Checkbox>
           </FormControl>
         </ModalBody>
         <ModalFooter>
@@ -105,5 +121,6 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
         </ModalFooter>
       </ModalContent>
     </Modal>
+    </>
   );
 }

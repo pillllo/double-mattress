@@ -15,22 +15,13 @@ const App = function () {
   //2- Dispath an action to populate the store with the data
 
   return (
+    <>
+  
     <Flex
       bgGradient="linear(to-b, gray.600, gray.900)"
       direction="column"
       h="100vh"
     >
-      <ToastContainer
-position="top-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-/>
       <Router>
         <Navbar />
         <Routes>
@@ -42,6 +33,7 @@ pauseOnHover
         </Routes>
       </Router>
     </Flex>
+    </>
   );
 };
 
