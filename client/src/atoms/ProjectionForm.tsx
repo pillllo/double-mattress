@@ -25,6 +25,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ApiServices from '../ApiServices'
 import {useDispatch } from "react-redux";
+import {toast } from 'react-toastify';
 interface TheProp {
   onClose: () => void;
   onOpen: () => void;
@@ -34,6 +35,7 @@ interface TheProp {
 export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
   const [newProjection, setNewProjection] = useState({ type:"expense", amount:0,currency:"eur",category: "",date:new Date(), description:"",includeAvg:false })
   const dispatch= useDispatch();
+  const notify = () => toast("Wow so easy!");
   const handleChange= (e:any)=>{
     const value= e.target.value
     console.log(value);
@@ -49,6 +51,7 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
     //   console.log(data);
     // dispatch({type:"GET_PROJECTION_DATA",payload:data})
     // })
+    notify()
   }
 
   return (
