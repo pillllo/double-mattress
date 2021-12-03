@@ -8,6 +8,7 @@ import InfoPage from "./organism/InfoPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer} from 'react-toastify';
 
 const App = function () {
   //1- Use fetch inside useEffect call API
@@ -19,6 +20,17 @@ const App = function () {
       direction="column"
       h="100vh"
     >
+      <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
       <Router>
         <Navbar />
         <Routes>

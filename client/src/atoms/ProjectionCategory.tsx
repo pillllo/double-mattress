@@ -87,14 +87,6 @@ console.log("RENDERED");
             {price || 123.5}
           </Text>
         </HStack>
-        <Tooltip hasArrow label="Click me for more info!">
-          <IconButton
-            aria-label="Category Info"
-            icon={<FaInfoCircle />}
-            boxSize={buttonSize}
-            onClick={() => alert("hi")}
-          />
-        </Tooltip>
       </Flex>
       <Divider />
 
