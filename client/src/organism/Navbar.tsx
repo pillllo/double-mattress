@@ -17,7 +17,8 @@ import {
   FaClock,
   FaCogs,
   FaAngleDoubleRight,
-  FaBed,
+  FaInfo,
+  FaAward,
 } from "react-icons/fa";
 import { Link as routerLink } from "react-router-dom";
 
@@ -72,6 +73,32 @@ export default function Navbar() {
               <FaClock />
               <Divider orientation="vertical" mx="5px" />
               Projections
+            </Link>
+            <Divider my={2} />
+            <Link
+              as={routerLink}
+              to="/testimonials"
+              fontSize="1.25rem"
+              display="flex"
+              alignItems="center"
+              onClick={onClose}
+            >
+              <FaAward />
+              <Divider orientation="vertical" mx="5px" />
+              Testimonial
+            </Link>
+            <Divider my={2} />
+            <Link
+              as={routerLink}
+              to="/info"
+              fontSize="1.25rem"
+              display="flex"
+              alignItems="center"
+              onClick={onClose}
+            >
+              <FaInfo />
+              <Divider orientation="vertical" mx="5px" />
+              About us
             </Link>
             <Divider my={2} />
             <Link

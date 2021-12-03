@@ -3,7 +3,7 @@ import Navbar from "./organism/Navbar";
 import Dashboard from "./organism/Dashboard";
 import Projection from "./organism/Projection";
 import LandingPage from "./organism/LandingPage";
-import Testomonials from "./organism/Testomonials";
+import Testimonials from "./organism/Testimonials";
 import InfoPage from "./organism/InfoPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
@@ -25,7 +25,7 @@ const App = function () {
           <Route path={`/`} element={<LandingPage />} />
           <Route path={`/dashboard`} element={<Dashboard />} />
           <Route path={`/projections`} element={<Projection />} />
-          <Route path={`/testomonials`} element={<Testomonials />} />
+          <Route path={`/testimonials`} element={<Testimonials />} />
           <Route path={`/info`} element={<InfoPage />} />
         </Routes>
       </Router>
