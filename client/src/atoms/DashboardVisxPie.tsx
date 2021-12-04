@@ -4,45 +4,53 @@ import { Group } from "@visx/group";
 import { Text } from "@visx/text";
 import { Transaction, PieTransaction } from "../types/Transaction";
 import dataObject from "../MockData";
+import { useSelector } from "react-redux";
+import { ReduxState } from "../types/ReduxState";
 /*
  Abandon hope all ye who enter here
 */
 export default function DashboardVisxPie() {
+  const expenseTotalObject = useSelector((state: ReduxState) => {
+    //@ts-ignore
+    return state.displayCategories.dashboardData.categoryTotals;
+  });
+
   const [transact, setTransact] = useState<PieTransaction[]>();
   const [active, setActive] = useState<PieTransaction | undefined>(undefined);
   const width = 250;
   const half = width / 2;
+  const userId = "0652eb0d-2152-4535-a97b-b65173a1aa59";
 
   function transactionCreation(transactionData: Transaction[]) {
     const transactions: PieTransaction[] = [
       {
         name: "Rent",
-        value: 500,
+        value: Number(expenseTotalObject["home"][userId]),
         color: "#DD6B20",
       },
       {
         name: "Bills",
-        value: 9500,
+        value: Number(expenseTotalObject["bills"][userId]),
         color: "#D69E2E",
       },
       {
         name: "Shopping",
-        value: 90000,
+        value: Number(expenseTotalObject["shopping"][userId]),
         color: "#38A169",
       },
       {
         name: "Entertainment",
-        value: 55000,
+        value: Number(expenseTotalObject["entertainment"][userId]),
         color: "#3182CE",
       },
       {
         name: "Eating Out",
-        value: 100000,
+        value: Number(expenseTotalObject["eatingOut"][userId]),
         color: "#805AD5",
       },
       {
         name: "Others",
-        value: 48000,
+        value: Number(expenseTotalObject["others"][userId]),
         color: "#D53F8C",
       },
     ];
@@ -63,6 +71,8 @@ export default function DashboardVisxPie() {
 
   useEffect(() => {
     transactionCreation(dataObject.mockTransactions); // Can't import outside src folder
+    console.log(expenseTotalObject);
+    console.log(expenseTotalObject["bills"]);
   }, []);
 
   return (
