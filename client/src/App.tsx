@@ -8,7 +8,8 @@ import InfoPage from "./organism/InfoPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from "react-toastify";
+import LoginPage from "./organism/LoginPage";
 
 const App = function () {
   //1- Use fetch inside useEffect call API
@@ -16,23 +17,23 @@ const App = function () {
 
   return (
     <>
-  
-    <Flex
-      bgGradient="linear(to-b, gray.600, gray.900)"
-      direction="column"
-      h="100vh"
-    >
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path={`/`} element={<LandingPage />} />
-          <Route path={`/dashboard`} element={<Dashboard />} />
-          <Route path={`/projections`} element={<Projection />} />
-          <Route path={`/testimonials`} element={<Testimonials />} />
-          <Route path={`/info`} element={<InfoPage />} />
-        </Routes>
-      </Router>
-    </Flex>
+      <Flex
+        bgGradient="linear(to-b, gray.600, gray.900)"
+        direction="column"
+        h="100vh"
+      >
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path={`/`} element={<LandingPage />} />
+            <Route path={`/dashboard`} element={<Dashboard />} />
+            <Route path={`/projections`} element={<Projection />} />
+            <Route path={`/testimonials`} element={<Testimonials />} />
+            <Route path={`/info`} element={<InfoPage />} />
+            <Route path={`/login`} element={<LoginPage />} />
+          </Routes>
+        </Router>
+      </Flex>
     </>
   );
 };

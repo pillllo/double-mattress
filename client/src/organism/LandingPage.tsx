@@ -8,8 +8,22 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import ApiServices from "../ApiServices";
 
 export default function LandingPage() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const userId = "0652eb0d-2152-4535-a97b-b65173a1aa59";
+    const date = "2021-08-16T23:00:00.000Z";
+
+    ApiServices.getDashboard({ userId, date }).then((data) => {
+      console.log(data);
+      dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
+    });
+  });
+
   return (
     <Flex h="100%" direction="column" overflowY="auto">
       <Box align="center" boxsize={"420px"}>
@@ -55,7 +69,7 @@ export default function LandingPage() {
             rounded="full"
             px={6}
             as={ReactLink}
-            to="/testimonials"
+            to="/login"
           >
             Get Started
           </Button>

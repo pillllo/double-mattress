@@ -109,8 +109,8 @@ export default function DashboardCategory({
           <ModalHeader>{title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {transactionList.map((transaction) => {
-              return <p>{transaction.amount}</p>;
+            {transactionList.map((transaction, i) => {
+              return <p key={i}>{transaction.amount}</p>;
             })}
           </ModalBody>
           <ModalFooter>

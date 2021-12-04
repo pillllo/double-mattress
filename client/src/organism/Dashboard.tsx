@@ -1,18 +1,13 @@
-import { Flex } from "@chakra-ui/react";
+import { Divider, Flex, Progress, Spinner } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import DashboardCategoryBox from "../molecules/DashboardCategoryBox/DashboardCategoryBox";
-import ApiServices from '../ApiServices'
-import {useEffect} from 'react';
-import {ReduxState} from '../types/ReduxState'
+import ApiServices from "../ApiServices";
+import { useEffect, useState } from "react";
+import { ReduxState } from "../types/ReduxState";
 import {
-  DashboardTransaction,
-  DashboardCategory,
-  AccordionItem,
-  ProjectionLineChart,
   DashboardVisxPie,
   DashboardUserPie,
   DoubleSwitch,
-  DateRangeSelector,
   MainButton,
   DashboardDatePicker,
   DashboardSavingsChart,
@@ -26,25 +21,26 @@ export default function Dashboard() {
     (state: ReduxState) => state.displayCategories.dataSwitch
   );
 
-  const dispatch= useDispatch();
+  const [loadCheck, setLoadCheck] = useState(true);
 
-  const userId = useSelector((state:ReduxState) => {
-    return state.displayCategories.userId;
-  })
-  const date= useSelector((state:ReduxState)=>{
-    return state.displayCategories.projectionDate
-  })
- useEffect(() => {
-    if(userId && date){
-      ApiServices.getDashboard({userId,date}).then((data)=>{
-        console.log("HELLO?");
-        console.log(data);
-      dispatch({type:"GET_DASHBOARD_DATA",payload:data})
-      })
-    }
+  const dispatch = useDispatch();
 
-  }, [userId,date]);
+  // const userId = useSelector((state: ReduxState) => {
+  //   return state.displayCategories.userId;
+  // });
+  // const date = useSelector((state: ReduxState) => {
+  //   return state.displayCategories.projectionDate;
+  // });
+  useEffect(() => {
+    const userId = "0652eb0d-2152-4535-a97b-b65173a1aa59";
+    const date = "2021-08-16T23:00:00.000Z";
 
+    ApiServices.getDashboard({ userId, date }).then((data) => {
+      console.log(data);
+      dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
+      setLoadCheck(false);
+    });
+  }, []);
 
   return (
     <Flex
@@ -63,15 +59,27 @@ export default function Dashboard() {
           passedFunction={() => dispatch({ type: "DATASWITCH_DISPLAY" })}
         />
       </Flex>
-      {dataSwitch ? (
+      {loadCheck ? (
+        <Spinner size="xl" />
+      ) : dataSwitch ? (
         <DashboardSavingsChart />
       ) : muhBoolean ? (
         <DashboardVisxPie />
       ) : (
         <DashboardUserPie />
       )}
+      {loadCheck ? (
+        <Flex direction="column" w="80vw" h="250px" justify="space-evenly">
+          <Progress size="xs" isIndeterminate />
+          <Progress size="xs" isIndeterminate />
 
-      <DashboardCategoryBox />
+          <Progress size="xs" isIndeterminate />
+
+          <Progress size="xs" isIndeterminate />
+        </Flex>
+      ) : (
+        <DashboardCategoryBox />
+      )}
     </Flex>
   );
 }
