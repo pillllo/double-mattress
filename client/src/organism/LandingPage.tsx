@@ -15,7 +15,7 @@ import ApiServices from "../ApiServices";
 export default function LandingPage() {
   const dispatch = useDispatch();
   useEffect(() => {
-    const userId = "0652eb0d-2152-4535-a97b-b65173a1aa59";
+    const userId = "f65f19ed-a0b0-465c-991f-037a7ac6353b";
     const date = "2021-08-16T23:00:00.000Z";
 
     ApiServices.getDashboard({ userId, date }).then((data) => {
