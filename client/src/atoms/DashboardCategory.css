@@ -1,8 +1,0 @@
-.category-box {
-  display: flex;
-  border-radius: 10px;
-  border-top: 1px solid #000;
-  border-right: 1px solid #333;
-  border-left: 1px solid #333;
-  background-color: rgba(143, 143, 143, 0.116);
-}

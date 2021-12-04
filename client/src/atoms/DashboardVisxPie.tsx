@@ -3,7 +3,7 @@ import { Pie } from "@visx/shape";
 import { Group } from "@visx/group";
 import { Text } from "@visx/text";
 import { Transaction, PieTransaction } from "../types/Transaction";
-import dataObject from "../MockData";
+
 import { useSelector } from "react-redux";
 import { ReduxState } from "../types/ReduxState";
 /*
@@ -14,73 +14,54 @@ export default function DashboardVisxPie() {
     //@ts-ignore
     return state.displayCategories.dashboardData.categoryTotals;
   });
-
-  const [transact, setTransact] = useState<PieTransaction[]>();
+  const userData = useSelector((state: ReduxState) => {
+    //@ts-ignore
+    return state.displayCategories.userId;
+  });
   const [active, setActive] = useState<PieTransaction | undefined>(undefined);
+
+  const transactions: PieTransaction[] = [
+    {
+      name: "Rent",
+      value: Number(expenseTotalObject["home"][userData]),
+      color: "#DD6B20",
+    },
+    {
+      name: "Bills",
+      value: Number(expenseTotalObject["bills"][userData]),
+      color: "#D69E2E",
+    },
+    {
+      name: "Shopping",
+      value: Number(expenseTotalObject["shopping"][userData]),
+      color: "#38A169",
+    },
+    {
+      name: "Entertainment",
+      value: Number(expenseTotalObject["entertainment"][userData]),
+      color: "#3182CE",
+    },
+    {
+      name: "Eating Out",
+      value: Number(expenseTotalObject["eatingOut"][userData]),
+      color: "#805AD5",
+    },
+    {
+      name: "Others",
+      value: Number(expenseTotalObject["others"][userData]),
+      color: "#D53F8C",
+    },
+  ];
+
   const width = 250;
   const half = width / 2;
-  const userId = "0652eb0d-2152-4535-a97b-b65173a1aa59";
-
-  function transactionCreation(transactionData: Transaction[]) {
-    const transactions: PieTransaction[] = [
-      {
-        name: "Rent",
-        value: Number(expenseTotalObject["home"][userId]),
-        color: "#DD6B20",
-      },
-      {
-        name: "Bills",
-        value: Number(expenseTotalObject["bills"][userId]),
-        color: "#D69E2E",
-      },
-      {
-        name: "Shopping",
-        value: Number(expenseTotalObject["shopping"][userId]),
-        color: "#38A169",
-      },
-      {
-        name: "Entertainment",
-        value: Number(expenseTotalObject["entertainment"][userId]),
-        color: "#3182CE",
-      },
-      {
-        name: "Eating Out",
-        value: Number(expenseTotalObject["eatingOut"][userId]),
-        color: "#805AD5",
-      },
-      {
-        name: "Others",
-        value: Number(expenseTotalObject["others"][userId]),
-        color: "#D53F8C",
-      },
-    ];
-    const finishedTransactions: PieTransaction[] = [];
-
-    for (let category of transactions) {
-      for (let unit of transactionData) {
-        if (category.name === unit.category) {
-          category.value += unit.amount;
-        }
-      }
-      if (category.value) {
-        finishedTransactions.push(category);
-      }
-    }
-    setTransact(() => finishedTransactions);
-  }
-
-  useEffect(() => {
-    transactionCreation(dataObject.mockTransactions); // Can't import outside src folder
-    console.log(expenseTotalObject);
-    console.log(expenseTotalObject["bills"]);
-  }, []);
 
   return (
     <main>
       <svg width={width} height={width}>
         <Group top={half} left={half}>
           <Pie
-            data={transact}
+            data={transactions}
             pieValue={(data) => data.value}
             outerRadius={half}
             innerRadius={({ data }) => {
@@ -123,8 +104,8 @@ export default function DashboardVisxPie() {
           ) : (
             <>
               <Text textAnchor="middle" fill="#fff" fontSize={40} dy={-20}>
-                {`$${transact?.reduce(
-                  (acc, transact) => acc + transact.value,
+                {`$${transactions?.reduce(
+                  (acc, transaction) => acc + transaction.value,
                   0
                 )}`}
               </Text>

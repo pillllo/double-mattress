@@ -18,7 +18,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { Transaction } from "../types/Transaction";
-import "./DashboardCategory.css";
+
 import {
   FaHouseUser,
   FaHeartBroken,
