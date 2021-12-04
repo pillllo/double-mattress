@@ -1,5 +1,7 @@
 
-// import { PureComponent } from "react";
+import AwesomeSlider from 'react-awesome-slider';
+//@ts-ignore
+import AwsSliderStyles from 'react-awesome-slider/src/styles';
 import { useState, useEffect } from "react";
 import {
   LineChart,
@@ -86,12 +88,13 @@ useEffect(()=>{
       return {
         name: month[0],
         Savings: month[1].savings.totalSinceJoining,
-        SavingsRate: ((month[1].typeAverages.income) - (month[1].typeAverages.expense)),
+        SavingsRate: (month[1].savings.monthlySavings)
       };
     });
   };
 
   return (
+    <div style={{ width: '100%' }}>
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
         width={750}
@@ -115,6 +118,9 @@ useEffect(()=>{
         />
         <Line type="monotone" dataKey="SavingsRate" stroke="#82ca9d" />
       </LineChart>
+
     </ResponsiveContainer>
+
+    </div>
   );
 }

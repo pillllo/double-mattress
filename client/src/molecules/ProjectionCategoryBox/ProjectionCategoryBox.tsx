@@ -37,6 +37,7 @@ useEffect(()=>{
 
     return (
       <ProjectionCategory
+        key={category}
         category={category}
         currency={"eur"}
         price={price}
