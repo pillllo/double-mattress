@@ -18,7 +18,7 @@ const App = function () {
   return (
     <>
       <Flex
-        bgGradient="linear(to-b, gray.600, gray.900)"
+        bgGradient="linear(to-b, gray.600, gray.800)"
         direction="column"
         h="100vh"
       >
