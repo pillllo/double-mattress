@@ -4,6 +4,9 @@ import { Group } from "@visx/group";
 import { Text } from "@visx/text";
 import { User, PieUser } from "../types/User";
 import dataObject from "../MockData";
+import { ReduxState } from "../types/ReduxState";
+import { useSelector } from "react-redux";
+
 /*
  Abandon hope all ye who enter here
 */
@@ -13,18 +16,36 @@ export default function DashboardVisxPie() {
   const width = 250;
   const half = width / 2;
 
+  const userData = useSelector((state: ReduxState) => {
+    return state.displayCategories.userId;
+  });
+  const income = useSelector((state: ReduxState) => {
+    //@ts-ignore
+    return state.displayCategories.dashboardData?.typeTotals;
+  });
+
   function transactionCreation(transactionData: User[]) {
     const transactions: PieUser[] = [
       {
-        name: `${transactionData[0].firstName}`,
-        value: 150000,
+        name: "David - Salary",
+        value: income.salary[userData],
         color: "#E53E3E",
       },
       {
-        name: `${transactionData[1].firstName}`,
+        name: "David - Other Income",
+        value: income.otherIncome[userData],
+        color: "#D69E2E",
+      },
+      {
+        name: "Davina - Salary",
         value: 200000,
         color: "#DD6B20",
-      }
+      },
+      {
+        name: "Davina - Other Income",
+        value: 200000,
+        color: "#805AD5",
+      },
     ];
 
     setTransact(() => transactions);
@@ -32,6 +53,7 @@ export default function DashboardVisxPie() {
 
   useEffect(() => {
     transactionCreation(dataObject.mockUser); // Can't import outside src folder
+    console.log(income, userData);
   }, []);
 
   return (

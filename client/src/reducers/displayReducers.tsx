@@ -11,9 +11,9 @@ import {
 import { State } from "../types/State";
 const initialState: State = {
   userId: "879e2faa-60d8-4b47-ae1f-bda845ec36f0",
-  partnerId:"",
-  mainUser:{},
-  partnerUser:{},
+  partnerId: "",
+  mainUser: {},
+  partnerUser: {},
   projectionData: [],
   dashboardData: {},
   switch: true,
@@ -51,7 +51,7 @@ const displayCategories = (
       return { ...state, projectionDate: action.payload };
     }
     case "DATASWITCH_DISPLAY": {
-      return { ...state, switch: !state.dataSwitch };
+      return { ...state, dataSwitch: !state.dataSwitch };
     }
     default:
       return state;

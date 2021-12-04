@@ -53,14 +53,21 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
 
   const handleChange= (e:any)=>{
     const value= e.target.value
-    console.log(value);
-    if(e.target.name!=="amount" && value.charAt(0)===value.charAt(0).toUpperCase()){
-      setNewProjection({...newProjection,category:value})
-    }
-    else setNewProjection({...newProjection,[e.target.name]:value})
-
+      setNewProjection({...newProjection,[e.target.name]:value})
     console.log(newProjection)
   }
+
+  const handleCategoryChange= (e:any)=>{
+    const value= e.target.value
+    setNewProjection({...newProjection,category:value})
+    }
+
+  const handleTypeChange = (e:any)=>{
+    const value= e.target.value
+    setNewProjection({...newProjection, type:value})
+  }
+
+
   const submitProjection=()=>{
     // ApiServices.addProjection(newProjection).then((data)=>{
     //   console.log(data);
@@ -84,9 +91,14 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
         <ModalHeader>Projection Details</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <FormControl>
+          <FormControl margin="10px">
+          <FormLabel>Type</FormLabel>
+            <Select onChange={handleTypeChange} isRequired placeholder='Select category' >
+              <option value='income'>Income</option>
+              <option value='expense'>Expense</option>
+            </Select>
             <FormLabel>Category</FormLabel>
-            <Select onChange={handleChange} isRequired placeholder='Select category' >
+            <Select onChange={handleCategoryChange} isRequired placeholder='Select category' >
               <option value='Home'>Home</option>
               <option value='Bills'>Bills and Services</option>
               <option value='Shopping'>Shopping</option>

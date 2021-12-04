@@ -35,10 +35,11 @@ export default function Dashboard() {
     const userId = "0652eb0d-2152-4535-a97b-b65173a1aa59";
     const date = "2021-08-16T23:00:00.000Z";
 
+    console.time("Here");
     ApiServices.getDashboard({ userId, date }).then((data) => {
-      console.log(data);
       dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
       setLoadCheck(false);
+      console.timeEnd("Here");
     });
   }, []);
 
