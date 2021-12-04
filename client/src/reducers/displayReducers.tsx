@@ -1,17 +1,26 @@
 import { combineReducers } from "redux";
-import { switchDisplay,dataSwitchDisplay, getData, dashboardDateChange,projectionDateChange,getProjectionData,getDashboardData } from "../actions/displayActions";
-import {State} from "../types/State"
-
-
+import {
+  switchDisplay,
+  dataSwitchDisplay,
+  getData,
+  dashboardDateChange,
+  projectionDateChange,
+  getProjectionData,
+  getDashboardData,
+} from "../actions/displayActions";
+import { State } from "../types/State";
 const initialState: State = {
   userId: "879e2faa-60d8-4b47-ae1f-bda845ec36f0",
   partnerId:"",
+  mainUser:{},
+  partnerUser:{},
   projectionData: [],
-  dashboardData:{},
+  dashboardData: {},
   switch: true,
   dataSwitch: true,
-  projectionDate:new Date(),
+  projectionDate: new Date(),
   dashboardDate: new Date(),
+
 };
 
 const displayCategories = (
@@ -27,22 +36,22 @@ const displayCategories = (
 ) => {
   switch (action.type) {
     case "GET_DASHBOARD_DATA": {
-      return {...state, dashboardData:action.payload}
+      return { ...state, dashboardData: action.payload };
     }
-    case "GET_PROJECTION_DATA":{
-      return {...state, projectionData:action.payload}
+    case "GET_PROJECTION_DATA": {
+      return { ...state, projectionData: action.payload };
     }
     case "SWITCH_DISPLAY": {
       return { ...state, switch: !state.switch };
     }
     case "DASHBOARD_DATE_CHANGE": {
-      return{...state, dashboardDate: action.payload}
+      return { ...state, dashboardDate: action.payload };
     }
     case "PROJECTION_DATE_CHANGE": {
-      return{...state, projectionDate: action.payload}
+      return { ...state, projectionDate: action.payload };
     }
     case "DATASWITCH_DISPLAY": {
-      return { ...state, switch: !state.switch };
+      return { ...state, switch: !state.dataSwitch };
     }
     default:
       return state;
