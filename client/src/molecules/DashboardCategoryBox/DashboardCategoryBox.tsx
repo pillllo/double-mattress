@@ -2,7 +2,7 @@ import { DashboardCategory } from "../../atoms/index";
 import { Transaction } from "../../types/Transaction";
 import { useSelector } from "react-redux";
 import "./DashboardCategoryBox.css";
-import { Flex, VStack } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import { ReduxState } from "../../types/ReduxState";
@@ -44,13 +44,13 @@ export default function DashboardCategoryBox() {
           "Eating Out",
           "Others",
         ]
-      : ["Salary"];
-    // const transactions = switchDisp ? expenses : incomes;
+      : ["Salary", "Other Income"];
     const newCategories = categoryArr.map((category, i) => {
       let totalCategory = 0;
 
       const transactionsFiltered = transactions.filter(
         (transac: Transaction) => {
+          console.log(transac);
           if (transac.category === categoryArr[i]) {
             totalCategory += transac.amount;
             return true;
@@ -70,7 +70,7 @@ export default function DashboardCategoryBox() {
       );
     });
     setCategories(newCategories);
-  }, [dashboardData]);
+  }, [switchDisp]);
 
   return (
     <Flex align="center" direction="column" h="35vh" w="90vw" overflowY="auto">
