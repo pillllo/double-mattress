@@ -65,7 +65,7 @@ function getProjections(body:any) {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
-          "Client-Jwt": token
+          // "Client-Jwt": token
       },
       body: JSON.stringify(body)
   });

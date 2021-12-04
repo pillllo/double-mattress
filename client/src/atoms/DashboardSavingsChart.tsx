@@ -37,7 +37,7 @@ export default function DashboardSavingsChart() {
     }
     setPData(data);
   }, [dashboardData]);
-
+  console.log(savingsPieData);
   if (dashboardData.length) {
     const width = 450;
     const height = 215;

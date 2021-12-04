@@ -1,6 +1,6 @@
 import DashboardTransaction from "./DashboardTransaction";
 import DashboardCategory from "./DashboardCategory";
-import AccordionItem from "./AccordionItem";
+import AccordionItem from "../molecules/AccordionItem";
 import ProjectionLineChart from "./ProjectionLineChart";
 import DashboardVisxPie from "./DashboardVisxPie";
 import DashboardUserPie from "./DashboardUserPie";

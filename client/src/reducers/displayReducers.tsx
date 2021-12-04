@@ -9,16 +9,18 @@ import {
   getDashboardData,
 } from "../actions/displayActions";
 import { State } from "../types/State";
-
 const initialState: State = {
-  userId: "4c436f3d-f505-4e9f-b8b4-1c6c7e1d5713",
-  partnerId: "",
+  userId: "879e2faa-60d8-4b47-ae1f-bda845ec36f0",
+  partnerId:"",
+  mainUser:{},
+  partnerUser:{},
   projectionData: [],
   dashboardData: {},
   switch: true,
-  dataSwitch: false,
+  dataSwitch: true,
   projectionDate: new Date(),
   dashboardDate: new Date(),
+
 };
 
 const displayCategories = (
@@ -49,7 +51,7 @@ const displayCategories = (
       return { ...state, projectionDate: action.payload };
     }
     case "DATASWITCH_DISPLAY": {
-      return { ...state, switch: !state.switch };
+      return { ...state, switch: !state.dataSwitch };
     }
     default:
       return state;
