@@ -1,5 +1,5 @@
 import DashboardTransaction from "./DashboardTransaction";
-import DashboardCategory from "./DashboardCategory";
+import DashboardCategory from "../molecules/DashboardCategory";
 import AccordionItem from "../molecules/AccordionItem";
 import ProjectionLineChart from "./ProjectionLineChart";
 import DashboardVisxPie from "./DashboardVisxPie";
@@ -11,6 +11,7 @@ import DashboardDatePicker from "./DashboardDatePicker/DashboardDatePicker";
 import ProjectionForm from "./ProjectionForm";
 import DashboardSavingsChart from "./DashboardSavingsChart";
 import ProjectionCategory from "./ProjectionCategory";
+import DashboardCategoryItem from "./DashboardCategoryItem";
 export {
   DashboardTransaction,
   DashboardCategory,
@@ -24,5 +25,6 @@ export {
   DashboardDatePicker,
   ProjectionForm,
   DashboardSavingsChart,
-  ProjectionCategory
+  ProjectionCategory,
+  DashboardCategoryItem,
 };

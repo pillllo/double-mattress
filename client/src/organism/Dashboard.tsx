@@ -1,4 +1,4 @@
-import { Flex, Progress, Spinner } from "@chakra-ui/react";
+import { Flex, Progress, Spinner, Skeleton } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import DashboardCategoryBox from "../molecules/DashboardCategoryBox/DashboardCategoryBox";
 import ApiServices from "../ApiServices";
@@ -68,13 +68,11 @@ export default function Dashboard() {
         <DashboardUserPie />
       )}
       {loadCheck ? (
-        <Flex direction="column" w="80vw" h="250px" justify="space-evenly">
-          <Progress size="xs" isIndeterminate />
-          <Progress size="xs" isIndeterminate />
-
-          <Progress size="xs" isIndeterminate />
-
-          <Progress size="xs" isIndeterminate />
+        <Flex direction="column" w="85vw" h="250px" justify="space-evenly">
+          <Skeleton size="md" height="25px" isIndeterminate />
+          <Skeleton size="md" height="25px" isIndeterminate />
+          <Skeleton size="md" height="25px" isIndeterminate />
+          <Skeleton size="md" height="25px" isIndeterminate />
         </Flex>
       ) : (
         <DashboardCategoryBox />
