@@ -28,7 +28,7 @@ export default function Navbar() {
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
 
   return (
-    <Flex w="full" h="10vh" bg="blue.700">
+    <Flex w="full" h="10vh" bgGradient="linear(to-b, blue.400, blue.800)">
       <Flex align="center" p="5px">
         <IconButton
           aria-label="Open NavMenu"
@@ -39,7 +39,7 @@ export default function Navbar() {
           color={"white"}
           dropShadow={"large"}
         />
-        <Text ml="5" fontSize={["xl", "2xl", "3xl"]}>
+        <Text ml="5" fontWeight="600" fontSize={["xl", "2xl", "3xl"]}>
           Double-Mattress
         </Text>
       </Flex>
