@@ -20,6 +20,7 @@ const initialState: State = {
   dataSwitch: false,
   projectionDate: new Date(),
   dashboardDate: new Date(),
+
 };
 
 const displayCategories = (

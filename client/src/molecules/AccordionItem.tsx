@@ -36,8 +36,8 @@ export default function AccordionItem() {
   );
 
   return (
-    <div>
-      <Flex direction="column" align="center">
+    <Box overflowY="auto"  h="35vh">
+      <Flex direction="column" align="center" >
         <Text fontSize={[12, 14, 16, 18]}>Balance</Text>
         <HStack>
           <Text fontSize={[14, 16, 18, 20]}>Expenses</Text>
@@ -53,6 +53,6 @@ export default function AccordionItem() {
       ) : (
         <h1>Nada</h1>
       )}
-    </div>
+    </Box>
   );
 }

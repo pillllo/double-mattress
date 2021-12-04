@@ -1,4 +1,4 @@
-import { Flex, Progress, Spinner, Skeleton } from "@chakra-ui/react";
+import { Flex, Spinner, Skeleton } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import DashboardCategoryBox from "../molecules/DashboardCategoryBox/DashboardCategoryBox";
 import ApiServices from "../ApiServices";

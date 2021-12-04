@@ -24,9 +24,10 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ApiServices from '../ApiServices'
-import {useDispatch } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import {toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ReduxState } from "../types/ReduxState";
 interface TheProp {
   onClose: () => void;
   onOpen: () => void;
@@ -34,9 +35,19 @@ interface TheProp {
 }
 
 export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
-  const defaultProjection={ type:"expense", amount:0,currency:"eur",category: "",date:new Date(), description:"",includeAvg:false }
+  const user = useSelector((state: ReduxState) => {
+    return state.displayCategories.userId;
+  });
+  const projectionData = useSelector((state: ReduxState) => {
+
+    return state.displayCategories.projectionData;
+  });
+
+  const defaultProjection={ type:"expense", userId:user, amount:0,currency:"eur",category: "",date:new Date(), description:"",includeAvg:false }
   const [newProjection, setNewProjection] = useState(defaultProjection)
   const dispatch= useDispatch();
+
+
 
   const notify = () =>{
     toast.info('Projection Created!', {
@@ -53,19 +64,26 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
 
   const handleChange= (e:any)=>{
     const value= e.target.value
-    console.log(value);
-    if(e.target.name!=="amount" && value.charAt(0)===value.charAt(0).toUpperCase()){
-      setNewProjection({...newProjection,category:value})
-    }
-    else setNewProjection({...newProjection,[e.target.name]:value})
-
+      setNewProjection({...newProjection,[e.target.name]:value})
     console.log(newProjection)
   }
+
+  const handleCategoryChange= (e:any)=>{
+    const value= e.target.value
+    setNewProjection({...newProjection,category:value})
+    }
+
+  const handleTypeChange = (e:any)=>{
+    const value= e.target.value
+    setNewProjection({...newProjection, type:value})
+  }
+
+
   const submitProjection=()=>{
-    // ApiServices.addProjection(newProjection).then((data)=>{
-    //   console.log(data);
-    // dispatch({type:"GET_PROJECTION_DATA",payload:data})
-    // })
+    ApiServices.addProjection({projectedChange:newProjection, projections:projectionData}).then((data:any)=>{
+      console.log(data);
+    dispatch({type:"GET_PROJECTION_DATA",payload:data})
+    })
     setNewProjection(defaultProjection)
     notify();
   }
@@ -84,9 +102,14 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
         <ModalHeader>Projection Details</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <FormControl>
+          <FormControl margin="10px">
+          <FormLabel>Type</FormLabel>
+            <Select onChange={handleTypeChange} isRequired placeholder='Select category' >
+              <option value='income'>Income</option>
+              <option value='expense'>Expense</option>
+            </Select>
             <FormLabel>Category</FormLabel>
-            <Select onChange={handleChange} isRequired placeholder='Select category' >
+            <Select onChange={handleCategoryChange} isRequired placeholder='Select category' >
               <option value='Home'>Home</option>
               <option value='Bills'>Bills and Services</option>
               <option value='Shopping'>Shopping</option>
