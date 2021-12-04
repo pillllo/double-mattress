@@ -24,9 +24,10 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ApiServices from '../ApiServices'
-import {useDispatch } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import {toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ReduxState } from "../types/ReduxState";
 interface TheProp {
   onClose: () => void;
   onOpen: () => void;
@@ -34,9 +35,19 @@ interface TheProp {
 }
 
 export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
-  const defaultProjection={ type:"expense", amount:0,currency:"eur",category: "",date:new Date(), description:"",includeAvg:false }
+  const user = useSelector((state: ReduxState) => {
+    return state.displayCategories.userId;
+  });
+  const projectionData = useSelector((state: ReduxState) => {
+
+    return state.displayCategories.projectionData;
+  });
+
+  const defaultProjection={ type:"expense", userId:user, amount:0,currency:"eur",category: "",date:new Date(), description:"",includeAvg:false }
   const [newProjection, setNewProjection] = useState(defaultProjection)
   const dispatch= useDispatch();
+
+
 
   const notify = () =>{
     toast.info('Projection Created!', {
@@ -69,10 +80,10 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
 
 
   const submitProjection=()=>{
-    // ApiServices.addProjection(newProjection).then((data)=>{
-    //   console.log(data);
-    // dispatch({type:"GET_PROJECTION_DATA",payload:data})
-    // })
+    ApiServices.addProjection({projectedChange:newProjection, projections:projectionData}).then((data:any)=>{
+      console.log(data);
+    dispatch({type:"GET_PROJECTION_DATA",payload:data})
+    })
     setNewProjection(defaultProjection)
     notify();
   }
