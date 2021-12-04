@@ -29,6 +29,7 @@ import {
   FaHandMiddleFinger,
   FaInfoCircle,
 } from "react-icons/fa";
+import { DashboardCategoryItem } from "../atoms/";
 
 type Props = {
   title: string;
@@ -110,7 +111,9 @@ export default function DashboardCategory({
           <ModalCloseButton />
           <ModalBody>
             {transactionList.map((transaction, i) => {
-              return <p key={i}>{transaction.amount}</p>;
+              return (
+                <DashboardCategoryItem transaction={transaction} key={i} />
+              );
             })}
           </ModalBody>
           <ModalFooter>
