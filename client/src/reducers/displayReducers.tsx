@@ -17,7 +17,7 @@ const initialState: State = {
   projectionData: [],
   dashboardData: {},
   switch: true,
-  dataSwitch: true,
+  dataSwitch: false,
   projectionDate: new Date(),
   dashboardDate: new Date(),
 };

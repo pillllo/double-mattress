@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { useState, useEffect } from "react";
 import { Group } from "@visx/group";
 import { Bar } from "@visx/shape";
@@ -12,29 +11,25 @@ type IProps = {
   color: string;
 };
 export default function DashboardSavingsChart() {
-  const [savingsPieData, setPData] = useState<any[]>([]);
-
   const dashboardData = useSelector((state: ReduxState) => {
     return state.displayCategories.dashboardData;
   });
 
-  useEffect(() => {
-    const data = [
-      {
-        type: "Savings Total",
-        savings: 0,
-        color: "#DD6B20",
-      },
-      { type: "Monthly", savings: 0, color: "#D69E2E" },
-      { type: "Monthly Avg.", savings: 350000, color: "#38A169" },
-    ];
-
-    if (dashboardData?.savings) {
-      data[0].savings = dashboardData.savings.totalSinceJoining;
-      data[1].savings = dashboardData.savings.currentMonth;
-    }
-    setPData(data);
-  }, []);
+  const data = [
+    {
+      type: "Savings Total",
+      //@ts-ignore
+      savings: dashboardData.savings.totalSinceJoining,
+      color: "#DD6B20",
+    },
+    {
+      type: "Monthly",
+      //@ts-ignore
+      savings: dashboardData.savings.currentMonth,
+      color: "#D69E2E",
+    },
+    { type: "Monthly Avg.", savings: 350000, color: "#38A169" },
+  ];
 
   const width = 450;
   const height = 215;
@@ -43,12 +38,12 @@ export default function DashboardSavingsChart() {
 
   const xScale = scaleBand({
     range: [0, width],
-    domain: savingsPieData.map(getType),
+    domain: data.map(getType),
     padding: 0.4,
   });
   const yScale = scaleLinear({
     range: [height, 0],
-    domain: [0, Math.max(...savingsPieData.map(getValue))],
+    domain: [0, Math.max(...data.map(getValue))],
   });
   const compose = (scale: any, accessor: any) => (data: any) =>
     scale(accessor(data));
@@ -56,16 +51,16 @@ export default function DashboardSavingsChart() {
   const yPoint = compose(yScale, getValue);
 
   let highestNum: number = 0;
-  for (let el of savingsPieData) {
+  for (let el of data) {
     if (el.savings > highestNum) {
       highestNum = el.savings;
     }
   }
 
-  return savingsPieData.length ? (
+  return data.length ? (
     <svg width={450} height={250}>
       <Group left={40} top={10}>
-        {savingsPieData.map((datapoint) => {
+        {data.map((datapoint) => {
           const barHeight = height - yPoint(datapoint);
           const type = getType(datapoint);
           return (
@@ -80,7 +75,7 @@ export default function DashboardSavingsChart() {
           );
         })}
         <AxisBottom
-          numTicks={savingsPieData.length}
+          numTicks={data.length}
           top={height}
           scale={xScale}
           tickLabelProps={(e) => ({
@@ -104,6 +99,6 @@ export default function DashboardSavingsChart() {
       </Group>
     </svg>
   ) : (
-    <h1>Shit bruhg</h1>
+    <h1>404</h1>
   );
 }

@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
  Abandon hope all ye who enter here
 */
 export default function DashboardVisxPie() {
-  const [transact, setTransact] = useState<PieUser[]>();
   const [active, setActive] = useState<PieUser | undefined>(undefined);
   const width = 250;
   const half = width / 2;
@@ -24,44 +23,35 @@ export default function DashboardVisxPie() {
     return state.displayCategories.dashboardData?.typeTotals;
   });
 
-  function transactionCreation(transactionData: User[]) {
-    const transactions: PieUser[] = [
-      {
-        name: "David - Salary",
-        value: income.salary[userData],
-        color: "#E53E3E",
-      },
-      {
-        name: "David - Other Income",
-        value: income.otherIncome[userData],
-        color: "#D69E2E",
-      },
-      {
-        name: "Davina - Salary",
-        value: 200000,
-        color: "#DD6B20",
-      },
-      {
-        name: "Davina - Other Income",
-        value: 200000,
-        color: "#805AD5",
-      },
-    ];
-
-    setTransact(() => transactions);
-  }
-
-  useEffect(() => {
-    transactionCreation(dataObject.mockUser); // Can't import outside src folder
-    console.log(income, userData);
-  }, []);
+  const transactions: PieUser[] = [
+    {
+      name: "David - Salary",
+      value: income.salary[userData],
+      color: "#E53E3E",
+    },
+    {
+      name: "David - Other Income",
+      value: income.otherIncome[userData],
+      color: "#D69E2E",
+    },
+    {
+      name: "Davina - Salary",
+      value: 200000,
+      color: "#DD6B20",
+    },
+    {
+      name: "Davina - Other Income",
+      value: 200000,
+      color: "#805AD5",
+    },
+  ];
 
   return (
     <main>
       <svg width={width} height={width}>
         <Group top={half} left={half}>
           <Pie
-            data={transact}
+            data={transactions}
             pieValue={(data) => data.value}
             outerRadius={half}
             innerRadius={({ data }) => {
@@ -104,7 +94,7 @@ export default function DashboardVisxPie() {
           ) : (
             <>
               <Text textAnchor="middle" fill="#fff" fontSize={40} dy={-20}>
-                {`$${transact?.reduce(
+                {`$${transactions?.reduce(
                   (acc, transact) => acc + transact.value,
                   0
                 )}`}

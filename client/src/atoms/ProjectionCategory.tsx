@@ -1,17 +1,11 @@
 import {
   Flex,
-  Box,
   Icon,
-  Button,
   Text,
   HStack,
-  IconButton,
   Divider,
   useBreakpointValue,
-  Tooltip,
 } from "@chakra-ui/react";
-import { Transaction } from "../types/Transaction";
-import "./DashboardCategory.css";
 import {
   FaHouseUser,
   FaHeartBroken,
@@ -20,7 +14,6 @@ import {
   FaTheaterMasks,
   FaHamburger,
   FaHandMiddleFinger,
-  FaInfoCircle,
 } from "react-icons/fa";
 
 type Props = {
@@ -33,7 +26,6 @@ export default function ProjectionCategory({
   price,
   currency,
 }: Props) {
-
   function iconDecider(cat: string) {
     switch (cat) {
       case "Rent":
@@ -63,13 +55,12 @@ export default function ProjectionCategory({
     }
   }
   const buttonSize = useBreakpointValue(["2rem", "3rem"]);
-// useEffect(()=>{},[category])
-console.log("RENDERED");
+  // useEffect(()=>{},[category])
+  console.log("RENDERED");
   return (
     <>
       <Flex
         direction="row"
-
         py="3px"
         justify="space-between"
         align="center"
@@ -89,7 +80,6 @@ console.log("RENDERED");
         </HStack>
       </Flex>
       <Divider />
-
     </>
   );
 }
