@@ -33,7 +33,7 @@ export default function ProjectionLineChart() {
 
   const [chartData, setChartData] = useState<Data[]>([]);
 
-  const now = useSelector((state: ReduxState) => {
+  const thisMonth = useSelector((state: ReduxState) => {
 
     return state.displayCategories.projectionDate;
   }).getMonth();
@@ -81,7 +81,7 @@ useEffect(()=>{
     }
 
 
-    return  updMonths(now).map((month, i) => {
+    return  updMonths(thisMonth).map((month, i) => {
 
       return {
         name: month[0],

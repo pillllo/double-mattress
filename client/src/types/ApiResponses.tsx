@@ -70,11 +70,5 @@ export interface ProjectionApiResponse {
   typeAverages: ProjectionTypeAverages;
   categoryAverages: ProjectionCategoryAverages;
   month: ProjectionMonth;
-  projectedChanges: ProjectionProjectedChanges;
+  projectedChanges: Transaction[];
 }
-
-
-// export interface ProjectionApiResponseObject {
-//   [key:number]: ProjectionApiResponse;
-
-// }

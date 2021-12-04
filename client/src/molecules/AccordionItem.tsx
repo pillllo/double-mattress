@@ -13,16 +13,26 @@ import {
 import { useSelector } from "react-redux";
 import { Transaction } from "../types/Transaction";
 import { ReduxState } from "../types/ReduxState";
-import AccordianSingleItem from "./AccordianSingleItem";
+import AccordianSingleItem from "../atoms/AccordianSingleItem";
 
 interface TransactionType {
   transaction: Transaction;
 }
 
 export default function AccordionItem() {
-  const transactions = useSelector(
-    //@ts-ignore
-    (state: ReduxState) => state.displayCategories.transactions
+
+
+  const thisMonth = useSelector((state: ReduxState) => {
+    return state.displayCategories.projectionDate;
+  }).getMonth();
+
+  const transactions = useSelector( (state: ReduxState) => {
+    let allTransactions:Transaction[]=[];
+     state.displayCategories.projectionData.map((month)=>{
+      allTransactions.push(...month.projectedChanges)
+    })
+    return allTransactions
+  }
   );
 
   return (

@@ -9,10 +9,11 @@ import {
   getDashboardData,
 } from "../actions/displayActions";
 import { State } from "../types/State";
-
 const initialState: State = {
   userId: "879e2faa-60d8-4b47-ae1f-bda845ec36f0",
   partnerId: "",
+  mainUser: {},
+  partnerUser: {},
   projectionData: [],
   dashboardData: {},
   switch: true,
