@@ -35,9 +35,6 @@ export default function DashboardCategoryBox() {
   const [categories, setCategories] = useState<any[]>([]);
 
   useEffect(() => {
-    console.log("EXPENSES", expenses, "income", incomes);
-    const userId = "0652eb0d-2152-4535-a97b-b65173a1aa59";
-
     const categoryArr = switchDisp
       ? [
           "Home",
@@ -50,14 +47,10 @@ export default function DashboardCategoryBox() {
       : ["Salary"];
     // const transactions = switchDisp ? expenses : incomes;
     const newCategories = categoryArr.map((category, i) => {
-      const categoryTypeCheck = switchDisp
-        ? ["home", "bills", "shopping", "entertainment", "eatingOut", "others"]
-        : ["salary"];
       let totalCategory = 0;
 
       const transactionsFiltered = transactions.filter(
         (transac: Transaction) => {
-          console.log(transac);
           if (transac.category === categoryArr[i]) {
             totalCategory += transac.amount;
             return true;
@@ -65,7 +58,6 @@ export default function DashboardCategoryBox() {
           return false;
         }
       );
-      console.log(category, totalCategory);
 
       return (
         <DashboardCategory
@@ -80,7 +72,6 @@ export default function DashboardCategoryBox() {
     setCategories(newCategories);
   }, [dashboardData]);
 
-  // return <div className="category-box">{categories}</div>;
   return (
     <Flex align="center" direction="column" h="35vh" w="90vw" overflowY="auto">
       {categories}
