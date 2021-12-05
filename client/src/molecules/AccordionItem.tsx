@@ -36,7 +36,7 @@ export default function AccordionItem() {
   );
 
   return (
-    <Box overflowY="auto"  h="35vh">
+    <Box overflowY="auto"  h="25vh">
       <Flex direction="column" align="center" >
         <Text fontSize={[12, 14, 16, 18]}>Balance</Text>
         <HStack>

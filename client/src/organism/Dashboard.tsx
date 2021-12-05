@@ -1,4 +1,4 @@
-import { Flex, Progress, Spinner } from "@chakra-ui/react";
+import { Flex, Spinner, Skeleton } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import DashboardCategoryBox from "../molecules/DashboardCategoryBox/DashboardCategoryBox";
 import ApiServices from "../ApiServices";
@@ -20,6 +20,10 @@ export default function Dashboard() {
   const dataSwitch = useSelector(
     (state: ReduxState) => state.displayCategories.dataSwitch
   );
+  const datePicker = useSelector((state: ReduxState) => {
+    const theDate = state.displayCategories.dashboardDate;
+    return theDate.toISOString();
+  });
 
   const [loadCheck, setLoadCheck] = useState(true);
 
@@ -33,12 +37,18 @@ export default function Dashboard() {
   // });
   useEffect(() => {
     const userId = "f65f19ed-a0b0-465c-991f-037a7ac6353b";
-    const date = "2021-08-16T23:00:00.000Z";
+    const date = "2021-10-05T23:02:05.012Z";
 
-    ApiServices.getDashboard({ userId, date }).then((data) => {
-      dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
-      setLoadCheck(false);
-    });
+    console.log("1 --> ", date, date === datePicker);
+    console.log("2 --> ", datePicker);
+    if (datePicker) {
+      ApiServices.getDashboard({ userId, date })
+        .then((data) => {
+          dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
+          setLoadCheck(false);
+        })
+        .catch((e) => console.log(e));
+    }
   }, []);
 
   return (
@@ -68,13 +78,11 @@ export default function Dashboard() {
         <DashboardUserPie />
       )}
       {loadCheck ? (
-        <Flex direction="column" w="80vw" h="250px" justify="space-evenly">
-          <Progress size="xs" isIndeterminate />
-          <Progress size="xs" isIndeterminate />
-
-          <Progress size="xs" isIndeterminate />
-
-          <Progress size="xs" isIndeterminate />
+        <Flex direction="column" w="85vw" h="250px" justify="space-evenly">
+          <Skeleton size="md" height="25px" />
+          <Skeleton size="md" height="25px" />
+          <Skeleton size="md" height="25px" />
+          <Skeleton size="md" height="25px" />
         </Flex>
       ) : (
         <DashboardCategoryBox />

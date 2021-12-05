@@ -57,10 +57,10 @@ export default function Projection() {
         align="center"
         justify="space-evenly"
       >
-        <Flex h="35vh" w="90vw">
+        <Flex h="50vh" w="90vw">
           <ProjectionLineChart  />
         </Flex>
-        <Tabs isFitted variant="enclosed" w="100%" h="50%">
+        <Tabs isFitted variant="enclosed" w="100%" h="30vh">
           <TabList>
             <Tab>Projection List</Tab>
             <Tab>Categories</Tab>
@@ -82,7 +82,7 @@ export default function Projection() {
                 direction="column"
                 align="center"
                 justify="space-around"
-                height="35vh"
+
               >
                 <MainButton
                   passedFunction={() => onOpen()}

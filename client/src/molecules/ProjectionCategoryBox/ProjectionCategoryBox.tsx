@@ -49,7 +49,7 @@ useEffect(()=>{
 },[projectionData])
 
   return (
-    <Flex align="center" direction="column" h="35vh" w="90vw" overflowY="auto">
+    <Flex align="center" direction="column" h="25vh" w="90vw" overflowY="auto">
       {categories}
     </Flex>
   );

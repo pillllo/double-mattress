@@ -50,7 +50,6 @@ export default function DashboardCategoryBox() {
 
       const transactionsFiltered = transactions.filter(
         (transac: Transaction) => {
-          console.log(transac);
           if (transac.category === categoryArr[i]) {
             totalCategory += transac.amount;
             return true;
