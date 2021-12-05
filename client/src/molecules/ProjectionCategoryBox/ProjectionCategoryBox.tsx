@@ -37,6 +37,7 @@ useEffect(()=>{
 
     return (
       <ProjectionCategory
+        key={category}
         category={category}
         currency={"eur"}
         price={price}
@@ -48,7 +49,7 @@ useEffect(()=>{
 },[projectionData])
 
   return (
-    <Flex align="center" direction="column" h="35vh" w="90vw" overflowY="auto">
+    <Flex align="center" direction="column" h="25vh" w="90vw" overflowY="auto">
       {categories}
     </Flex>
   );
