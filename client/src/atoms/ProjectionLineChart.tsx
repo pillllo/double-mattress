@@ -21,7 +21,6 @@ export default function ProjectionLineChart() {
 useEffect(()=>{
 
   if(projectionData.length>0){
-    console.log("DAA",projectionData);
      setChartData(createChartData())
   }
 },[projectionData])
