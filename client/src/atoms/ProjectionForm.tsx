@@ -43,7 +43,7 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
     return state.displayCategories.projectionData;
   });
 
-  const defaultProjection={ type:"expense", userId:user, amount:0,currency:"eur",category: "",date:new Date(), description:"",includeAvg:false }
+  const defaultProjection={ type:"", userId:user, amount:0,currency:"eur",category: "",date:new Date(), description:"",includeAvg:false }
   const [newProjection, setNewProjection] = useState(defaultProjection)
   const dispatch= useDispatch();
 
@@ -62,7 +62,7 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
   };
 
 
-  const handleChange= (e:any)=>{
+  const handleDescriptionChange= (e:any)=>{
     const value= e.target.value
       setNewProjection({...newProjection,[e.target.name]:value})
     console.log(newProjection)
@@ -78,8 +78,13 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
     setNewProjection({...newProjection, type:value})
   }
 
+  const handleAmountChange= (e:any)=>{
+    const value= e.target.value
+    setNewProjection({...newProjection, amount:Number(value)})
+  }
 
   const submitProjection=()=>{
+    console.log(newProjection);
     ApiServices.addProjection({projectedChange:newProjection, projections:projectionData}).then((data:any)=>{
       console.log(data);
     dispatch({type:"GET_PROJECTION_DATA",payload:data})
@@ -109,20 +114,21 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
               <option value='expense'>Expense</option>
             </Select>
             <FormLabel>Category</FormLabel>
-            <Select onChange={handleCategoryChange} isRequired placeholder='Select category' >
-              <option value='Home'>Home</option>
-              <option value='Bills'>Bills and Services</option>
-              <option value='Shopping'>Shopping</option>
-              <option value='Entertainment'>Entertainment</option>
-              <option value='Eating'>Eating Out</option>
-              <option value='Others'>Others</option>
+            <Select onChange={handleCategoryChange} isRequired placeholder='Select category' isDisabled={newProjection.type?false:true} >
+             { newProjection.type==="income"? <option value="Salary">Salary</option>:null}
+             { newProjection.type==="expense"? <option value='Home'>Home</option>:null}
+             { newProjection.type==="expense"? <option value='Bills'>Bills and Services</option>:null}
+             { newProjection.type==="expense"? <option value='Shopping'>Shopping</option>:null}
+             { newProjection.type==="expense"? <option value='Entertainment'>Entertainment</option>:null}
+             { newProjection.type==="expense"? <option value='Eating'>Eating Out</option>:null}
+             { newProjection.type==="expense"? <option value='Others'>Others</option>:null}
             </Select>
             <FormLabel>Description</FormLabel>
-            <Input onChange={handleChange} name={"description"} value={newProjection.description} type="text" size="md" variant="filled"></Input>
+            <Input onChange={handleDescriptionChange} name={"description"} value={newProjection.description} type="text" size="md" variant="filled"></Input>
             <FormLabel>Amount</FormLabel>
             <InputGroup mb="10px">
               <InputLeftAddon children="$" color="blue.700" />
-              <Input onChange={handleChange} name={"amount"} value={newProjection.amount} type="number"></Input>
+              <Input onChange={handleAmountChange} name={"amount"} value={newProjection.amount} type="number"></Input>
             </InputGroup>
             <DatePicker
       selected={newProjection.date}

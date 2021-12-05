@@ -7,8 +7,12 @@ import {
   CircularProgress,
   AccordionItem as TheAccordionItem,
 } from "@chakra-ui/react";
-
-export default function AccordianSingleItem(transaction: any) {
+import { Transaction } from "../types/Transaction";
+type Props={
+  transaction:Transaction
+}
+export default function AccordianSingleItem({transaction}:Props) {
+  console.log(transaction)
   return (
     <Accordion allowToggle>
       <TheAccordionItem>
@@ -23,7 +27,7 @@ export default function AccordianSingleItem(transaction: any) {
         <AccordionPanel pb={4}>
           {transaction.amount}
           {transaction.category}
-          <CircularProgress height="100px" isIndeterminate />
+      
         </AccordionPanel>
       </TheAccordionItem>
     </Accordion>

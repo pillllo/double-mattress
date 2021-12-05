@@ -44,7 +44,7 @@ export interface User {
 
 export interface ProjectionSavings {
   totalSinceJoining: number;
-  monthlyAverage3Months: number;
+  monthlySavings: number;
 }
 export interface ProjectionTypeAverages {
   income: number;
