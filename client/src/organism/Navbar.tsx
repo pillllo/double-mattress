@@ -21,10 +21,10 @@ import {
   FaAward,
 } from "react-icons/fa";
 import { Link as routerLink } from "react-router-dom";
-
+import {ConnectUserForm, MainButton} from "../atoms/index";
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure();
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
 
   return (
@@ -116,6 +116,10 @@ export default function Navbar() {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+      <Flex alignItems="center">
+      <MainButton  passedFunction={() => onOpen2()}text={"Connect"}/>
+      </Flex>
+      <ConnectUserForm isOpen={isOpen2} onClose={onClose2} onOpen={onOpen2}/>
     </Flex>
   );
 }

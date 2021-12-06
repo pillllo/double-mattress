@@ -12,7 +12,7 @@ type Props = {
 function DashboardDatePicker({ isDouble }: Props) {
   const dispatch = useDispatch();
   const datePicker = useSelector(
-    (state: ReduxState) => state.displayCategories.dashboardDate
+    (state: ReduxState) => isDouble? state.displayCategories.projectionDate: state.displayCategories.dashboardDate
   );
 
   const changeReduxDate = (date: Date) => {
