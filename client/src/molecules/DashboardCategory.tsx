@@ -16,6 +16,12 @@ import {
   ModalBody,
   ModalFooter,
   Button,
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
 } from "@chakra-ui/react";
 import { Transaction } from "../types/Transaction";
 
@@ -107,14 +113,36 @@ export default function DashboardCategory({
       <Modal onClose={onClose} size={"xl"} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{title}</ModalHeader>
+          <ModalHeader textAlign="center">{title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {transactionList.map((transaction, i) => {
-              return (
-                <DashboardCategoryItem transaction={transaction} key={i} />
-              );
-            })}
+            <Flex direction="column" align="center" justify="center">
+              <Text>
+                You spent: $ {price} on {title} this month
+              </Text>
+            </Flex>
+            <Accordion allowToggle my="2rem" mx="1rem">
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box flex="1" textAlign="center">
+                      All Transactions
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel p="4">
+                  {transactionList.map((transaction, i) => {
+                    return (
+                      <DashboardCategoryItem
+                        transaction={transaction}
+                        key={i}
+                      />
+                    );
+                  })}
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
