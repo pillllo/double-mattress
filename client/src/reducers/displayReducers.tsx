@@ -19,8 +19,7 @@ const initialState: State = {
   switch: true,
   dataSwitch: false,
   projectionDate: new Date(),
-  dashboardDate: new Date(),
-
+  dashboardDate: new Date("October 17, 2021 03:24:00"),
 };
 
 const displayCategories = (

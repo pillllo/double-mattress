@@ -69,7 +69,7 @@ export default function DashboardCategoryBox() {
       );
     });
     setCategories(newCategories);
-  }, [switchDisp]);
+  }, [switchDisp, dashboardData]);
 
   return (
     <Flex align="center" direction="column" h="35vh" w="90vw" overflowY="auto">
