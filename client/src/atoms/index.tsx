@@ -12,7 +12,8 @@ import ProjectionForm from "./ProjectionForm";
 import DashboardSavingsChart from "./DashboardSavingsChart";
 import ProjectionCategory from "./ProjectionCategory";
 import DashboardCategoryItem from "./DashboardCategoryItem";
-import ConnectUserForm from "./ConnectUserForm"
+import SubCard from "./SubCard";
+import ConnectUserForm from "./ConnectUserForm";
 export {
   DashboardTransaction,
   DashboardCategory,
@@ -28,5 +29,6 @@ export {
   DashboardSavingsChart,
   ProjectionCategory,
   DashboardCategoryItem,
+  SubCard,
   ConnectUserForm,
 };
