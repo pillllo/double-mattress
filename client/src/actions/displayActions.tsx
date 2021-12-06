@@ -38,3 +38,13 @@ export type getUserId={
   type:"GET_USER_ID";
   payload: string;
 }
+
+export type notificationsAlert={
+  type: "NEW_NOTIFICATION";
+  payload: boolean;
+}
+
+export type  addNotifications={
+  type: "ADD_NOTIFICATION";
+  payload:any;
+}
