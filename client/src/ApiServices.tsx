@@ -138,10 +138,19 @@ function deleteProjection(body:any) {
       body: JSON.stringify(body)
   });
 }
-
+function loginUser(body:any){
+  return fetchRequest("/users", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Client-Jwt":token
+    },
+    body: JSON.stringify(body)
+});
+}
 
 const ApiService = {
-  getDashboard,getProjections,addProjection,deleteProjection
+  getDashboard,getProjections,addProjection,deleteProjection,loginUser
 }
 
 
