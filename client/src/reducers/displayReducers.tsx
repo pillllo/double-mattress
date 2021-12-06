@@ -8,7 +8,7 @@ import {
   getProjectionData,
   getDashboardData,
   getUserData,
-  getUserId
+  getUserId,
 } from "../actions/displayActions";
 import { State } from "../types/State";
 const initialState: State = {
