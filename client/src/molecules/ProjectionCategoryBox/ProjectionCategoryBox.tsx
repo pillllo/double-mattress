@@ -14,7 +14,8 @@ export default function ProjectionCategoryBox() {
 
     return state.displayCategories.projectionDate;
   }).getMonth();
-
+  console.log(date);
+  console.log(projectionData);
  const [categories,setCategories]=useState<any[]>([])
 //@ts-ignore
 
@@ -30,9 +31,9 @@ useEffect(()=>{
       ];
     if(projectionData.length){
     const newCategories = categoryArr.map((category) => {
-      //@ts-ignore
+   //@ts-ignore
     console.log("DEEZ PROJECT DATA",category,projectionData[date].categoryAverages[category])
-    //@ts-ignore
+      //@ts-ignore
     const price= projectionData[date].categoryAverages[category]
 
     return (
