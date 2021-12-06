@@ -8,7 +8,9 @@ import {
   getProjectionData,
   getDashboardData,
   getUserData,
-  getUserId
+  getUserId,
+  notificationsAlert,
+  addNotifications
 } from "../actions/displayActions";
 import { State } from "../types/State";
 const initialState: State = {
@@ -22,6 +24,8 @@ const initialState: State = {
   dataSwitch: false,
   projectionDate: new Date(),
   dashboardDate: new Date("October 17, 2021 03:24:00"),
+  notificationAlert:false,
+  notifications:[]
 };
 
 const displayCategories = (
@@ -36,6 +40,8 @@ const displayCategories = (
     | getProjectionData
     | getUserId
     | getUserData
+    | notificationsAlert
+    | addNotifications
 ) => {
   switch (action.type) {
     case "GET_DASHBOARD_DATA": {
@@ -55,6 +61,12 @@ const displayCategories = (
     }
     case "DATASWITCH_DISPLAY": {
       return { ...state, dataSwitch: !state.dataSwitch };
+    }
+    case "NEW_NOTIFICATION": {
+      return { ...state, notificationAlert: action.payload };
+    }
+    case "ADD_NOTIFICATION": {
+      return { ...state, notifications: action.payload };
     }
     default:
       return state;

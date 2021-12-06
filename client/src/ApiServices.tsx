@@ -149,8 +149,8 @@ function loginUser(body:any){
 });
 }
 
-function sendConnection(body:any){
-  return fetchRequest("/connect",{
+function searchPartner(body:any){
+  return fetchRequest("/connect/initiate",{
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -160,8 +160,20 @@ function sendConnection(body:any){
   });
 }
 
+function sendConnection(body:any){
+  return fetchRequest("/connect/initiate",{
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Client-Jwt":token
+    },
+    body: JSON.stringify(body)
+  });
+}
+
+
 const ApiService = {
-  getDashboard,getProjections,addProjection,deleteProjection,loginUser,sendConnection
+  getDashboard,getProjections,addProjection,deleteProjection,loginUser,sendConnection,searchPartner
 }
 
 

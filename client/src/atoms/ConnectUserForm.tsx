@@ -18,9 +18,10 @@ import {
   Checkbox,
   CheckboxGroup,
   Select,
-  Text
+  Text,
+  Box
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ApiServices from '../ApiServices'
 import {useDispatch, useSelector } from "react-redux";
 import {toast,ToastContainer } from 'react-toastify';
@@ -39,8 +40,9 @@ export default function connectUserForm({ onClose, onOpen, isOpen }: TheProp) {
 
 
   const [partnerEmail, setPartnerEmail] = useState("")
+  const [partnerName,setPartnerName]=useState("Test");
+  const [recieveUser,setRecieveUser]=useState(false);
   const dispatch= useDispatch();
-
 
 
   const notify = () =>{
@@ -62,18 +64,52 @@ export default function connectUserForm({ onClose, onOpen, isOpen }: TheProp) {
 
   }
 
-  const submitPetition=()=>{
+  const submitSearch=()=>{
+    // ApiServices.searchPartner({userId:user, email:partnerEmail}).then((data:any)=>{
+    //   console.log(data);
+    // setPartnerName(data.name);
+    // })
+    setRecieveUser(true);
+  }
+  const confirmUser=()=>{
     // ApiServices.sendConnection({userId:user, email:partnerEmail}).then((data:any)=>{
     //   console.log(data);
-    // dispatch({type:"GET_PROJECTION_DATA",payload:data})
     // })
-    setPartnerEmail("")
+    setRecieveUser(false);
+    setPartnerName("");
+    setPartnerEmail("");
     notify();
+
   }
+
+
+
+  const firstRequest= <FormControl margin="10px">
+                        <FormLabel>Partner Email</FormLabel>
+                        <Input onChange={handleEmailChange} value={partnerEmail} type="text" size="md" variant="filled"></Input>
+                      </FormControl>;
+  const secondRequest=<FormControl margin="10px">
+                        <FormLabel>Is this your partner?</FormLabel>
+                        <Text type="text" size="md" variant="filled">Name:{partnerName}</Text>
+                        <Button
+                          colorScheme="red"
+                          onClick={()=>{setRecieveUser(false);setPartnerEmail(""); onClose()}}
+                          fontSize={[12, 14, 16, 18]}
+                          >
+                            {"Cancel"}
+                        </Button>
+                        <Button
+                          colorScheme="green"
+                          onClick={()=>{confirmUser();onClose()}}
+                          fontSize={[12, 14, 16, 18]}
+                        >
+                            {"Confirm"}
+                        </Button>
+                      </FormControl>;;
 
   return (
     <>
-    <ToastContainer/>
+
     <Modal
       onClose={()=>{setPartnerEmail(""),onClose()}}
       isOpen={isOpen}
@@ -82,16 +118,13 @@ export default function connectUserForm({ onClose, onOpen, isOpen }: TheProp) {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Projection Details</ModalHeader>
+        <ModalHeader>Connect to a Partner</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <FormControl margin="10px">
-            <FormLabel>Partner Email</FormLabel>
-            <Input onChange={handleEmailChange} value={partnerEmail} type="text" size="md" variant="filled"></Input>
-          </FormControl>
+         {recieveUser?secondRequest:firstRequest}
         </ModalBody>
         <ModalFooter>
-          <Button onClick={()=>{submitPetition(); onClose()}}>Submit</Button>
+          <Box>{recieveUser?null:<Button onClick={()=>{submitSearch();}}>Submit</Button>}</Box>
         </ModalFooter>
       </ModalContent>
     </Modal>

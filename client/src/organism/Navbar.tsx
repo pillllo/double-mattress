@@ -19,13 +19,29 @@ import {
   FaAngleDoubleRight,
   FaInfo,
   FaAward,
+  FaBell
 } from "react-icons/fa";
 import { Link as routerLink } from "react-router-dom";
 import {ConnectUserForm, MainButton} from "../atoms/index";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { ReduxState } from "../types/ReduxState";
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure();
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
+  const [alert, setAlert]= useState(false);
+
+  const newNotif = useSelector((state: ReduxState) => {
+    //@ts-ignore
+    return state.displayCategories.notificationAlert;
+  });
+
+  useEffect(()=>{
+    setAlert(newNotif)
+
+  },[newNotif])
+
 
   return (
     <Flex w="full" h="10vh" bgGradient="linear(to-b, blue.400, blue.800)">
@@ -118,6 +134,12 @@ export default function Navbar() {
       </Drawer>
       <Flex alignItems="center">
       <MainButton  passedFunction={() => onOpen2()}text={"Connect"}/>
+      <IconButton
+            aria-label="Category Info"
+            icon={<FaBell color={alert?"9b2226":undefined} />}
+            size={buttonSize}
+            onClick={() => setAlert(!alert)}
+          />
       </Flex>
       <ConnectUserForm isOpen={isOpen2} onClose={onClose2} onOpen={onOpen2}/>
     </Flex>
