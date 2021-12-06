@@ -128,11 +128,20 @@ function addProjection(body:any) {
 // 11: {
 // }
 
-
+function deleteProjection(body:any) {
+  return fetchRequest("/projections", {
+      method: "DELETE",
+      headers: {
+          "Content-Type": "application/json",
+          "Client-Jwt":token
+      },
+      body: JSON.stringify(body)
+  });
+}
 
 
 const ApiService = {
-  getDashboard,getProjections,addProjection
+  getDashboard,getProjections,addProjection,deleteProjection
 }
 
 
