@@ -1,35 +1,40 @@
 import { Flex, Box, Divider, Button } from "@chakra-ui/react";
-import DoubleSwitch from "./atoms/DoubleSwitch";
-import MainButton from "./atoms/MainButton";
-import DashboardPieChart from "./atoms/DashboardPieChart";
+import Navbar from "./organism/Navbar";
+import Dashboard from "./organism/Dashboard";
+import Projection from "./organism/Projection";
+import LandingPage from "./organism/LandingPage";
+import Testimonials from "./organism/Testimonials";
+import InfoPage from "./organism/InfoPage";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import LoginPage from "./organism/LoginPage";
 
 const App = function () {
-  return (
-    <Flex bg="gray.400" justify="center" h="100vh">
-      <header className="">
-        <Flex
-          direction="column"
-          w={[320, 480, 700, 990, 1280]}
-          h="100%"
-          align="center"
-          justify="space-evenly"
-          bgColor="gray.500"
-        >
-          <DoubleSwitch
-            passedFunction={() => {}}
-            text="RWETRHYSF"
-            text2="HADSFGASF"
-          />
-          <MainButton text="Button Text" passedFunction={() => {}} />
+  //1- Use fetch inside useEffect call API
+  //2- Dispath an action to populate the store with the data
 
-          <Divider />
-          <Flex justify="space-evenly" align="center" w="full">
-            <Button bgGradient="linear(to-l, #7928CA, #FF0080)">Button</Button>
-            <Button bgGradient="linear(to-b, #7928CA, #FF0080)">Button</Button>
-          </Flex>
-        </Flex>
-      </header>
-    </Flex>
+  return (
+    <>
+      <Flex
+        bgGradient="linear(to-b, gray.600, gray.800)"
+        direction="column"
+        h="100vh"
+      >
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path={`/`} element={<LandingPage />} />
+            <Route path={`/dashboard`} element={<Dashboard />} />
+            <Route path={`/projections`} element={<Projection />} />
+            <Route path={`/testimonials`} element={<Testimonials />} />
+            <Route path={`/info`} element={<InfoPage />} />
+            <Route path={`/login`} element={<LoginPage />} />
+          </Routes>
+        </Router>
+      </Flex>
+    </>
   );
 };
 

@@ -1,42 +1,42 @@
 import { useState } from "react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
 
 type IProps = {
-  passedFunction: () => void;
-  text: string;
-  text2: string;
+  buttonText: string;
+  buttonText2: string;
 };
 
-export default function DoubleSwitch({ passedFunction, text, text2 }: IProps) {
+export default function DoubleSwitch({ buttonText, buttonText2 }: IProps) {
   const [backgroundColor, setBGColor] = useState(true);
 
+  const dispatch = useDispatch();
+
   return (
-    <ButtonGroup isAttached>
+    <ButtonGroup isAttached mb="5">
       <Button
         onClick={() => {
-          passedFunction();
+          dispatch({ type: "SWITCH_DISPLAY" });
           setBGColor(!backgroundColor);
         }}
-        colorScheme={backgroundColor ? "white" : "blue"}
-        color={backgroundColor ? "black" : "white"}
-        isActive={!backgroundColor}
+        colorScheme={backgroundColor ? "blue" : "blackAlpha"}
+        color={backgroundColor ? "gray.800" : "white"}
         fontSize={[12, 14, 16, 18]}
         shadow="lg"
       >
-        {text}
+        {buttonText}
       </Button>
       <Button
         onClick={() => {
-          passedFunction();
+          dispatch({ type: "SWITCH_DISPLAY" });
           setBGColor(!backgroundColor);
         }}
-        colorScheme={backgroundColor ? "blue" : "white"}
-        color={backgroundColor ? "white" : "black"}
-        isActive={backgroundColor}
+        colorScheme={backgroundColor ? "blackAlpha" : "blue"}
+        color={backgroundColor ? "white" : "gray.800"}
         fontSize={[12, 14, 16, 18]}
         shadow="lg"
       >
-        {text2}
+        {buttonText2}
       </Button>
     </ButtonGroup>
   );

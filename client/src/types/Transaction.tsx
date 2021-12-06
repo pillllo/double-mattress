@@ -1,5 +1,5 @@
 export interface Transaction {
-  _id: number;
+  id: number;
   transactionId: string;
   transactionType: string;
   userId: string;
@@ -7,7 +7,7 @@ export interface Transaction {
   amount: number;
   currency: string;
   category: string;
-  date: number;
+  date: string;
   description: string;
   includeAvg: boolean;
 }
@@ -15,4 +15,5 @@ export interface Transaction {
 export interface PieTransaction {
   name: string;
   value: number;
+  color?: string;
 }

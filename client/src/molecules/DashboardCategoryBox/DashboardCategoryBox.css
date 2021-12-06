@@ -1,0 +1,10 @@
+.category-box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 75vw;
+  overflow-y: auto;
+  height: 35vh;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgb(172, 172, 172);
+}
