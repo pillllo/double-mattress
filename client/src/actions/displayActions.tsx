@@ -28,3 +28,13 @@ export type getDashboardData = {
   type:"GET_DASHBOARD_DATA";
   payload: any;
 }
+
+export type getUserData={
+  type:"GET_USER_DATA";
+  payload: any;
+}
+
+export type getUserId={
+  type:"GET_USER_ID";
+  payload: string;
+}

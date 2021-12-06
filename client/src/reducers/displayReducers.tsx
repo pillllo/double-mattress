@@ -7,6 +7,8 @@ import {
   projectionDateChange,
   getProjectionData,
   getDashboardData,
+  getUserData,
+  getUserId
 } from "../actions/displayActions";
 import { State } from "../types/State";
 const initialState: State = {
@@ -19,8 +21,7 @@ const initialState: State = {
   switch: true,
   dataSwitch: false,
   projectionDate: new Date(),
-  dashboardDate: new Date(),
-
+  dashboardDate: new Date("October 17, 2021 03:24:00"),
 };
 
 const displayCategories = (
@@ -33,6 +34,8 @@ const displayCategories = (
     | dataSwitchDisplay
     | getDashboardData
     | getProjectionData
+    | getUserId
+    | getUserData
 ) => {
   switch (action.type) {
     case "GET_DASHBOARD_DATA": {

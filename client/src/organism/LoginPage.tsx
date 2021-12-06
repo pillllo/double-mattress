@@ -10,9 +10,12 @@ import {
 import { Link as ReactLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import {useDispatch, useSelector } from "react-redux";
+import ApiServices from "../ApiServices";
 export default function LoginPage() {
+  const dispatch= useDispatch();
   const [load, setLoad] = useState(false);
-
+  const [email, setEmail]= useState("");
   const navigate = useNavigate();
 
   const notify = () =>
@@ -25,6 +28,28 @@ export default function LoginPage() {
       draggable: true,
       progress: undefined,
     });
+
+    const updateEmail= (e:any)=>{
+      setEmail(e.target.value);
+    }
+    const submitEmail= (e:any)=>{
+      e.preventDefault();
+      setLoad(true);
+      ApiServices.addProjection({email}).then((data:any)=>{
+        console.log(data);
+      dispatch({type:"GET_USER_DATA",payload:data})
+      })
+
+      navigate("/dashboard");
+      notify();
+
+      // setTimeout(() => {
+      //   navigate("/dashboard");
+      //   notify();
+      // }, 2000);
+
+
+    }
 
   return (
     <VStack
@@ -50,6 +75,8 @@ export default function LoginPage() {
         <FormControl id="email" w="60vw">
           <FormLabel>Email Address</FormLabel>
           <Input
+            OnChange= {updateEmail}
+            value={email}
             bgColor="blackAlpha.400"
             type="email"
             autoComplete="email"
@@ -66,14 +93,7 @@ export default function LoginPage() {
         colorScheme="orange"
         as={ReactLink}
         to="/login"
-        onClick={(e) => {
-          e.preventDefault();
-          setLoad(true);
-          setTimeout(() => {
-            navigate("/dashboard");
-            notify();
-          }, 2000);
-        }}
+        onClick={submitEmail}
       >
         Submit
       </Button>
