@@ -5,6 +5,7 @@ import Projection from "./organism/Projection";
 import LandingPage from "./organism/LandingPage";
 import Testimonials from "./organism/Testimonials";
 import InfoPage from "./organism/InfoPage";
+import Subscription from "./organism/Subscription";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,6 +32,7 @@ const App = function () {
             <Route path={`/testimonials`} element={<Testimonials />} />
             <Route path={`/info`} element={<InfoPage />} />
             <Route path={`/login`} element={<LoginPage />} />
+            <Route path={`/subscription`} element={<Subscription />} />
           </Routes>
         </Router>
       </Flex>

@@ -20,24 +20,21 @@ interface TransactionType {
 }
 
 export default function AccordionItem() {
-
-
   const thisMonth = useSelector((state: ReduxState) => {
     return state.displayCategories.projectionDate;
   }).getMonth();
 
-  const transactions = useSelector( (state: ReduxState) => {
-    let allTransactions:Transaction[]=[];
-     state.displayCategories.projectionData.map((month)=>{
-      allTransactions.push(...month.projectedChanges)
-    })
-    return allTransactions
-  }
-  );
+  const transactions = useSelector((state: ReduxState) => {
+    let allTransactions: Transaction[] = [];
+    state.displayCategories.projectionData.map((month) => {
+      allTransactions.push(...month.projectedChanges);
+    });
+    return allTransactions;
+  });
 
   return (
-    <Box overflowY="auto"  h="25vh">
-      <Flex direction="column" align="center" >
+    <Box overflowY="auto" h="25vh">
+      <Flex direction="column" align="center">
         <Text fontSize={[12, 14, 16, 18]}>Balance</Text>
         <HStack>
           <Text fontSize={[14, 16, 18, 20]}>Expenses</Text>
@@ -45,9 +42,9 @@ export default function AccordionItem() {
         </HStack>
       </Flex>
       {transactions.length ? (
-        transactions.map((transaction: any) => {
+        transactions.map((transaction: any, i: number) => {
           if (transaction) {
-            return <AccordianSingleItem transaction={transaction} />;
+            return <AccordianSingleItem transaction={transaction} key={i} />;
           }
         })
       ) : (

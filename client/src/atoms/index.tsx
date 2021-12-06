@@ -12,6 +12,7 @@ import ProjectionForm from "./ProjectionForm";
 import DashboardSavingsChart from "./DashboardSavingsChart";
 import ProjectionCategory from "./ProjectionCategory";
 import DashboardCategoryItem from "./DashboardCategoryItem";
+import SubCard from "./SubCard";
 export {
   DashboardTransaction,
   DashboardCategory,
@@ -27,4 +28,5 @@ export {
   DashboardSavingsChart,
   ProjectionCategory,
   DashboardCategoryItem,
+  SubCard,
 };

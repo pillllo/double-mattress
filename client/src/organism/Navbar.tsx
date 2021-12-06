@@ -28,7 +28,12 @@ export default function Navbar() {
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
 
   return (
-    <Flex w="full" h="10vh" bgGradient="linear(to-b, blue.400, blue.800)">
+    <Flex
+      w="full"
+      h="10vh"
+      bgGradient="linear(to-b, blue.400, blue.800)"
+      zIndex="1"
+    >
       <Flex align="center" p="5px">
         <IconButton
           aria-label="Open NavMenu"
