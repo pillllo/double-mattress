@@ -13,7 +13,7 @@ export default function Notifications() {
   useEffect(() => {
 
     const newNotifications = notificationsArr.map((notification) => {
-
+      console.log(notification);
       return (
         <NotificationSingle key={notification.id} notification={notification}/>
       );
