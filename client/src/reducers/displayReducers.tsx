@@ -7,6 +7,8 @@ import {
   projectionDateChange,
   getProjectionData,
   getDashboardData,
+  getUserData,
+  getUserId
 } from "../actions/displayActions";
 import { State } from "../types/State";
 const initialState: State = {
@@ -32,6 +34,8 @@ const displayCategories = (
     | dataSwitchDisplay
     | getDashboardData
     | getProjectionData
+    | getUserId
+    | getUserData
 ) => {
   switch (action.type) {
     case "GET_DASHBOARD_DATA": {
