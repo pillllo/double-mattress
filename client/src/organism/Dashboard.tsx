@@ -34,6 +34,7 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    setLoadCheck(true);
     ApiServices.getDashboard({ userId, date })
       .then((data) => {
         dispatch({ type: "GET_DASHBOARD_DATA", payload: data });

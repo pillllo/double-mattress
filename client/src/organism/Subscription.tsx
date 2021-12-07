@@ -20,21 +20,21 @@ export default function Subscription() {
           title="Monthly"
           pricing="$25 / month"
           features={["Access to Projections", "Its sorta expensive"]}
-          priceKey="price_1K3fl1Ff0RAgwPrDPgORCeYR"
+          priceKey="dm_basic"
         />
         <SubCard
           key={2}
           title="Quarterly"
           pricing="$50 / quarterly"
           features={["Access to Projections", "Cheapo"]}
-          priceKey="price_1K3fl1Ff0RAgwPrDRAQ9h4vD"
+          priceKey="dm_standard"
         />
         <SubCard
           key={3}
           title="Bi-annually"
           pricing="$75 / bi-annually"
           features={["Access to Projections", "Uber-Cheapo"]}
-          priceKey="price_1K3fl1Ff0RAgwPrDhDqOMKtC"
+          priceKey="dm_premium"
         />
       </Flex>
     </VStack>

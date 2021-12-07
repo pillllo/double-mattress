@@ -19,7 +19,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   const notify = () =>
-    toast.success("Welcome to FeetPicsCentral", {
+    toast.success("Welcome to Double-Mattress", {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
@@ -70,10 +70,10 @@ export default function LoginPage() {
         </Text>
       </VStack>
       <VStack align="center" color="gray.100">
-        <FormControl id="email" w="60vw">
+        <FormControl id="email" w={["300px", "400px", "500px"]}>
           <FormLabel>Email Address</FormLabel>
           <Input
-            OnChange={updateEmail}
+            onChange={updateEmail}
             value={email}
             bgColor="blackAlpha.400"
             type="email"
@@ -81,7 +81,7 @@ export default function LoginPage() {
             maxW="600px"
           />
         </FormControl>
-        <FormControl id="password" w="60vw">
+        <FormControl id="password" w={["300px", "400px", "500px"]}>
           <FormLabel>Password</FormLabel>
           <Input bgColor="blackAlpha.400" type="password" maxW="600px" />
         </FormControl>
