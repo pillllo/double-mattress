@@ -144,6 +144,7 @@ export default function Navbar() {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+
       {!!connectButton ? (
         <Flex alignItems="center">
           <MainButton passedFunction={() => onOpen2()} text={"Connect"} />
@@ -170,6 +171,7 @@ export default function Navbar() {
           />
         </Flex>
       ) : null}
+
     </Flex>
   );
 }
