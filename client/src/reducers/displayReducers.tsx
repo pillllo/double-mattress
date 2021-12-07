@@ -10,7 +10,7 @@ import {
   getUserData,
   getUserId,
   notificationsAlert,
-  addNotifications
+  addNotifications,
 } from "../actions/displayActions";
 import { State } from "../types/State";
 const initialState: State = {
@@ -24,8 +24,8 @@ const initialState: State = {
   dataSwitch: false,
   projectionDate: new Date(),
   dashboardDate: new Date("October 17, 2021 03:24:00"),
-  notificationAlert:false,
-  notifications:[]
+  notificationAlert: false,
+  notifications: [],
 };
 
 const displayCategories = (

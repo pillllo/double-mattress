@@ -18,7 +18,7 @@ export default function SubCard({
       w="300px"
       align="center"
       justify="center"
-      bg="gray.900"
+      bg="gray.800"
       pt="1rem"
       mb="1.5rem"
       rounded="xl"
@@ -33,9 +33,11 @@ export default function SubCard({
       </Text>
       <VStack
         py="1rem"
-        bgGradient="linear(to-br, red.500, orange.700)"
+        bgGradient="linear(to-br, red.300, orange.300)"
         w="100%"
         rounded="xl"
+        color="black"
+        fontWeight="600"
       >
         {features.map((feature, i) => {
           return <Text key={i}>!?!{feature}</Text>;

@@ -40,6 +40,10 @@ export default function Navbar() {
     //@ts-ignore
     return state.displayCategories.notificationAlert;
   });
+  const connectButton = useSelector((state: ReduxState) => {
+    //@ts-ignore
+    return state.displayCategories.userId;
+  });
 
   useEffect(() => {
     setAlert(newNotif);
@@ -51,8 +55,10 @@ export default function Navbar() {
       h="10vh"
       bgGradient="linear(to-b, blue.400, blue.800)"
       zIndex="1"
+      justify="space-between"
+      px="10px"
     >
-      <Flex align="center" p="5px">
+      <Flex align="center">
         <IconButton
           aria-label="Open NavMenu"
           icon={<FaAngleDoubleRight />}
@@ -138,25 +144,34 @@ export default function Navbar() {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-      <Flex alignItems="center">
-        <MainButton passedFunction={() => onOpen2()} text={"Connect"} />
-        <Link
-          as={routerLink}
-          to="/dashboard"
-          fontSize="1.25rem"
-          display="flex"
-          alignItems="center"
-          onClick={onClose}
-        >
-          <IconButton
-            aria-label="Category Info"
-            icon={<FaBell color={alert ? "9b2226" : undefined} />}
-            size={buttonSize}
-            onClick={() => setAlert(!alert)}
+
+      {!!connectButton ? (
+        <Flex alignItems="center">
+          <MainButton passedFunction={() => onOpen2()} text={"Connect"} />
+          <Link
+            as={routerLink}
+            to="/dashboard"
+            fontSize="1.25rem"
+            display="flex"
+            alignItems="center"
+            onClick={onClose}
+            ml="1rem"
+          >
+            <IconButton
+              aria-label="Category Info"
+              icon={<FaBell color={alert ? "9b2226" : undefined} />}
+              size={buttonSize}
+              onClick={() => setAlert(!alert)}
+            />
+          </Link>
+          <ConnectUserForm
+            isOpen={isOpen2}
+            onClose={onClose2}
+            onOpen={onOpen2}
           />
-        </Link>
-      </Flex>
-      <ConnectUserForm isOpen={isOpen2} onClose={onClose2} onOpen={onOpen2} />
+        </Flex>
+      ) : null}
+
     </Flex>
   );
 }

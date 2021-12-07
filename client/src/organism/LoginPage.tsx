@@ -40,13 +40,12 @@ export default function LoginPage() {
       dispatch({ type: "GET_USER_DATA", payload: data });
     });
 
-    navigate("/dashboard");
-    notify();
-
-    // setTimeout(() => {
-    //   navigate("/dashboard");
-    //   notify();
-    // }, 2000);
+    setTimeout(() => {
+      navigate("/dashboard");
+      notify();
+    }, 2000);
+    // navigate("/dashboard");
+    // notify();
   };
 
   return (
@@ -64,7 +63,9 @@ export default function LoginPage() {
         letterSpacing="wide"
         textAlign="center"
       >
-        <Heading fontSize="4xl">Sign in to your account</Heading>
+        <Heading fontSize="4xl" color="orange">
+          Sign in
+        </Heading>
         <Text fontSize="2xl" fontWeight="500" color="yellow.50">
           to enjoy financial freedom
         </Text>
