@@ -28,6 +28,7 @@ import {useDispatch, useSelector } from "react-redux";
 import {toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ReduxState } from "../types/ReduxState";
+import {RecieveTransaction} from "../types/ApiResponses"
 interface TheProp {
   onClose: () => void;
   onOpen: () => void;
@@ -65,7 +66,6 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
   const handleDescriptionChange= (e:any)=>{
     const value= e.target.value
       setNewProjection({...newProjection,[e.target.name]:value})
-    console.log(newProjection)
   }
 
   const handleCategoryChange= (e:any)=>{
@@ -84,9 +84,7 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
   }
 
   const submitProjection=()=>{
-    console.log(newProjection);
-    ApiServices.addProjection({projectedChange:newProjection, projections:projectionData}).then((data:any)=>{
-      console.log(data);
+    ApiServices.addProjection({projectedChange:newProjection, projections:projectionData}).then((data:RecieveTransaction)=>{
     dispatch({type:"GET_PROJECTION_DATA",payload:data})
     })
     setNewProjection(defaultProjection)

@@ -21,6 +21,7 @@ import ProjectionCategoryBox from "../molecules/ProjectionCategoryBox/Projection
 import {useEffect} from 'react';
 import ApiServices from '../ApiServices'
 import {ReduxState} from '../types/ReduxState'
+import {ProjectionApiResponse} from "../types/ApiResponses"
 export default function Projection() {
   const dispatch= useDispatch();
   const userId = useSelector((state:ReduxState) => {
@@ -31,15 +32,10 @@ export default function Projection() {
     return state.displayCategories.projectionDate
   })
 
-  // const stateObject= useSelector((state:ReduxState)=>{
-  //   return state.displayCategories
-  // })
 
   useEffect(() => {
     if(userId && date){
-      ApiServices.getProjections({userId,date}).then((data)=>{
-        console.log("HELLO?");
-        console.log(data);
+      ApiServices.getProjections({userId,date}).then((data:ProjectionApiResponse)=>{
       dispatch({type:"GET_PROJECTION_DATA",payload:data})
       })
     }

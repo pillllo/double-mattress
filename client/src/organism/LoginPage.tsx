@@ -73,7 +73,7 @@ export default function LoginPage() {
         <FormControl id="email" w="60vw">
           <FormLabel>Email Address</FormLabel>
           <Input
-            OnChange={updateEmail}
+            onChange={updateEmail}
             value={email}
             bgColor="blackAlpha.400"
             type="email"

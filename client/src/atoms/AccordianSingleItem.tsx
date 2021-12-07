@@ -10,17 +10,16 @@ import {
 import { Transaction } from "../types/Transaction";
 import MainButton from './MainButton'
 import ApiServices from "../ApiServices";
-import { useSelector, useDispatch } from "react-redux";
+import {useDispatch } from "react-redux";
+import {ProjectionApiResponse} from "../types/ApiResponses"
 type Props={
   transaction:Transaction
 }
 export default function AccordianSingleItem({transaction}:Props) {
   const dispatch= useDispatch();
-  console.log(transaction)
 
   const deleteTransaction=()=>{
-    ApiServices.deleteProjection({projectedChangeId:transaction.id, projectionsStartData:transaction.date}).then((data:any)=>{
-      console.log(data);
+    ApiServices.deleteProjection({projectedChangeId:transaction.id, projectionsStartData:transaction.date}).then((data:ProjectionApiResponse)=>{
     dispatch({type:"GET_PROJECTION_DATA",payload:data})
     })
   }

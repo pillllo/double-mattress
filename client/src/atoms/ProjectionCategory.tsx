@@ -54,9 +54,6 @@ export default function ProjectionCategory({
         break;
     }
   }
-  const buttonSize = useBreakpointValue(["2rem", "3rem"]);
-  // useEffect(()=>{},[category])
-  console.log("RENDERED");
   return (
     <>
       <Flex

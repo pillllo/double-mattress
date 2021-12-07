@@ -33,6 +33,7 @@ const App = function () {
             <Route path={`/info`} element={<InfoPage />} />
             <Route path={`/login`} element={<LoginPage />} />
             <Route path={`/subscription`} element={<Subscription />} />
+            <Route path={`/notifications`} element={<Dashboard />} />
           </Routes>
         </Router>
       </Flex>
