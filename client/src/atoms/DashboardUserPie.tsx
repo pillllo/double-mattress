@@ -36,12 +36,12 @@ export default function DashboardVisxPie() {
     },
     {
       name: "Davina - Salary",
-      value: 200000,
+      value: 20800,
       color: "#DD6B20",
     },
     {
       name: "Davina - Other Income",
-      value: 200000,
+      value: 20500,
       color: "#805AD5",
     },
   ];

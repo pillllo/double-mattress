@@ -92,6 +92,7 @@ export default function DashboardCategory({
         onClick={() => {}}
         color="white"
         my="2"
+        letterSpacing="wide"
       >
         <Icon as={iconDecider(title)} w={[4, 6]} h={[4, 6]} />
         <HStack justify="space-between" w="50%">
@@ -117,7 +118,7 @@ export default function DashboardCategory({
           <ModalCloseButton />
           <ModalBody>
             <Flex direction="column" align="center" justify="center">
-              <Text>
+              <Text fontSize="18" letterSpacing="wide" fontWeight="500">
                 You spent: $ {price} on {title} this month
               </Text>
             </Flex>
