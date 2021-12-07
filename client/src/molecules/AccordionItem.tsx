@@ -42,7 +42,7 @@ export default function AccordionItem() {
         </HStack>
       </Flex>
       {transactions.length ? (
-        transactions.map((transaction: any, i: number) => {
+        transactions.map((transaction, i: number) => {
           if (transaction) {
             return <AccordianSingleItem transaction={transaction} key={i} />;
           }

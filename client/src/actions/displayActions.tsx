@@ -1,4 +1,5 @@
 //@ts-nocheck
+import {ProjectionApiResponse} from "../types/ApiResponses"
 import { Transaction } from "../types/Transaction";
 
 export type switchDisplay = {
@@ -22,7 +23,7 @@ export type projectionDateChange = {
 }
 export type getProjectionData = {
   type:"GET_PROJECTION_DATA";
-  payload: any;
+  payload: ProjectionApiResponse;
 }
 export type getDashboardData = {
   type:"GET_DASHBOARD_DATA";

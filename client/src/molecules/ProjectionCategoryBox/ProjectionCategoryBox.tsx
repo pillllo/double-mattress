@@ -2,7 +2,7 @@ import { ProjectionCategory } from "../../atoms/index";
 import { useSelector } from "react-redux";
 import "./ProjectionCategoryBox.css";
 import { ReduxState } from "../../types/ReduxState";
-import { Flex, VStack } from "@chakra-ui/react";
+import { Flex} from "@chakra-ui/react";
 import {useEffect,useState } from "react";
 export default function ProjectionCategoryBox() {
 
@@ -14,10 +14,7 @@ export default function ProjectionCategoryBox() {
 
     return state.displayCategories.projectionDate;
   }).getMonth();
-  console.log(date);
-  console.log(projectionData);
  const [categories,setCategories]=useState<any[]>([])
-//@ts-ignore
 
 useEffect(()=>{
    const categoryArr =
@@ -31,8 +28,6 @@ useEffect(()=>{
       ];
     if(projectionData.length){
     const newCategories = categoryArr.map((category) => {
-   //@ts-ignore
-    console.log("DEEZ PROJECT DATA",category,projectionData[date].categoryAverages[category])
       //@ts-ignore
     const price= projectionData[date].categoryAverages[category]
 

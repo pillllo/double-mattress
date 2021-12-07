@@ -128,7 +128,7 @@ export default function Navbar() {
               fontSize="1.25rem"
               display="flex"
               alignItems="center"
-              onClick={onClose}
+
             >
               <FaCogs />
               <Divider orientation="vertical" mx="5px" />
@@ -139,12 +139,21 @@ export default function Navbar() {
       </Drawer>
       <Flex alignItems="center">
       <MainButton  passedFunction={() => onOpen2()}text={"Connect"}/>
+      <Link
+              as={routerLink}
+              to="/dashboard"
+              fontSize="1.25rem"
+              display="flex"
+              alignItems="center"
+              onClick={onClose}
+            >
       <IconButton
             aria-label="Category Info"
             icon={<FaBell color={alert?"9b2226":undefined} />}
             size={buttonSize}
             onClick={() => setAlert(!alert)}
           />
+           </Link>
       </Flex>
       <ConnectUserForm isOpen={isOpen2} onClose={onClose2} onOpen={onOpen2}/>
     </Flex>

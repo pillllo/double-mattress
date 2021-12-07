@@ -1,5 +1,4 @@
-import { Flex, Text, Heading } from "@chakra-ui/react";
-import { formatDistanceToNow } from "date-fns";
+import { Flex, Text } from "@chakra-ui/react";
 import { Notification } from "../types/Notification";
 type Props={
   notification:Notification
@@ -17,11 +16,10 @@ export default function NotificationSingle({ notification }:Props) {
       shadow="lg"
     >
       <Flex justify="space-around" mb="1rem">
-        <Text>{notification}</Text>
+        <Text>{notification.from}</Text>
       </Flex>
       <Flex align="flex-start" justify="space-around">
-        <Text>{notification}</Text>
-        <Text>Spend: ${notification}</Text>
+        <Text>{notification.message}</Text>
       </Flex>
     </Flex>
   );
