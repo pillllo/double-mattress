@@ -1,4 +1,5 @@
 import { Box, Text, Heading, VStack, Button } from "@chakra-ui/react";
+import ApiServices from "../ApiServices";
 
 interface IProps {
   title: string;
@@ -33,14 +34,19 @@ export default function SubCard({
       </Text>
       <VStack
         py="1rem"
-        bgGradient="linear(to-r, red.800, orange.800)"
+        bgGradient="linear(to-br, red.500, orange.700)"
         w="100%"
         rounded="xl"
       >
         {features.map((feature, i) => {
           return <Text key={i}>!?!{feature}</Text>;
         })}
-        <form action="/create-checkout-session" method="POST">
+        <form
+          action={
+            "https://double-mattress.herokuapp.com/create-checkout-session"
+          }
+          method="POST"
+        >
           <input type="hidden" name="lookup_key" value={priceKey} />
           <Button colorScheme="blue" type="submit">
             Purchase Plan

@@ -128,7 +128,7 @@ export default function Navbar() {
               fontSize="1.25rem"
               display="flex"
               alignItems="center"
-      
+
             >
               <FaCogs />
               <Divider orientation="vertical" mx="5px" />

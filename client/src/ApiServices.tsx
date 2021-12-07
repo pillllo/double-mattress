@@ -64,7 +64,18 @@ function getProjections(body: any) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Client-Jwt": token
+      "Client-Jwt": token,
+    },
+    body: JSON.stringify(body),
+  });
+}
+
+function createCheckoutStripe(body: any) {
+  return fetchRequest("/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Client-Jwt": token,
     },
     body: JSON.stringify(body),
   });
@@ -172,8 +183,14 @@ function sendConnection(body:any){
 
 
 const ApiService = {
-  getDashboard,getProjections,addProjection,deleteProjection,loginUser,sendConnection,searchPartner
-}
-
+  getDashboard,
+  getProjections,
+  addProjection,
+  deleteProjection,
+  loginUser,
+  sendConnection,
+  searchPartner,
+  createCheckoutStripe,
+};
 
 export default ApiService;
