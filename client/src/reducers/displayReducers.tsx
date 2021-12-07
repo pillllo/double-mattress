@@ -68,6 +68,9 @@ const displayCategories = (
     case "ADD_NOTIFICATION": {
       return { ...state, notifications: action.payload };
     }
+    case "GET_USER_DATA": {
+      return { ...state, mainUser: action.payload };
+    }
     default:
       return state;
   }

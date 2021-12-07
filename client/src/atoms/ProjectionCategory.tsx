@@ -61,11 +61,13 @@ export default function ProjectionCategory({
         w="100%"
       >
         <Icon as={iconDecider(category)} w={[4, 6]} h={[4, 6]} />
-        <Text fontSize={[14, 18]}>{category || "Home"}</Text>
-        <Text fontSize={[14, 18]}>
-          {currencyDecider(currency)}
-          {price || 123.5}
-        </Text>
+        <HStack justify="space-between" w="50%">
+          <Text fontSize={[14, 18]}>{category || "Home"}</Text>
+          <Text fontSize={[14, 18]}>
+            {currencyDecider(currency)}
+            {Math.floor(price/10) }
+          </Text>
+        </HStack>
       </Flex>
       <Divider />
     </Flex>

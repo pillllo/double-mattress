@@ -81,12 +81,12 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
 
   const handleAmountChange = (e: any) => {
     const value = e.target.value;
-    setNewProjection({ ...newProjection, amount: Number(value) });
+    setNewProjection({ ...newProjection, amount: Number(value)});
   };
 
   const submitProjection = () => {
     ApiServices.addProjection({
-      projectedChange: newProjection,
+      projectedChange: {...newProjection,amount:newProjection.amount*100},
       projections: projectionData,
     }).then((data: RecieveTransaction) => {
       dispatch({ type: "GET_PROJECTION_DATA", payload: data });
