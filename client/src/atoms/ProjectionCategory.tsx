@@ -47,17 +47,18 @@ export default function ProjectionCategory({
     }
   }
   return (
-    <>
+    <Flex
+      py="10px"
+      direction="column"
+      justify="space-around"
+      align="center"
+      w="100%"
+    >
       <Flex
-        direction="row"
-        py="3px"
-        justify="space-between"
-        align="center"
-        width="95%"
-        px="1rem"
-        onClick={() => {}}
+        // onClick={() => {}}
         color="white"
-        my="2"
+        justify="space-between"
+        w="100%"
       >
         <Icon as={iconDecider(category)} w={[4, 6]} h={[4, 6]} />
         <HStack justify="space-between" w="50%">
@@ -69,6 +70,6 @@ export default function ProjectionCategory({
         </HStack>
       </Flex>
       <Divider />
-    </>
+    </Flex>
   );
 }

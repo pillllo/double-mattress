@@ -97,7 +97,6 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
 
   return (
     <>
-      <ToastContainer />
       <Modal
         onClose={() => {
           setNewProjection(defaultProjection), onClose();

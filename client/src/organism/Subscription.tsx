@@ -6,7 +6,7 @@ export default function Subscription() {
     <VStack letterSpacing="wide" pt="1.5rem" textAlign="center" h="90%">
       <Heading fontSize="24" fontWeight="500" p="1rem">
         Buy our plan cause we need{" "}
-        <Text as="span" color="orange.400">
+        <Text as="span" color="orange.300">
           money
         </Text>
       </Heading>

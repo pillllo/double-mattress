@@ -21,7 +21,7 @@ export default function DashboardCategoryItem({ transaction }: any, i: number) {
       </Flex>
       <Flex align="flex-start" justify="space-around">
         <Text>{transaction.description}</Text>
-        <Text>Spend: ${transaction.amount}</Text>
+        <Text>Spend: ${transaction.amount / 100}</Text>
       </Flex>
     </Flex>
   );

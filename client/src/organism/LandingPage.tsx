@@ -9,19 +9,27 @@ import {
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ApiServices from "../ApiServices";
+import { ReduxState } from "../types/ReduxState";
 
 export default function LandingPage() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    const userId = "f65f19ed-a0b0-465c-991f-037a7ac6353b";
-    const date = "2021-08-16T23:00:00.000Z";
 
-    // ApiServices.getDashboard({ userId, date }).then((data) => {
-    //   console.log(data);
-    //   dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
-    // });
+  const date = useSelector((state: ReduxState) => {
+    const theDate = state.displayCategories.dashboardDate;
+    return theDate.toISOString();
+  });
+
+  const userId = useSelector((state: ReduxState) => {
+    return state.displayCategories.userId;
+  });
+
+  useEffect(() => {
+    ApiServices.getDashboard({ userId, date }).then((data) => {
+      console.log(data);
+      dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
+    });
   });
 
   return (
