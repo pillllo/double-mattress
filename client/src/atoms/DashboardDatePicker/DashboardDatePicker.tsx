@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Text } from "@chakra-ui/react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,8 +10,10 @@ type Props = {
 
 function DashboardDatePicker({ isDouble }: Props) {
   const dispatch = useDispatch();
-  const datePicker = useSelector(
-    (state: ReduxState) => isDouble? state.displayCategories.projectionDate: state.displayCategories.dashboardDate
+  const datePicker = useSelector((state: ReduxState) =>
+    isDouble
+      ? state.displayCategories.projectionDate
+      : state.displayCategories.dashboardDate
   );
 
   const changeReduxDate = (date: Date) => {

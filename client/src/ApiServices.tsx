@@ -158,29 +158,27 @@ function loginUser(body: any) {
   });
 }
 
-
-function searchPartner(body:any){
-  return fetchRequest("/connect/initiate",{
+function searchPartner(body: any) {
+  return fetchRequest("/connect/initiate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Client-Jwt":token
+      "Client-Jwt": token,
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   });
 }
 
-function sendConnection(body:any){
-  return fetchRequest("/connect/initiate",{
+function sendConnection(body: any) {
+  return fetchRequest("/connect/initiate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Client-Jwt":token
+      "Client-Jwt": token,
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   });
 }
-
 
 const ApiService = {
   getDashboard,

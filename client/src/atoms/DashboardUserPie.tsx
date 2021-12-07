@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Pie } from "@visx/shape";
 import { Group } from "@visx/group";
 import { Text } from "@visx/text";
-import { User, PieUser } from "../types/User";
-import dataObject from "../MockData";
+import { PieUser } from "../types/User";
 import { ReduxState } from "../types/ReduxState";
 import { useSelector } from "react-redux";
 

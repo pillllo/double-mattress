@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Group } from "@visx/group";
 import { Bar } from "@visx/shape";
 import { scaleLinear, scaleBand } from "@visx/scale";
@@ -19,7 +18,7 @@ export default function DashboardSavingsChart() {
     {
       type: "Savings Total",
       //@ts-ignore
-      savings: dashboardData.savings.totalSinceJoining,
+      savings: dashboardData.savings.totalSinceJoining / 100,
       color: "#DD6B20",
     },
     {
@@ -28,7 +27,7 @@ export default function DashboardSavingsChart() {
       savings: dashboardData.savings.currentMonth,
       color: "#D69E2E",
     },
-    { type: "Monthly Avg.", savings: 350000, color: "#38A169" },
+    { type: "Monthly Avg.", savings: 2500, color: "#38A169" },
   ];
 
   const width = 450;

@@ -1,4 +1,4 @@
-import { VStack, Flex, HStack, Text, Heading } from "@chakra-ui/react";
+import { VStack, Flex, Text, Heading } from "@chakra-ui/react";
 import { SubCard } from "../atoms";
 
 export default function Subscription() {
