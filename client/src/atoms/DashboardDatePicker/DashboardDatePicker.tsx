@@ -20,13 +20,14 @@ function DashboardDatePicker({ isDouble }: Props) {
     if (isDouble) dispatch({ type: "PROJECTION_DATE_CHANGE", payload: date });
     else dispatch({ type: "DASHBOARD_DATE_CHANGE", payload: date });
   };
-
+  const nowDate =new Date();
+  const projectionUseDate= nowDate.setMonth(nowDate.getMonth()-1);
   return (
     <DatePicker
       selected={datePicker}
       onChange={changeReduxDate}
       maxDate={isDouble ? null : new Date()}
-      minDate={isDouble ? new Date() : null}
+      minDate={isDouble ? new Date(projectionUseDate) : null}
       withPortal
       dateFormat="MM/yyyy"
       showMonthYearPicker

@@ -19,13 +19,6 @@ export default function AccordionItem() {
 
   return (
     <Box overflowY="auto" h="25vh">
-      <Flex direction="column" align="center">
-        <Text fontSize={[12, 14, 16, 18]}>Balance</Text>
-        <HStack>
-          <Text fontSize={[14, 16, 18, 20]}>Expenses</Text>
-          <Text fontSize={[14, 16, 18, 20]}>Income</Text>
-        </HStack>
-      </Flex>
       {transactions.length ? (
         transactions.map((transaction, i: number) => {
           if (transaction) {
@@ -33,7 +26,7 @@ export default function AccordionItem() {
           }
         })
       ) : (
-        <h1>Nada</h1>
+        <h1></h1>
       )}
     </Box>
   );

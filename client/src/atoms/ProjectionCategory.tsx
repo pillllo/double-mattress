@@ -64,7 +64,7 @@ export default function ProjectionCategory({
           <Text fontSize={[14, 18]}>{category || "Home"}</Text>
           <Text fontSize={[14, 18]}>
             {currencyDecider(currency)}
-            {price || 123.5}
+            {Math.floor(price/10) }
           </Text>
         </HStack>
       </Flex>

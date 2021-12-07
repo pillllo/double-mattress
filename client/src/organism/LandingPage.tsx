@@ -18,10 +18,10 @@ export default function LandingPage() {
     const userId = "f65f19ed-a0b0-465c-991f-037a7ac6353b";
     const date = "2021-08-16T23:00:00.000Z";
 
-    ApiServices.getDashboard({ userId, date }).then((data) => {
-      console.log(data);
-      dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
-    });
+    // ApiServices.getDashboard({ userId, date }).then((data) => {
+    //   console.log(data);
+    //   dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
+    // });
   });
 
   return (
