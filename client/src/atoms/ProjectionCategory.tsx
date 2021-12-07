@@ -1,11 +1,4 @@
-import {
-  Flex,
-  Icon,
-  Text,
-  HStack,
-  Divider,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Flex, Icon, Text, HStack, Divider } from "@chakra-ui/react";
 import {
   FaHouseUser,
   FaHeartBroken,
@@ -48,15 +41,11 @@ export default function ProjectionCategory({
     switch (cur) {
       case "eur":
         return "€";
-        break;
 
       default:
         break;
     }
   }
-  const buttonSize = useBreakpointValue(["2rem", "3rem"]);
-  // useEffect(()=>{},[category])
-  console.log("RENDERED");
   return (
     <>
       <Flex

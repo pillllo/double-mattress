@@ -70,6 +70,17 @@ function getProjections(body: any) {
   });
 }
 
+function createCheckoutStripe(body: any) {
+  return fetchRequest("/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Client-Jwt": token,
+    },
+    body: JSON.stringify(body),
+  });
+}
+
 // RESPONSE
 // {
 // 0: {
@@ -177,6 +188,7 @@ const ApiService = {
   loginUser,
   sendConnection,
   searchPartner,
+  createCheckoutStripe,
 };
 
 export default ApiService;
