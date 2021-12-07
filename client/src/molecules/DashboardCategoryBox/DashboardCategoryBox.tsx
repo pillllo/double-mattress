@@ -18,16 +18,6 @@ export default function DashboardCategoryBox() {
     return state.displayCategories.switch;
   });
 
-  const incomes = useSelector((state: ReduxState) => {
-    //@ts-ignore
-    return state.displayCategories.dashboardData.typeTotals.salary;
-  });
-
-  const expenses = useSelector((state: ReduxState) => {
-    //@ts-ignore
-    return state.displayCategories.dashboardData.categoryTotals;
-  });
-
   const transactions = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.dashboardData.transactions;
@@ -63,7 +53,7 @@ export default function DashboardCategoryBox() {
           key={i}
           title={category}
           currency={"eur"}
-          price={totalCategory}
+          price={totalCategory / 100}
           transactionList={transactionsFiltered}
         />
       );

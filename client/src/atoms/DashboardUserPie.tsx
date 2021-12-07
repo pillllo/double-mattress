@@ -5,6 +5,7 @@ import { Text } from "@visx/text";
 import { PieUser } from "../types/User";
 import { ReduxState } from "../types/ReduxState";
 import { useSelector } from "react-redux";
+import { DashboardTypeTotals } from "../types/DashboardTypes";
 
 /*
  Abandon hope all ye who enter here
@@ -14,33 +15,46 @@ export default function DashboardVisxPie() {
   const width = 250;
   const half = width / 2;
 
-  const userData = useSelector((state: ReduxState) => {
+  const userId = useSelector((state: ReduxState) => {
     return state.displayCategories.userId;
+  });
+  const partnerId = useSelector((state: ReduxState) => {
+    //@ts-ignore
+    return state.displayCategories.partnerId;
   });
   const income = useSelector((state: ReduxState) => {
     //@ts-ignore
-    return state.displayCategories.dashboardData?.typeTotals;
+    return state.displayCategories.dashboardData.typeTotals;
   });
+
+  function arcCalculator(user: string, cat: string) {
+    if (!user) {
+      return 0;
+    }
+    //@ts-ignore
+    let value = income[cat][user] / 100;
+    return Math.floor(value);
+  }
 
   const transactions: PieUser[] = [
     {
       name: "David - Salary",
-      value: income.salary[userData],
+      value: arcCalculator(userId, "salary"),
       color: "#E53E3E",
     },
     {
       name: "David - Other Income",
-      value: income.otherIncome[userData],
+      value: arcCalculator(userId, "otherIncome"),
       color: "#D69E2E",
     },
     {
       name: "Davina - Salary",
-      value: 20800,
+      value: arcCalculator(partnerId, "otherIncome"),
       color: "#DD6B20",
     },
     {
       name: "Davina - Other Income",
-      value: 20500,
+      value: arcCalculator(partnerId, "otherIncome"),
       color: "#805AD5",
     },
   ];
