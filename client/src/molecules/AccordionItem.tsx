@@ -1,23 +1,8 @@
-import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem as TheAccordionItem,
-  AccordionPanel,
-  CircularProgress,
-  Box,
-  Flex,
-  HStack,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { Transaction } from "../types/Transaction";
 import { ReduxState } from "../types/ReduxState";
 import AccordianSingleItem from "../atoms/AccordianSingleItem";
-
-interface TransactionType {
-  transaction: Transaction;
-}
 
 export default function AccordionItem() {
   const thisMonth = useSelector((state: ReduxState) => {

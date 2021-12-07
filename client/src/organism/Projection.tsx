@@ -53,7 +53,7 @@ export default function Projection() {
         align="center"
         justify="space-evenly"
       >
-        <Flex h="50vh" w="90vw">
+        <Flex h="45vh" w="90vw">
           <ProjectionLineChart  />
         </Flex>
         <Tabs isFitted variant="enclosed" w="100%" h="30vh">

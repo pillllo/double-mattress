@@ -1,5 +1,4 @@
-import { Box, Text, Heading, VStack, Button } from "@chakra-ui/react";
-import ApiServices from "../ApiServices";
+import { Text, Heading, VStack, Button } from "@chakra-ui/react";
 
 interface IProps {
   title: string;
