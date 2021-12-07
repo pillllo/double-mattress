@@ -35,10 +35,12 @@ export default function LoginPage() {
   const submitEmail = (e: any) => {
     e.preventDefault();
     setLoad(true);
-    ApiServices.addProjection({ email }).then((data: any) => {
-      console.log(data);
-      dispatch({ type: "GET_USER_DATA", payload: data });
-    });
+
+    // ApiServices.addProjection({ email }).then((data: any) => {
+    //   console.log(data);
+    //   dispatch({ type: "GET_USER_DATA", payload: data });
+    // });
+
 
     setTimeout(() => {
       navigate("/dashboard");

@@ -3,6 +3,7 @@ import { Pie } from "@visx/shape";
 import { Group } from "@visx/group";
 import { Text } from "@visx/text";
 import { Transaction, PieTransaction } from "../types/Transaction";
+import { DashboardCategoryTotals } from "../types/DashboardTypes";
 
 import { useSelector } from "react-redux";
 import { ReduxState } from "../types/ReduxState";
@@ -14,41 +15,59 @@ export default function DashboardVisxPie() {
     //@ts-ignore
     return state.displayCategories.dashboardData.categoryTotals;
   });
-  const userData = useSelector((state: ReduxState) => {
+  const userId = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.userId;
   });
+  const partnerId = useSelector((state: ReduxState) => {
+    //@ts-ignore
+    return state.displayCategories.partnerId;
+  });
   const [active, setActive] = useState<PieTransaction | undefined>(undefined);
+
+  function arcCalculator(expenses: DashboardCategoryTotals, cat: string) {
+    //@ts-ignore
+    let value = expenses[cat][userId] / 100;
+    if (partnerId) {
+      value =
+        //@ts-ignore
+        expenses[cat][userId] / 100 +
+        //@ts-ignore
+        expenses[cat][partnerId] / 100;
+      return Math.floor(value);
+    }
+    return Math.floor(value);
+  }
 
   const transactions: PieTransaction[] = [
     {
       name: "Rent",
-      value: Number(expenseTotalObject["home"][userData]),
+      value: arcCalculator(expenseTotalObject, "home"),
       color: "#DD6B20",
     },
     {
       name: "Bills",
-      value: Number(expenseTotalObject["bills"][userData]),
+      value: arcCalculator(expenseTotalObject, "bills"),
       color: "#D69E2E",
     },
     {
       name: "Shopping",
-      value: Number(expenseTotalObject["shopping"][userData]),
+      value: arcCalculator(expenseTotalObject, "shopping"),
       color: "#38A169",
     },
     {
       name: "Entertainment",
-      value: Number(expenseTotalObject["entertainment"][userData]),
+      value: arcCalculator(expenseTotalObject, "entertainment"),
       color: "#3182CE",
     },
     {
       name: "Eating Out",
-      value: Number(expenseTotalObject["eatingOut"][userData]),
+      value: arcCalculator(expenseTotalObject, "eatingOut"),
       color: "#805AD5",
     },
     {
       name: "Others",
-      value: Number(expenseTotalObject["others"][userData]),
+      value: arcCalculator(expenseTotalObject, "others"),
       color: "#D53F8C",
     },
   ];

@@ -14,7 +14,7 @@ import {
 } from "../actions/displayActions";
 import { State } from "../types/State";
 const initialState: State = {
-  userId: "f65f19ed-a0b0-465c-991f-037a7ac6353b",
+  userId: "04981f24-931c-4cfc-af2c-c249f4bd3877",
   partnerId: "",
   mainUser: {},
   partnerUser: {},
