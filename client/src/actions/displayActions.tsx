@@ -49,3 +49,15 @@ export type  addNotifications={
   type: "ADD_NOTIFICATION";
   payload:any;
 }
+export type updateUserId={
+  type: "UPDATE_USER_ID";
+  payload: any;
+}
+export type getPartnerId={
+  type: "GET_PARTNER_ID";
+  payload: any;
+}
+export type getPartnerData={
+  type: "GET_PARTNER_DATA";
+  payload: any;
+}

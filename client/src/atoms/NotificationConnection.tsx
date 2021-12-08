@@ -28,8 +28,12 @@ export default function NotificationConnection({ notification }:Props) {
     return state.displayCategories.userId;
   });
   const confirmConnection = () => {
-    ApiServices.sendConnection({userId, partnerId:notification.fromUserId}).then((data:any)=>{
-      dispatch({ type: "GET_USER_DATA", payload: data })
+    ApiServices.confirmConnection({userId, connectToUserId:notification.fromUserId}).then(()=>{
+      dispatch({ type: "UPDATE_USER_ID", payload: userId })
+      ApiServices.loginUser({userId:notification.fromUserId}).then((data:any)=>{
+        dispatch({ type:"GET_PARTNER_ID",payload:notification.fromUserId})
+        dispatch({type: "GET_PARTNER_DATA", payload:data[0]})
+      })
     })
   };
 

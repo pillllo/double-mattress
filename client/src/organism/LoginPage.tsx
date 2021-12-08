@@ -33,7 +33,7 @@ export default function LoginPage() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-     
+
     });
 
   const updateEmail = (e: any) => {
@@ -43,7 +43,14 @@ export default function LoginPage() {
     e.preventDefault();
     setLoad(true);
     ApiServices.loginUser({ userId }).then((data: any) => {
+      console.log(data[0]);
       dispatch({ type: "GET_USER_DATA", payload: data[0] });
+      if(data[0].linkedUserIds.length>0){
+      ApiServices.loginUser({userId:data[0].linkedUserIds[0]}).then((data:any)=>{
+        dispatch({type: "GET_PARTNER_ID", payload:data[0].userId})
+        dispatch({type: "GET_PARTNER_DATA", payload:data[0]})
+      })
+      }
     });
 
     setTimeout(() => {
