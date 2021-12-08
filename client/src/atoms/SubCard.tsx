@@ -20,7 +20,8 @@ export default function SubCard({
       justify="center"
       bg="gray.800"
       pt="1rem"
-      mb="1.5rem"
+      my="1.5rem"
+      mr={["0rem", "0rem", "1.5rem"]}
       rounded="xl"
       shadow="xl"
       border="1px solid white"

@@ -43,7 +43,6 @@ function createCheckoutStripe(body: any) {
   });
 }
 
-
 function addProjection(body: any) {
   return fetchRequest("/projections/create", {
     method: "POST",
@@ -54,7 +53,6 @@ function addProjection(body: any) {
     body: JSON.stringify(body),
   });
 }
-
 
 function deleteProjection(body: any) {
   return fetchRequest("/projections", {
@@ -77,29 +75,38 @@ function loginUser(body: any) {
   });
 }
 
-
-function searchPartner(body:any){
-  return fetchRequest("/connect/initiate",{
+function searchPartner(body: any) {
+  return fetchRequest("/connect/initiate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Client-Jwt":token
+      "Client-Jwt": token,
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   });
 }
 
-function sendConnection(body:any){
-  return fetchRequest("/connect/complete",{
+function sendConnection(body: any) {
+  return fetchRequest("/connect/complete", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Client-Jwt":token
+      "Client-Jwt": token,
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   });
 }
 
+function sendSubSessionId(body: any) {
+  return fetchRequest("/add-customer-id", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Client-Jwt": token,
+    },
+    body: JSON.stringify(body),
+  });
+}
 
 const ApiService = {
   getDashboard,
@@ -110,6 +117,7 @@ const ApiService = {
   sendConnection,
   searchPartner,
   createCheckoutStripe,
+  sendSubSessionId,
 };
 
 export default ApiService;
