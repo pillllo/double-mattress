@@ -33,6 +33,7 @@ export default function LoginPage() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
+     
     });
 
   const updateEmail = (e: any) => {
