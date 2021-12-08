@@ -74,7 +74,7 @@ export default function Navbar() {
           color={"white"}
           dropShadow={"large"}
         />
-        <Text ml="5" fontWeight="600" fontSize={["xl", "2xl", "3xl"]}>
+        <Text ml="5" fontWeight="600" fontSize={["xl", "2xl", "3xl"]}  bgGradient="linear(to-t, blue.600, gray.200)" bgClip="text">
           Double-Mattress
         </Text>
       </Flex>
@@ -165,7 +165,7 @@ export default function Navbar() {
           >
             <IconButton
               aria-label="Category Info"
-              icon={<FaBell color={alert ? "9b2226" : undefined} />}
+              icon={<FaBell color={alert ? "B22222" : undefined} />}
               size={buttonSize}
               onClick={() => setAlert(!alert)}
             />
