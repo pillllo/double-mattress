@@ -13,7 +13,9 @@ import { ToastContainer } from "react-toastify";
 import LoginPage from "./organism/LoginPage";
 import { ReduxState } from "./types/ReduxState";
 import SubscriptionSuccess from "./organism/SubscriptionSuccess"
+
 import io from 'socket.io-client';
+
 const App = function () {
   //1- Use fetch inside useEffect call API
   //2- Dispath an action to populate the store with the data
@@ -41,6 +43,7 @@ const App = function () {
       return state.displayCategories.mainUser
     }
   });
+
   // const [paid, setPaid]= useState(false);
   // useEffect(() => {
   //     //@ts-ignore
@@ -51,6 +54,7 @@ const App = function () {
 
    //@ts-ignore
   const paidPath= userObj?.activeSubscription ? <Projection /> : <Subscription />
+
 
   return (
     <>
