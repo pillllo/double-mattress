@@ -51,7 +51,7 @@ export default function Projection() {
         justify="space-between"
       >
         <Flex h="45vh" w="90vw">
-          <ProjectionLineChart  />
+          <ProjectionLineChart />
         </Flex>
         <Tabs isFitted variant="enclosed" w="100%" h="35vh">
           <TabList>
@@ -69,12 +69,12 @@ export default function Projection() {
             </TabPanel>
 
             <TabPanel>
-              <Flex direction="column" align="center" justify="space-around" >
+              <Flex direction="column" align="center" justify="space-around">
                 <Box py="2vh">
-                <MainButton
-                  passedFunction={() => onOpen()}
-                  text={"Add a Projection"}
-                />
+                  <MainButton
+                    passedFunction={() => onOpen()}
+                    text={"Add a Projection"}
+                  />
                 </Box>
                 <DateRangeSelector />
               </Flex>

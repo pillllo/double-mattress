@@ -11,7 +11,7 @@ import { Link as ReactLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import {ReduxState} from '../types/ReduxState'
+import { ReduxState } from "../types/ReduxState";
 import ApiServices from "../ApiServices";
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -19,9 +19,9 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  const userId = useSelector((state:ReduxState) => {
+  const userId = useSelector((state: ReduxState) => {
     return state.displayCategories.userId;
-  })
+  });
   const notify = () =>
     toast.success("Welcome to Double-Mattress", {
       position: "top-center",
