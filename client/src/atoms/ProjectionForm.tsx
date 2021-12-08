@@ -19,10 +19,11 @@ import {
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import ApiServices from "../ApiServices";
 import { useDispatch, useSelector } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import ApiServices from "../ApiServices";
 import { ReduxState } from "../types/ReduxState";
 import { RecieveTransaction } from "../types/ApiResponses";
 interface TheProp {
@@ -81,12 +82,12 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
 
   const handleAmountChange = (e: any) => {
     const value = e.target.value;
-    setNewProjection({ ...newProjection, amount: Number(value)});
+    setNewProjection({ ...newProjection, amount: Number(value) });
   };
 
   const submitProjection = () => {
     ApiServices.addProjection({
-      projectedChange: {...newProjection,amount:newProjection.amount*100},
+      projectedChange: { ...newProjection, amount: newProjection.amount * 100 },
       projections: projectionData,
     }).then((data: RecieveTransaction) => {
       dispatch({ type: "GET_PROJECTION_DATA", payload: data });
@@ -160,7 +161,7 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
               ></Input>
               <FormLabel>Amount</FormLabel>
               <InputGroup mb="10px">
-                <InputLeftAddon children="$" color="blue.700" />
+                <InputLeftAddon children="€" color="blue.700" />
                 <Input
                   onChange={handleAmountChange}
                   name={"amount"}
