@@ -70,10 +70,12 @@ export default function Projection() {
 
             <TabPanel>
               <Flex direction="column" align="center" justify="space-around">
-                <MainButton
-                  passedFunction={() => onOpen()}
-                  text={"Add a Projection"}
-                />
+                <Box py="2vh">
+                  <MainButton
+                    passedFunction={() => onOpen()}
+                    text={"Add a Projection"}
+                  />
+                </Box>
                 <DateRangeSelector />
               </Flex>
             </TabPanel>

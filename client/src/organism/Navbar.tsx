@@ -35,7 +35,13 @@ export default function Navbar() {
   } = useDisclosure();
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
   const [alert, setAlert] = useState(false);
-
+  const userConnected = useSelector((state: ReduxState) => {
+      //@ts-ignore
+    if(state.displayCategories.mainUser.linkedUserId){
+       //@ts-ignore
+       return state.displayCategories.mainUser.linkedUserId?.length>0;
+    }
+  });
   const newNotif = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.notificationAlert;
@@ -164,11 +170,11 @@ export default function Navbar() {
               onClick={() => setAlert(!alert)}
             />
           </Link>
-          <ConnectUserForm
+          {userConnected?null:<ConnectUserForm
             isOpen={isOpen2}
             onClose={onClose2}
             onOpen={onOpen2}
-          />
+          />}
         </Flex>
       ) : null}
 

@@ -51,8 +51,8 @@ useEffect(()=>{
     let savings:any[]=[];
     let savingsRate:any[]=[];
     projectionData.map((month)=>{
-      savings.push(Number((month.savings.totalSinceJoining+"").slice(0,6)))
-      savingsRate.push(Number((month.savings.monthlySavings+"").slice(0,6)))
+      savings.push(Math.floor(month.savings.totalSinceJoining/100))
+      savingsRate.push(Math.floor(month.savings.monthlySavings/100))
     })
     return [updMonths(thisMonth),savings,savingsRate]
 

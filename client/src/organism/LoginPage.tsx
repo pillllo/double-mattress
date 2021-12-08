@@ -11,6 +11,7 @@ import { Link as ReactLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
+import {ReduxState} from '../types/ReduxState'
 import ApiServices from "../ApiServices";
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -18,6 +19,9 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
+  const userId = useSelector((state:ReduxState) => {
+    return state.displayCategories.userId;
+  })
   const notify = () =>
     toast.success("Welcome to Double-Mattress", {
       position: "top-center",
@@ -32,13 +36,15 @@ export default function LoginPage() {
   const updateEmail = (e: any) => {
     setEmail(e.target.value);
   };
-  const submitEmail = (e: any) => {
+  const submitLogin = (e: any) => {
     e.preventDefault();
     setLoad(true);
-    // ApiServices.addProjection({ email }).then((data: any) => {
-    //   console.log(data);
-    //   dispatch({ type: "GET_USER_DATA", payload: data });
-    // });
+    ApiServices.loginUser({ userId }).then((data: any) => {
+      console.log(data);
+      dispatch({ type: "GET_USER_DATA", payload: data });
+    });
+    navigate("/dashboard");
+    notify();
 
     setTimeout(() => {
       navigate("/dashboard");
@@ -92,7 +98,7 @@ export default function LoginPage() {
         colorScheme="orange"
         as={ReactLink}
         to="/login"
-        onClick={submitEmail}
+        onClick={submitLogin}
       >
         Submit
       </Button>

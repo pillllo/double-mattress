@@ -5,6 +5,7 @@ import {
   AccordionIcon,
   AccordionPanel,
   AccordionItem as TheAccordionItem,
+  Flex
 } from "@chakra-ui/react";
 import { Transaction } from "../types/Transaction";
 import MainButton from "./MainButton";
@@ -38,9 +39,19 @@ export default function AccordianSingleItem({ transaction }: Props) {
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4}>
+          <Flex justifyContent="space-around">
+            {transaction.date.slice(0, 10)}
+          <Flex>
+          <Box>
           {transaction.amount}
+          </Box>
+          <Box>
           {transaction.category}
+           </Box>
+           </Flex>
           <MainButton text={"X"} passedFunction={deleteTransaction} />
+          </Flex>
+
         </AccordionPanel>
       </TheAccordionItem>
     </Accordion>
