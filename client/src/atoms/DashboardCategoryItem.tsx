@@ -1,4 +1,4 @@
-import { Flex, Text, Heading } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
 
 export default function DashboardCategoryItem({ transaction }: any, i: number) {

@@ -8,9 +8,8 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ApiServices from "../ApiServices";
+
 import { ReduxState } from "../types/ReduxState";
 
 export default function LandingPage() {
@@ -23,13 +22,6 @@ export default function LandingPage() {
 
   const userId = useSelector((state: ReduxState) => {
     return state.displayCategories.userId;
-  });
-
-  useEffect(() => {
-    ApiServices.getDashboard({ userId, date }).then((data) => {
-      console.log(data);
-      dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
-    });
   });
 
   return (

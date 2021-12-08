@@ -69,4 +69,3 @@ export default function Testomonials() {
     </Flex>
   );
 }
-//https://randomuser.me/api/portraits/men/97.jpg

@@ -9,6 +9,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import {
   AccordionItem,
   ProjectionLineChart,
@@ -17,11 +20,10 @@ import {
   ProjectionForm,
 } from "../atoms/index";
 import ProjectionCategoryBox from "../molecules/ProjectionCategoryBox/ProjectionCategoryBox";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import ApiServices from "../ApiServices";
 import { ReduxState } from "../types/ReduxState";
 import { ProjectionApiResponse } from "../types/ApiResponses";
+
 export default function Projection() {
   const search = useLocation().search;
   const dispatch = useDispatch();
@@ -63,7 +65,7 @@ export default function Projection() {
         color="white"
       >
         <Flex h="45vh" w="90vw">
-          <ProjectionLineChart  />
+          <ProjectionLineChart />
         </Flex>
         <Tabs isFitted variant="enclosed" w="100%" h="35vh">
           <TabList>

@@ -1,9 +1,12 @@
 import { Text } from "@chakra-ui/react";
+import { useSelector, useDispatch } from "react-redux";
 import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
 import "./DashboardDatePicker.css";
-import { useSelector, useDispatch } from "react-redux";
+
 import { ReduxState } from "../../types/ReduxState";
+
 type Props = {
   isDouble: boolean;
 };
@@ -20,8 +23,8 @@ function DashboardDatePicker({ isDouble }: Props) {
     if (isDouble) dispatch({ type: "PROJECTION_DATE_CHANGE", payload: date });
     else dispatch({ type: "DASHBOARD_DATE_CHANGE", payload: date });
   };
-  const nowDate =new Date();
-  const projectionUseDate= nowDate.setMonth(nowDate.getMonth()-1);
+  const nowDate = new Date();
+  const projectionUseDate = nowDate.setMonth(nowDate.getMonth() - 1);
   return (
     <DatePicker
       selected={datePicker}

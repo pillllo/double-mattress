@@ -1,10 +1,10 @@
-import { DashboardCategory } from "../../atoms/index";
-import { Transaction } from "../../types/Transaction";
 import { useSelector } from "react-redux";
-import "./DashboardCategoryBox.css";
 import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
+import { DashboardCategory } from "../../atoms/index";
+import { Transaction } from "../../types/Transaction";
+import "./DashboardCategoryBox.css";
 import { ReduxState } from "../../types/ReduxState";
 
 export default function DashboardCategoryBox() {
@@ -22,7 +22,7 @@ export default function DashboardCategoryBox() {
     //@ts-ignore
     return state.displayCategories.dashboardData.transactions;
   });
-  const [categories, setCategories] = useState<any[]>([]);
+  const [categories, setCategories] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     const categoryArr = switchDisp

@@ -1,15 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Pie } from "@visx/shape";
 import { Group } from "@visx/group";
 import { Text } from "@visx/text";
-import { Transaction, PieTransaction } from "../types/Transaction";
-import { DashboardCategoryTotals } from "../types/DashboardTypes";
-
 import { useSelector } from "react-redux";
 import { ReduxState } from "../types/ReduxState";
-/*
- Abandon hope all ye who enter here
-*/
+
+import { PieTransaction } from "../types/Transaction";
+import { DashboardCategoryTotals } from "../types/DashboardTypes";
+
 export default function DashboardVisxPie() {
   const expenseTotalObject = useSelector((state: ReduxState) => {
     //@ts-ignore

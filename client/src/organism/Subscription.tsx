@@ -3,7 +3,13 @@ import { SubCard } from "../atoms";
 
 export default function Subscription() {
   return (
-    <VStack letterSpacing="wide" pt="1.5rem" textAlign="center" h="90%">
+    <VStack
+      letterSpacing="wide"
+      pt="1.5rem"
+      textAlign="center"
+      h="90%"
+      color="white"
+    >
       <Heading fontSize="24" fontWeight="500" p="1rem">
         Buy our plan cause we need{" "}
         <Text as="span" color="orange.300">

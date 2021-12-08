@@ -23,8 +23,6 @@ import {
   AccordionPanel,
   Box,
 } from "@chakra-ui/react";
-import { Transaction } from "../types/Transaction";
-
 import {
   FaHouseUser,
   FaHeartBroken,
@@ -35,6 +33,8 @@ import {
   FaHandMiddleFinger,
   FaInfoCircle,
 } from "react-icons/fa";
+
+import { Transaction } from "../types/Transaction";
 import { DashboardCategoryItem } from "../atoms/";
 
 type Props = {
@@ -73,7 +73,6 @@ export default function DashboardCategory({
     switch (cur) {
       case "eur":
         return "€";
-
       default:
         break;
     }
@@ -89,7 +88,6 @@ export default function DashboardCategory({
         align="center"
         width="95%"
         px="1rem"
-        onClick={() => {}}
         color="white"
         my="2"
         letterSpacing="wide"
@@ -117,7 +115,7 @@ export default function DashboardCategory({
         <ModalContent bg="gray.700" color="white">
           <ModalHeader textAlign="center">{title}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody >
+          <ModalBody>
             <Flex direction="column" align="center" justify="center">
               <Text fontSize="18" letterSpacing="wide" fontWeight="500">
                 You spent: $ {price} on {title} this month
@@ -147,7 +145,9 @@ export default function DashboardCategory({
             </Accordion>
           </ModalBody>
           <ModalFooter>
-            <Button bg="whiteAlpha.200" onClick={onClose}>Close</Button>
+            <Button bg="whiteAlpha.200" onClick={onClose}>
+              Close
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

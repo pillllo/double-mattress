@@ -1,10 +1,11 @@
 import { Flex, Spinner, Skeleton } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
-import DashboardCategoryBox from "../molecules/DashboardCategoryBox/DashboardCategoryBox";
-import ApiServices from "../ApiServices";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { ReduxState } from "../types/ReduxState";
+
+import ApiServices from "../ApiServices";
+import DashboardCategoryBox from "../molecules/DashboardCategoryBox/DashboardCategoryBox";
 import {
   DashboardVisxPie,
   DashboardUserPie,
