@@ -13,9 +13,26 @@ import { ToastContainer } from "react-toastify";
 import LoginPage from "./organism/LoginPage";
 import { ReduxState } from "./types/ReduxState";
 import SubscriptionSuccess from "./organism/SubscriptionSuccess"
+
+import io from 'socket.io-client';
+
 const App = function () {
   //1- Use fetch inside useEffect call API
   //2- Dispath an action to populate the store with the data
+
+ useEffect(()=>{
+  let Socket= io('https://double-mattress.herokuapp.com')
+  const dispatch= useDispatch();
+  Socket.on("notifications-updated",(notifications)=>{
+  dispatch({ type: "ADD_NOTIFICATION", payload:notifications });
+  dispatch({ type: "NEW_NOTIFICATION", payload:true })
+})
+
+
+
+ },[])
+
+
   const userObj = useSelector((state: ReduxState) => {
     console.log(state.displayCategories)
     //@ts-ignore
@@ -26,18 +43,18 @@ const App = function () {
       return state.displayCategories.mainUser
     }
   });
-  const [paid, setPaid]= useState(false);
-  useEffect(() => {
-      //@ts-ignore
-    if(userObj?.activeSubscription){
-      setPaid(true);
-    }
 
+  // const [paid, setPaid]= useState(false);
+  // useEffect(() => {
+  //     //@ts-ignore
+  //   if(userObj?.activeSubscription){
+  //     setPaid(true);
+  //   }
+  // }, [userObj,paid]);
 
-  }, [userObj,paid]);
-  const paidPath= paid ? <Projection /> : <Subscription />
-  console.log(paid)
-  console.log(paidPath);
+   //@ts-ignore
+  const paidPath= userObj?.activeSubscription ? <Projection /> : <Subscription />
+
 
   return (
     <>
