@@ -40,18 +40,13 @@ export default function LoginPage() {
     e.preventDefault();
     setLoad(true);
     ApiServices.loginUser({ userId }).then((data: any) => {
-      console.log(data);
-      dispatch({ type: "GET_USER_DATA", payload: data });
+      dispatch({ type: "GET_USER_DATA", payload: data[0] });
     });
-    navigate("/dashboard");
-    notify();
 
     setTimeout(() => {
       navigate("/dashboard");
       notify();
     }, 2000);
-    // navigate("/dashboard");
-    // notify();
   };
 
   return (
