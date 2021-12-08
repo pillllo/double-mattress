@@ -33,7 +33,7 @@ export default function LandingPage() {
   });
 
   return (
-    <Flex h="100%" direction="column" overflowY="auto">
+    <Flex h="100%" direction="column" overflowY="auto" color="white">
       <Box align="center" boxsize={"420px"}>
         <Image
           src={
@@ -100,7 +100,7 @@ export default function LandingPage() {
               top="-15px"
               transform="rotate(10deg)"
             >
-              Starting at €999/mo
+              Starting at €25/mo
             </Text>
           </Box>
         </Stack>
