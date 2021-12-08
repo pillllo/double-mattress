@@ -24,7 +24,7 @@ import {
 import { Link as routerLink } from "react-router-dom";
 import { ConnectUserForm, MainButton } from "../atoms/index";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ReduxState } from "../types/ReduxState";
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,6 +33,7 @@ export default function Navbar() {
     onOpen: onOpen2,
     onClose: onClose2,
   } = useDisclosure();
+  const dispatch= useDispatch();
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
   const [alert, setAlert] = useState(false);
   const userConnected = useSelector((state: ReduxState) => {
@@ -167,7 +168,7 @@ export default function Navbar() {
               aria-label="Category Info"
               icon={<FaBell color={alert ? "B22222" : undefined} />}
               size={buttonSize}
-              onClick={() => setAlert(!alert)}
+              onClick={() => dispatch({ type: "NEW_NOTIFICATION", payload:true })}
             />
           </Link>
           {userConnected?null:<ConnectUserForm
