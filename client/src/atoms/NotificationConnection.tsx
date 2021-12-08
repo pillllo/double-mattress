@@ -28,7 +28,7 @@ export default function NotificationConnection({ notification }:Props) {
     return state.displayCategories.userId;
   });
   const confirmConnection = () => {
-    ApiServices.sendConnection({userId, partnerId:notification.from}).then((data:any)=>{
+    ApiServices.sendConnection({userId, partnerId:notification.fromUserId}).then((data:any)=>{
       dispatch({ type: "GET_USER_DATA", payload: data })
     })
   };
@@ -39,7 +39,7 @@ export default function NotificationConnection({ notification }:Props) {
     <FormControl margin="10px">
 
     <Text type="text" size="md" variant="filled">
-      Do you want to connect with {notification.from}
+      Do you want to connect with {notification.fromUserName}
     </Text>
     <Button
       colorScheme="red"

@@ -54,12 +54,7 @@ export default function ProjectionCategory({
       align="center"
       w="100%"
     >
-      <Flex
-        // onClick={() => {}}
-        color="white"
-        justify="space-between"
-        w="100%"
-      >
+      <Flex color="white" justify="space-between" w="100%">
         <Icon as={iconDecider(category)} w={[4, 6]} h={[4, 6]} />
 
         <HStack justify="space-between" w="50%">
@@ -69,7 +64,6 @@ export default function ProjectionCategory({
             {Math.floor(price / 10)}
           </Text>
         </HStack>
-
       </Flex>
       <Divider />
     </Flex>

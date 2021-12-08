@@ -11,8 +11,10 @@ import { Link as ReactLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
+
 import { ReduxState } from "../types/ReduxState";
 import ApiServices from "../ApiServices";
+
 export default function LoginPage() {
   const dispatch = useDispatch();
   const [load, setLoad] = useState(false);
@@ -31,6 +33,7 @@ export default function LoginPage() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
+     
     });
 
   const updateEmail = (e: any) => {

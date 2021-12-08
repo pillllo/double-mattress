@@ -1,10 +1,16 @@
-import io from 'socket.io-client';
-import { useSelector, useDispatch } from "react-redux";
-let Socket= io('https://double-mattress.herokuapp.com')
-const dispatch= useDispatch();
-Socket.on("notifications-updated",(notifications)=>{
-  dispatch({ type: "ADD_NOTIFICATION", payload:notifications });
-  dispatch({ type: "NEW_NOTIFICATION", payload:true })
-})
-
+export const SOCKET_EVENTS = {
+  CONNECT: "connect", // client
+  CONNECTION: "connection", // server
+  DISCONNECT: "disconnect",
+  DISCONNECTING: "disconnecting",
+  ID: {
+    REQUEST: "id.request",
+    CONFIRM: "id.confirm",
+  },
+  NOTIFICATIONS: {
+    GET: "notifications.get",
+    UPDATED: "notifications.updated",
+    MARK_AS_READ: "notifications.mark_as_read",
+  },
+};
 // Socket.emit()

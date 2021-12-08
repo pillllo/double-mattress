@@ -26,7 +26,7 @@ export default function SubCard({
       shadow="xl"
       border="1px solid white"
     >
-      <Heading fontSize="22" fontWeight="600" px="1rem">
+      <Heading fontSize="22" fontWeight="600" px="1rem" color="white">
         {title}
       </Heading>
       <Text fontSize="26" fontWeight="700">
