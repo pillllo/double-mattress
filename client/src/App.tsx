@@ -38,12 +38,12 @@ const App = function () {
       return state.displayCategories.userId;
 
   });
+
   const partnerrId = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.userId;
 
 });
-
 
 
   useEffect(() => {
