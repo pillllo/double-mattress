@@ -19,18 +19,20 @@ export default function Testomonials() {
       role: "Lizard Tamer",
       img: "https://randomuser.me/api/portraits/women/96.jpg",
       content:
-        "Lizard Tamings a good job mate, and Doubl-Mattress helps me keep control of all my Lizard bucks",
+        "Lizard Tamings a good job mate, and Double-Mattress helps me keep control of all my Lizard bucks",
     },
   ];
 
   return (
     <Flex
+      textAlign="center"
       direction="column"
       align="center"
       justify="space-between"
       overflowY="auto"
       h="90%"
       bgGradient="linear(to-r, blue.200, blue.400)"
+      color="white"
     >
       {data.map((indiv, i) => {
         return (

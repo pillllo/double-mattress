@@ -104,6 +104,7 @@ export default function DashboardCategory({
         </HStack>
         <Tooltip hasArrow label="Click me for more info!">
           <IconButton
+            bg="whiteAlpha.200"
             aria-label="Category Info"
             icon={<FaInfoCircle />}
             boxSize={buttonSize}
@@ -113,10 +114,10 @@ export default function DashboardCategory({
       </Flex>
       <Modal onClose={onClose} size={"xl"} isOpen={isOpen}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent bg="gray.700" color="white">
           <ModalHeader textAlign="center">{title}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody >
             <Flex direction="column" align="center" justify="center">
               <Text fontSize="18" letterSpacing="wide" fontWeight="500">
                 You spent: $ {price} on {title} this month
@@ -146,7 +147,7 @@ export default function DashboardCategory({
             </Accordion>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button bg="whiteAlpha.200" onClick={onClose}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

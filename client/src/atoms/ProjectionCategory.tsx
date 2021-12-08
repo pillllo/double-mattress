@@ -61,6 +61,7 @@ export default function ProjectionCategory({
         w="100%"
       >
         <Icon as={iconDecider(category)} w={[4, 6]} h={[4, 6]} />
+
         <HStack justify="space-between" w="50%">
           <Text fontSize={[14, 18]}>{category || "Home"}</Text>
           <Text fontSize={[14, 18]}>
@@ -68,6 +69,7 @@ export default function ProjectionCategory({
             {Math.floor(price / 10)}
           </Text>
         </HStack>
+
       </Flex>
       <Divider />
     </Flex>

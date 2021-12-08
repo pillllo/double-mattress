@@ -60,6 +60,7 @@ export default function Projection() {
         direction="column"
         align="center"
         justify="space-between"
+        color="white"
       >
         <Flex h="45vh" w="90vw">
           <ProjectionLineChart />
