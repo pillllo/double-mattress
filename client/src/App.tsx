@@ -60,8 +60,10 @@ const App = function () {
       Socket.on(EVENTS.NOTIFICATIONS.UPDATED,(notifications)=>{
        console.log(EVENTS.NOTIFICATIONS.UPDATED,notifications)
        dispatch({ type: "ADD_NOTIFICATION", payload: notifications });
+       if(notifications.length>0){
        dispatch({ type: "NEW_NOTIFICATION", payload: true });
        notify();
+        }
       })
 
 

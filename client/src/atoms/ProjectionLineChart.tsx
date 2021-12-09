@@ -64,6 +64,12 @@ export default function ProjectionLineChart() {
         id: "basic-bar",
         foreColor: "#F8F8FF",
       },
+      dataLabels:{
+        enabled:false
+      },
+      theme:{
+        palette:"palette1"
+      },
       xaxis: {
         categories: chartData[0],
         labels: {
@@ -93,7 +99,7 @@ export default function ProjectionLineChart() {
             },
           },
           tooltip: {
-            enabled: true,
+            enabled: false,
           },
         },
         {
