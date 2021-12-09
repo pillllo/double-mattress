@@ -55,7 +55,9 @@ export default function connectUserForm({ onClose, onOpen, isOpen }: TheProp) {
   const submitSearch = () => {
     ApiServices.searchPartner({userId:user, email:partnerEmail}).then((data:any)=>{
       console.log(data);
+
     setPartnerName(data.firstName);
+
     })
     setRecieveUser(true);
   };
