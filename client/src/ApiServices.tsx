@@ -87,7 +87,7 @@ function searchPartner(body: any) {
 }
 
 function sendConnection(body: any) {
-  return fetchRequest("/connect/complete", {
+  return fetchRequest("/connect/confirm", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
