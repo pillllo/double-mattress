@@ -21,7 +21,7 @@ export default function ProjectionCategory({
 }: Props) {
   function iconDecider(cat: string) {
     switch (cat) {
-      case "Rent":
+      case "Home":
         return FaHouseUser;
       case "Bills and Services":
         return FaMoneyBill;
@@ -50,20 +50,18 @@ export default function ProjectionCategory({
     <Flex
       py="10px"
       direction="column"
-      justify="space-around"
+      justify="space-evenly"
       align="center"
       w="100%"
     >
-      <Flex color="white" justify="space-between" w="100%">
+      <Flex color="white" justify="space-between" w="100%" px="5">
         <Icon as={iconDecider(category)} w={[4, 6]} h={[4, 6]} />
 
-        <HStack justify="space-between" w="50%">
-          <Text fontSize={[14, 18]}>{category || "Home"}</Text>
-          <Text fontSize={[14, 18]}>
-            {currencyDecider(currency)}
-            {Math.floor(price/10)}
-          </Text>
-        </HStack>
+        <Text fontSize={[14, 18]}>{category || "Home"}</Text>
+        <Text fontSize={[14, 18]}>
+          {currencyDecider(currency)}
+          {Math.floor(price / 10)}
+        </Text>
       </Flex>
       <Divider />
     </Flex>
