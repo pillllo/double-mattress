@@ -23,7 +23,7 @@ import SubscriptionSuccess from "./organism/SubscriptionSuccess";
 import { SOCKET_EVENTS as EVENTS } from "./Socket";
 const App = function () {
   const dispatch = useDispatch();
-  // const navigate= useNavigate();
+   const navigate= useNavigate();
   const notify = () =>
     toast.info("New Notification!", {
       position: "top-center",
@@ -33,10 +33,10 @@ const App = function () {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      // onClick: ()=>{
-      //   navigate("/notifications")
+      onClick: ()=>{
+        navigate("/notifications")
 
-      // }
+      }
     });
   const userId = useSelector((state: ReduxState) => {
     //@ts-ignore
@@ -101,7 +101,7 @@ const App = function () {
         direction="column"
         h="100vh"
       >
-        <Router>
+
           <Navbar />
           <Routes>
             <Route path={`/`} element={<LandingPage />} />
@@ -114,7 +114,6 @@ const App = function () {
             <Route path={`/notifications`} element={<Notifications />} />
             <Route path={`/confirm`} element={<SubscriptionSuccess />} />
           </Routes>
-        </Router>
       </Flex>
     </>
   );
