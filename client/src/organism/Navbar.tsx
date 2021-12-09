@@ -157,7 +157,7 @@ export default function Navbar() {
           <MainButton passedFunction={() => onOpen2()} text={"Connect"} />
           <Link
             as={routerLink}
-            to="/dashboard"
+            to="/notifications"
             fontSize="1.25rem"
             display="flex"
             alignItems="center"
@@ -168,7 +168,7 @@ export default function Navbar() {
               aria-label="Category Info"
               icon={<FaBell color={alert ? "B22222" : undefined} />}
               size={buttonSize}
-              onClick={() => dispatch({ type: "NEW_NOTIFICATION", payload:true })}
+              onClick={() => dispatch({ type: "NEW_NOTIFICATION", payload:false })}
             />
           </Link>
           {userConnected?null:<ConnectUserForm

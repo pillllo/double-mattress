@@ -11,10 +11,13 @@ import {
   getUserId,
   notificationsAlert,
   addNotifications,
+  updateUserId,
+  getPartnerData,
+  getPartnerId
 } from "../actions/displayActions";
 import { State } from "../types/State";
 const initialState: State = {
-  userId: "3a8dd017-e14f-42d6-81c6-bf5de147a871",
+  userId: "6e03fc4a-7d78-46cc-b98d-9815961e5840",
   partnerId: "",
   mainUser: {},
   partnerUser: {},
@@ -42,6 +45,9 @@ const displayCategories = (
     | getUserData
     | notificationsAlert
     | addNotifications
+    | updateUserId
+    | getPartnerId
+    | getPartnerData
 ) => {
   switch (action.type) {
     case "GET_DASHBOARD_DATA": {
@@ -70,6 +76,15 @@ const displayCategories = (
     }
     case "GET_USER_DATA": {
       return { ...state, mainUser: action.payload };
+    }
+    case "UPDATE_USER_ID":{
+      return {...state,userId: action.payload}
+    }
+    case "GET_PARTNER_DATA":{
+      return {...state,partnerUser:action.payload}
+    }
+    case "GET_PARTNER_ID":{
+      return {...state,partnerId:action.payload}
     }
     default:
       return state;

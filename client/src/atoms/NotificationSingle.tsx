@@ -16,7 +16,7 @@ export default function NotificationSingle({ notification }:Props) {
       shadow="lg"
     >
       <Flex justify="space-around" mb="1rem">
-        <Text>{notification.from}</Text>
+        <Text>{notification.fromUserName}</Text>
       </Flex>
       <Flex align="flex-start" justify="space-around">
         <Text>{notification.message}</Text>

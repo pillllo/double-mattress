@@ -53,16 +53,21 @@ export default function connectUserForm({ onClose, onOpen, isOpen }: TheProp) {
   };
 
   const submitSearch = () => {
-    // ApiServices.searchPartner({userId:user, email:partnerEmail}).then((data:any)=>{
-    //   console.log(data);
-    // setPartnerName(data.name);
-    // })
+    ApiServices.searchPartner({userId:user, email:partnerEmail}).then((data:any)=>{
+      console.log(data);
+
+    setPartnerName(data.firstName);
+
+    })
     setRecieveUser(true);
   };
   const confirmUser = () => {
-    // ApiServices.sendConnection({userId:user, email:partnerEmail}).then((data:any)=>{
-    //   console.log(data);
-    // })
+
+    console.log({userId:user, email:partnerEmail})
+
+    ApiServices.sendConnection({userId:user, email:partnerEmail}).then((data:any)=>{
+      console.log(data);
+    })
     setRecieveUser(false);
     setPartnerName("");
     setPartnerEmail("");

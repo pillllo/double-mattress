@@ -1,6 +1,8 @@
 export interface Notification {
-  id: string;
-  from: string;
+  notificationId: string;
+  fromUserId: string;
+  forUserId?: string;
+  fromUserName?: string;
   date: Date;
   message: string;
   read:boolean;
