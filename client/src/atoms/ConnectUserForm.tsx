@@ -12,6 +12,7 @@ import {
   ModalCloseButton,
   Text,
   Box,
+  Flex,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import ApiServices from "../ApiServices";
@@ -53,19 +54,22 @@ export default function connectUserForm({ onClose, onOpen, isOpen }: TheProp) {
   };
 
   const submitSearch = () => {
-    ApiServices.searchPartner({userId:user, email:partnerEmail}).then((data:any)=>{
-      console.log(data);
+    ApiServices.searchPartner({ userId: user, email: partnerEmail }).then(
+      (data: any) => {
+        console.log(data);
 
-    setPartnerName(data.firstName);
-
-    })
+        setPartnerName(data.firstName);
+      }
+    );
     setRecieveUser(true);
   };
   const confirmUser = () => {
-    console.log({userId:user, email:partnerEmail})
-    ApiServices.sendConnection({userId:user, email:partnerEmail}).then((data:any)=>{
-      console.log(data);
-    })
+    console.log({ userId: user, email: partnerEmail });
+    ApiServices.sendConnection({ userId: user, email: partnerEmail }).then(
+      (data: any) => {
+        console.log(data);
+      }
+    );
     setRecieveUser(false);
     setPartnerName("");
     setPartnerEmail("");
@@ -85,32 +89,47 @@ export default function connectUserForm({ onClose, onOpen, isOpen }: TheProp) {
     </FormControl>
   );
   const secondRequest = (
-    <FormControl margin="10px">
-      <FormLabel>Is this your partner?</FormLabel>
-      <Text type="text" size="md" variant="filled">
-        Name:{partnerName}
+    <FormControl margin="10px" justify="center">
+      <FormLabel
+        fontSize="18"
+        fontWeight="600"
+        letterSpacing="wide"
+        textAlign="center"
+      >
+        Is this your partner?
+      </FormLabel>
+      <Text
+        fontSize="18"
+        fontWeight="600"
+        letterSpacing="wide"
+        textAlign="center"
+        mb="1.5rem"
+      >
+        {partnerName}
       </Text>
-      <Button
-        colorScheme="red"
-        onClick={() => {
-          setRecieveUser(false);
-          setPartnerEmail("");
-          onClose();
-        }}
-        fontSize={[12, 14, 16, 18]}
-      >
-        {"Cancel"}
-      </Button>
-      <Button
-        colorScheme="green"
-        onClick={() => {
-          confirmUser();
-          onClose();
-        }}
-        fontSize={[12, 14, 16, 18]}
-      >
-        {"Confirm"}
-      </Button>
+      <Flex justify="space-evenly">
+        <Button
+          colorScheme="red"
+          onClick={() => {
+            setRecieveUser(false);
+            setPartnerEmail("");
+            onClose();
+          }}
+          fontSize={[12, 14, 16, 18]}
+        >
+          {"Cancel"}
+        </Button>
+        <Button
+          colorScheme="green"
+          onClick={() => {
+            confirmUser();
+            onClose();
+          }}
+          fontSize={[12, 14, 16, 18]}
+        >
+          {"Confirm"}
+        </Button>
+      </Flex>
     </FormControl>
   );
 

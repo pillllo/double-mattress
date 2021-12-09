@@ -23,7 +23,7 @@ import SubscriptionSuccess from "./organism/SubscriptionSuccess";
 import { SOCKET_EVENTS as EVENTS } from "./Socket";
 const App = function () {
   const dispatch = useDispatch();
-   const navigate= useNavigate();
+  const navigate = useNavigate();
   const notify = () =>
     toast.info("New Notification!", {
       position: "top-center",
@@ -33,10 +33,9 @@ const App = function () {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      onClick: ()=>{
-        navigate("/notifications")
-
-      }
+      onClick: () => {
+        navigate("/notifications");
+      },
     });
   const userId = useSelector((state: ReduxState) => {
     //@ts-ignore
@@ -46,9 +45,7 @@ const App = function () {
   const partnerrId = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.userId;
-
-});
-
+  });
 
   useEffect(() => {
     console.log("EFFE", userId);
@@ -63,9 +60,11 @@ const App = function () {
       });
       Socket.on(EVENTS.NOTIFICATIONS.UPDATED, (notifications: any) => {
         console.log(EVENTS.NOTIFICATIONS.UPDATED, notifications);
-        dispatch({ type: "ADD_NOTIFICATION", payload: notifications });
-        dispatch({ type: "NEW_NOTIFICATION", payload: true });
-        notify();
+        if (notifications.length) {
+          dispatch({ type: "ADD_NOTIFICATION", payload: notifications });
+          dispatch({ type: "NEW_NOTIFICATION", payload: true });
+          notify();
+        }
       });
     });
   }, []);
@@ -101,19 +100,18 @@ const App = function () {
         direction="column"
         h="100vh"
       >
-
-          <Navbar />
-          <Routes>
-            <Route path={`/`} element={<LandingPage />} />
-            <Route path={`/dashboard`} element={<Dashboard />} />
-            <Route path={`/projections`} element={paidPath} />
-            <Route path={`/testimonials`} element={<Testimonials />} />
-            <Route path={`/info`} element={<InfoPage />} />
-            <Route path={`/login`} element={<LoginPage />} />
-            <Route path={`/subscription`} element={<Subscription />} />
-            <Route path={`/notifications`} element={<Notifications />} />
-            <Route path={`/confirm`} element={<SubscriptionSuccess />} />
-          </Routes>
+        <Navbar />
+        <Routes>
+          <Route path={`/`} element={<LandingPage />} />
+          <Route path={`/dashboard`} element={<Dashboard />} />
+          <Route path={`/projections`} element={paidPath} />
+          <Route path={`/testimonials`} element={<Testimonials />} />
+          <Route path={`/info`} element={<InfoPage />} />
+          <Route path={`/login`} element={<LoginPage />} />
+          <Route path={`/subscription`} element={<Subscription />} />
+          <Route path={`/notifications`} element={<Notifications />} />
+          <Route path={`/confirm`} element={<SubscriptionSuccess />} />
+        </Routes>
       </Flex>
     </>
   );
