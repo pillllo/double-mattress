@@ -128,7 +128,7 @@ const ApiService = {
   searchPartner,
   createCheckoutStripe,
   sendSubSessionId,
-  confirmConnection
+  confirmConnection,
 };
 
 export default ApiService;

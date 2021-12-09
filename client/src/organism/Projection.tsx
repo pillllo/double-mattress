@@ -65,7 +65,7 @@ export default function Projection() {
         color="white"
       >
         <Flex h="45vh" w="90vw">
-          <ProjectionLineChart  />
+          <ProjectionLineChart />
         </Flex>
         <Tabs isFitted variant="enclosed" w="100%" h="35vh">
           <TabList>
