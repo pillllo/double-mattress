@@ -39,11 +39,11 @@ export default function AccordianSingleItem({ transaction }: Props) {
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4}>
-          <Flex justifyContent="space-around">
+          <Flex justifyContent="space-around" h="100%" alignItems="center">
             {transaction.date.slice(0, 10)}
           <Flex>
-          <Box>
-          {transaction.amount}
+          <Box mx="10px">
+          {transaction.amount/100}
           </Box>
           <Box>
           {transaction.category}

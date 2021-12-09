@@ -93,7 +93,7 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
       dispatch({ type: "GET_PROJECTION_DATA", payload: data });
     });
     setNewProjection(defaultProjection);
-    notify();
+    // notify();
   };
 
   return (
