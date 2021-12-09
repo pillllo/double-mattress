@@ -33,14 +33,14 @@ export default function Navbar() {
     onOpen: onOpen2,
     onClose: onClose2,
   } = useDisclosure();
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
   const [alert, setAlert] = useState(false);
   const userConnected = useSelector((state: ReduxState) => {
+    //@ts-ignore
+    if (state.displayCategories.mainUser.linkedUserId) {
       //@ts-ignore
-    if(state.displayCategories.mainUser.linkedUserId){
-       //@ts-ignore
-       return state.displayCategories.mainUser.linkedUserId?.length>0;
+      return state.displayCategories.mainUser.linkedUserId?.length > 0;
     }
   });
   const newNotif = useSelector((state: ReduxState) => {
@@ -75,7 +75,13 @@ export default function Navbar() {
           color={"white"}
           dropShadow={"large"}
         />
-        <Text ml="5" fontWeight="600" fontSize={["xl", "2xl", "3xl"]}  bgGradient="linear(to-t, blue.600, gray.200)" bgClip="text">
+        <Text
+          ml="5"
+          fontWeight="600"
+          fontSize={["xl", "2xl", "3xl"]}
+          bgGradient="linear(to-r, blue.100, gray.200)"
+          bgClip="text"
+        >
           Double-Mattress
         </Text>
       </Flex>
@@ -93,6 +99,7 @@ export default function Navbar() {
               display="flex"
               alignItems="center"
               onClick={onClose}
+              boxShadow="none !important"
             >
               <FaHome />
               <Divider orientation="vertical" mx="5px" /> Dashboard
@@ -168,17 +175,20 @@ export default function Navbar() {
               aria-label="Category Info"
               icon={<FaBell color={alert ? "B22222" : undefined} />}
               size={buttonSize}
-              onClick={() => dispatch({ type: "NEW_NOTIFICATION", payload:false })}
+              onClick={() =>
+                dispatch({ type: "NEW_NOTIFICATION", payload: false })
+              }
             />
           </Link>
-          {userConnected?null:<ConnectUserForm
-            isOpen={isOpen2}
-            onClose={onClose2}
-            onOpen={onOpen2}
-          />}
+          {userConnected ? null : (
+            <ConnectUserForm
+              isOpen={isOpen2}
+              onClose={onClose2}
+              onOpen={onOpen2}
+            />
+          )}
         </Flex>
       ) : null}
-
     </Flex>
   );
 }

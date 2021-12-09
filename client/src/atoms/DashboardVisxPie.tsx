@@ -27,7 +27,6 @@ export default function DashboardVisxPie() {
     //@ts-ignore
     let value = expenses[cat][userId] / 100;
     if (partnerId) {
-      console.log(partnerId)
       value =
         //@ts-ignore
         expenses[cat][userId] / 100 +

@@ -7,7 +7,6 @@ import {
   Divider,
   useBreakpointValue,
   useDisclosure,
-  Tooltip,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -30,7 +29,7 @@ import {
   FaShoppingCart,
   FaTheaterMasks,
   FaHamburger,
-  FaHandMiddleFinger,
+  FaBoxes,
   FaInfoCircle,
 } from "react-icons/fa";
 
@@ -64,7 +63,7 @@ export default function DashboardCategory({
       case "Eating Out":
         return FaHamburger;
       case "Others":
-        return FaHandMiddleFinger;
+        return FaBoxes;
       default:
         <FaHeartBroken />;
     }
@@ -100,15 +99,14 @@ export default function DashboardCategory({
             {price || 123.5}
           </Text>
         </HStack>
-        <Tooltip hasArrow label="Click me for more info!">
-          <IconButton
-            bg="whiteAlpha.200"
-            aria-label="Category Info"
-            icon={<FaInfoCircle />}
-            boxSize={buttonSize}
-            onClick={() => onOpen()}
-          />
-        </Tooltip>
+
+        <IconButton
+          bg="whiteAlpha.200"
+          aria-label="Category Info"
+          icon={<FaInfoCircle />}
+          boxSize={buttonSize}
+          onClick={() => onOpen()}
+        />
       </Flex>
       <Modal onClose={onClose} size={"xl"} isOpen={isOpen}>
         <ModalOverlay />
