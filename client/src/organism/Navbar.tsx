@@ -33,7 +33,7 @@ export default function Navbar() {
     onOpen: onOpen2,
     onClose: onClose2,
   } = useDisclosure();
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
   const [alert, setAlert] = useState(false);
 
@@ -74,7 +74,13 @@ export default function Navbar() {
           color={"white"}
           dropShadow={"large"}
         />
-        <Text ml="5" fontWeight="600" fontSize={["xl", "2xl", "3xl"]}  bgGradient="linear(to-t, blue.600, gray.200)" bgClip="text">
+        <Text
+          ml="5"
+          fontWeight="600"
+          fontSize={["xl", "2xl", "3xl"]}
+          bgGradient="linear(to-r, blue.100, gray.200)"
+          bgClip="text"
+        >
           Double-Mattress
         </Text>
       </Flex>
@@ -92,6 +98,7 @@ export default function Navbar() {
               display="flex"
               alignItems="center"
               onClick={onClose}
+              boxShadow="none !important"
             >
               <FaHome />
               <Divider orientation="vertical" mx="5px" /> Dashboard
@@ -177,7 +184,6 @@ export default function Navbar() {
           />
         </Flex>
       ) : null}
-
     </Flex>
   );
 }

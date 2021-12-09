@@ -1,5 +1,10 @@
 import { Flex } from "@chakra-ui/react";
-import { BrowserRouter as Router, Route, Routes,useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import io from "socket.io-client";
@@ -12,32 +17,32 @@ import Testimonials from "./organism/Testimonials";
 import InfoPage from "./organism/InfoPage";
 import Subscription from "./organism/Subscription";
 import LoginPage from "./organism/LoginPage";
-import Notifications from "./organism/Notifications"
+import Notifications from "./organism/Notifications";
 import { ReduxState } from "./types/ReduxState";
 import SubscriptionSuccess from "./organism/SubscriptionSuccess";
-import {SOCKET_EVENTS as EVENTS} from "./Socket"
+import { SOCKET_EVENTS as EVENTS } from "./Socket";
 const App = function () {
   const dispatch = useDispatch();
   // const navigate= useNavigate();
   const notify = () =>
-  toast.info("New Notification!", {
-    position: "top-center",
-    autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    // onClick: ()=>{
-    //   navigate("/notifications")
+    toast.info("New Notification!", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      // onClick: ()=>{
+      //   navigate("/notifications")
 
-    // }
-  });
+      // }
+    });
   const userId = useSelector((state: ReduxState) => {
-      //@ts-ignore
-      return state.displayCategories.userId;
-
+    //@ts-ignore
+    return state.displayCategories.userId;
   });
+
   const partnerrId = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.userId;
@@ -45,28 +50,23 @@ const App = function () {
 });
 
 
-
   useEffect(() => {
-    console.log("EFFE", userId)
+    console.log("EFFE", userId);
     let Socket = io("https://double-mattress.herokuapp.com");
     Socket.on(EVENTS.CONNECT, () => {
-      console.log("Connected")
-      Socket.on(EVENTS.ID.REQUEST,()=>{
-        console.log("RECIEVE EVENT",EVENTS.ID.REQUEST)
-        console.log("EMIT EVENT",EVENTS.ID.CONFIRM)
-        Socket.emit(EVENTS.ID.CONFIRM,{userId})
-        Socket.emit(EVENTS.NOTIFICATIONS.GET)
-      })
-      Socket.on(EVENTS.NOTIFICATIONS.UPDATED,(notifications)=>{
-       console.log(EVENTS.NOTIFICATIONS.UPDATED,notifications)
-       dispatch({ type: "ADD_NOTIFICATION", payload: notifications });
-       if(notifications.length>0){
-       dispatch({ type: "NEW_NOTIFICATION", payload: true });
-       notify();
-        }
-      })
-
-
+      console.log("Connected");
+      Socket.on(EVENTS.ID.REQUEST, () => {
+        console.log("RECIEVE EVENT", EVENTS.ID.REQUEST);
+        console.log("EMIT EVENT", EVENTS.ID.CONFIRM);
+        Socket.emit(EVENTS.ID.CONFIRM, { userId });
+        Socket.emit(EVENTS.NOTIFICATIONS.GET);
+      });
+      Socket.on(EVENTS.NOTIFICATIONS.UPDATED, (notifications: any) => {
+        console.log(EVENTS.NOTIFICATIONS.UPDATED, notifications);
+        dispatch({ type: "ADD_NOTIFICATION", payload: notifications });
+        dispatch({ type: "NEW_NOTIFICATION", payload: true });
+        notify();
+      });
     });
   }, []);
 
@@ -111,7 +111,7 @@ const App = function () {
             <Route path={`/info`} element={<InfoPage />} />
             <Route path={`/login`} element={<LoginPage />} />
             <Route path={`/subscription`} element={<Subscription />} />
-            <Route path={`/notifications`} element={<Notifications/>} />
+            <Route path={`/notifications`} element={<Notifications />} />
             <Route path={`/confirm`} element={<SubscriptionSuccess />} />
           </Routes>
         </Router>
