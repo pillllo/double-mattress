@@ -43,6 +43,13 @@ const App = function () {
     return state.displayCategories.userId;
   });
 
+  const partnerrId = useSelector((state: ReduxState) => {
+    //@ts-ignore
+    return state.displayCategories.userId;
+
+});
+
+
   useEffect(() => {
     console.log("EFFE", userId);
     let Socket = io("https://double-mattress.herokuapp.com");

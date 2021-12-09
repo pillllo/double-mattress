@@ -96,6 +96,16 @@ function sendConnection(body: any) {
     body: JSON.stringify(body),
   });
 }
+function confirmConnection(body: any) {
+  return fetchRequest("/connect/complete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Client-Jwt": token,
+    },
+    body: JSON.stringify(body),
+  });
+}
 
 function sendSubSessionId(body: any) {
   return fetchRequest("/add-customer-id", {
@@ -118,6 +128,7 @@ const ApiService = {
   searchPartner,
   createCheckoutStripe,
   sendSubSessionId,
+  confirmConnection,
 };
 
 export default ApiService;
