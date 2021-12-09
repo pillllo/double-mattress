@@ -36,22 +36,21 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
   const [alert, setAlert] = useState(false);
-  const userConnected = useSelector((state: ReduxState) => {
-    //@ts-ignore
-    if (state.displayCategories.mainUser.linkedUserId) {
+
+  const partnerConnected = useSelector((state: ReduxState) => {
       //@ts-ignore
-      return state.displayCategories.mainUser.linkedUserId?.length > 0;
-    }
-  });
+    return state.displayCategories.mainUser?.linkedUserIds?.length>0
+
+    });
   const newNotif = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.notificationAlert;
   });
   const connectButton = useSelector((state: ReduxState) => {
     //@ts-ignore
-    return state.displayCategories.userId;
+    return state.displayCategories.mainUser?.firstName;
   });
-
+  console.log(!!partnerConnected);
   useEffect(() => {
     setAlert(newNotif);
   }, [newNotif]);
@@ -161,7 +160,7 @@ export default function Navbar() {
 
       {!!connectButton ? (
         <Flex alignItems="center">
-          <MainButton passedFunction={() => onOpen2()} text={"Connect"} />
+          {partnerConnected?null:<MainButton passedFunction={() => onOpen2()} text={"Connect"} />}
           <Link
             as={routerLink}
             to="/notifications"
@@ -175,18 +174,14 @@ export default function Navbar() {
               aria-label="Category Info"
               icon={<FaBell color={alert ? "B22222" : undefined} />}
               size={buttonSize}
-              onClick={() =>
-                dispatch({ type: "NEW_NOTIFICATION", payload: false })
-              }
+              onClick={() => dispatch({ type: "NEW_NOTIFICATION", payload:false })}
             />
           </Link>
-          {userConnected ? null : (
-            <ConnectUserForm
-              isOpen={isOpen2}
-              onClose={onClose2}
-              onOpen={onOpen2}
-            />
-          )}
+         <ConnectUserForm
+            isOpen={isOpen2}
+            onClose={onClose2}
+            onOpen={onOpen2}
+          />
         </Flex>
       ) : null}
     </Flex>

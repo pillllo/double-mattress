@@ -12,11 +12,11 @@ export default function Notifications() {
   const [notifs, setNotifs] = useState<any[]>([]);
 
   useEffect(() => {
-
+    console.log(notificationsArr);
     const newNotifications = notificationsArr.map((notification) => {
       console.log(notification);
       return (
-        <NotificationConnection key={notification.notificationId} notification={notification}/>
+        <NotificationConnection key={notification.notificationId} notification={notification} notificationsArr={notificationsArr}/>
       );
     });
     setNotifs(newNotifications);
