@@ -58,7 +58,7 @@ export default function DashboardSavingsChart() {
 
   return data.length ? (
     <svg width={450} height={250}>
-      <Group left={40} top={0}>
+      <Group left={40} top={8}>
         {data.map((datapoint) => {
           const barHeight = height - yPoint(datapoint);
           const type = getType(datapoint);
