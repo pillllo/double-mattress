@@ -10,7 +10,7 @@ export default function DashboardCategoryItem({ transaction }: any, i: number) {
       p="1rem"
       letterSpacing="wide"
       fontWeight="500"
-      bgGradient="linear(to-b, blue.700, teal.600)"
+      bg="whiteAlpha.100"
       rounded="lg"
       shadow="lg"
     >
@@ -21,7 +21,7 @@ export default function DashboardCategoryItem({ transaction }: any, i: number) {
       </Flex>
       <Flex align="flex-start" justify="space-around">
         <Text>{transaction.description}</Text>
-        <Text>Spend: ${transaction.amount / 100}</Text>
+        <Text>Spend: €{transaction.amount / 100}</Text>
       </Flex>
     </Flex>
   );

@@ -31,6 +31,8 @@ import {
   FaHamburger,
   FaBoxes,
   FaInfoCircle,
+  FaHandshake,
+  FaBarcode,
 } from "react-icons/fa";
 
 import { Transaction } from "../types/Transaction";
@@ -52,7 +54,7 @@ export default function DashboardCategory({
 
   function iconDecider(cat: string) {
     switch (cat) {
-      case "Rent":
+      case "Home":
         return FaHouseUser;
       case "Bills and Services":
         return FaMoneyBill;
@@ -64,6 +66,10 @@ export default function DashboardCategory({
         return FaHamburger;
       case "Others":
         return FaBoxes;
+      case "Salary":
+        return FaHandshake;
+      case "Other Income":
+        return FaBarcode;
       default:
         <FaHeartBroken />;
     }
@@ -116,7 +122,7 @@ export default function DashboardCategory({
           <ModalBody>
             <Flex direction="column" align="center" justify="center">
               <Text fontSize="18" letterSpacing="wide" fontWeight="500">
-                You spent: $ {price} on {title} this month
+                You spent: €{price} on {title} this month
               </Text>
             </Flex>
             <Accordion allowToggle my="2rem" mx="1rem">

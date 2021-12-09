@@ -24,21 +24,21 @@ export default function Subscription() {
         <SubCard
           key={1}
           title="Monthly"
-          pricing="$25 / month"
+          pricing="€25 / month"
           features={["Access to Projections", "Its sorta expensive"]}
           priceKey="dm_basic"
         />
         <SubCard
           key={2}
           title="Quarterly"
-          pricing="$50 / quarterly"
+          pricing="€50 / quarterly"
           features={["Access to Projections", "Cheapo"]}
           priceKey="dm_standard"
         />
         <SubCard
           key={3}
           title="Bi-annually"
-          pricing="$75 / bi-annually"
+          pricing="€75 / bi-annually"
           features={["Access to Projections", "Uber-Cheapo"]}
           priceKey="dm_premium"
         />

@@ -27,7 +27,6 @@ export default function DashboardVisxPie() {
     //@ts-ignore
     let value = expenses[cat][userId] / 100;
     if (partnerId) {
-      console.log(partnerId)
       value =
         //@ts-ignore
         expenses[cat][userId] / 100 +
@@ -107,7 +106,7 @@ export default function DashboardVisxPie() {
           {active ? (
             <>
               <Text textAnchor="middle" fill="#fff" fontSize={40} dy={-20}>
-                {`$${active.value}`}
+                {`€${active.value}`}
               </Text>
 
               <Text
@@ -122,7 +121,7 @@ export default function DashboardVisxPie() {
           ) : (
             <>
               <Text textAnchor="middle" fill="#fff" fontSize={40} dy={-20}>
-                {`$${transactions?.reduce(
+                {`€${transactions?.reduce(
                   (acc, transaction) => acc + transaction.value,
                   0
                 )}`}

@@ -38,10 +38,9 @@ export default function Navbar() {
   const [alert, setAlert] = useState(false);
 
   const partnerConnected = useSelector((state: ReduxState) => {
-      //@ts-ignore
-    return state.displayCategories.mainUser?.linkedUserIds?.length>0
-
-    });
+    //@ts-ignore
+    return state.displayCategories.mainUser?.linkedUserIds?.length > 0;
+  });
   const newNotif = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.notificationAlert;
@@ -160,7 +159,9 @@ export default function Navbar() {
 
       {!!connectButton ? (
         <Flex alignItems="center">
-          {partnerConnected?null:<MainButton passedFunction={() => onOpen2()} text={"Connect"} />}
+          {partnerConnected ? null : (
+            <MainButton passedFunction={() => onOpen2()} text={"Connect"} />
+          )}
           <Link
             as={routerLink}
             to="/notifications"
@@ -174,10 +175,12 @@ export default function Navbar() {
               aria-label="Category Info"
               icon={<FaBell color={alert ? "B22222" : undefined} />}
               size={buttonSize}
-              onClick={() => dispatch({ type: "NEW_NOTIFICATION", payload:false })}
+              onClick={() =>
+                dispatch({ type: "NEW_NOTIFICATION", payload: false })
+              }
             />
           </Link>
-         <ConnectUserForm
+          <ConnectUserForm
             isOpen={isOpen2}
             onClose={onClose2}
             onOpen={onOpen2}
