@@ -33,25 +33,24 @@ export default function Navbar() {
     onOpen: onOpen2,
     onClose: onClose2,
   } = useDisclosure();
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
   const [alert, setAlert] = useState(false);
-  const userConnected = useSelector((state: ReduxState) => {
+
+  const partnerConnected = useSelector((state: ReduxState) => {
       //@ts-ignore
-    if(state.displayCategories.mainUser.linkedUserId){
-       //@ts-ignore
-       return state.displayCategories.mainUser.linkedUserId?.length>0;
-    }
-  });
+    return state.displayCategories.mainUser?.linkedUserIds?.length>0
+
+    });
   const newNotif = useSelector((state: ReduxState) => {
     //@ts-ignore
     return state.displayCategories.notificationAlert;
   });
   const connectButton = useSelector((state: ReduxState) => {
     //@ts-ignore
-    return state.displayCategories.userId;
+    return state.displayCategories.mainUser?.firstName;
   });
-
+  console.log(!!partnerConnected);
   useEffect(() => {
     setAlert(newNotif);
   }, [newNotif]);
@@ -75,7 +74,13 @@ export default function Navbar() {
           color={"white"}
           dropShadow={"large"}
         />
-        <Text ml="5" fontWeight="600" fontSize={["xl", "2xl", "3xl"]}  bgGradient="linear(to-t, blue.600, gray.200)" bgClip="text">
+        <Text
+          ml="5"
+          fontWeight="600"
+          fontSize={["xl", "2xl", "3xl"]}
+          bgGradient="linear(to-r, blue.100, gray.200)"
+          bgClip="text"
+        >
           Double-Mattress
         </Text>
       </Flex>
@@ -93,6 +98,7 @@ export default function Navbar() {
               display="flex"
               alignItems="center"
               onClick={onClose}
+              boxShadow="none !important"
             >
               <FaHome />
               <Divider orientation="vertical" mx="5px" /> Dashboard
@@ -154,7 +160,7 @@ export default function Navbar() {
 
       {!!connectButton ? (
         <Flex alignItems="center">
-          <MainButton passedFunction={() => onOpen2()} text={"Connect"} />
+          {partnerConnected?null:<MainButton passedFunction={() => onOpen2()} text={"Connect"} />}
           <Link
             as={routerLink}
             to="/notifications"
@@ -171,14 +177,13 @@ export default function Navbar() {
               onClick={() => dispatch({ type: "NEW_NOTIFICATION", payload:false })}
             />
           </Link>
-          {userConnected?null:<ConnectUserForm
+         <ConnectUserForm
             isOpen={isOpen2}
             onClose={onClose2}
             onOpen={onOpen2}
-          />}
+          />
         </Flex>
       ) : null}
-
     </Flex>
   );
 }

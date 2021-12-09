@@ -13,7 +13,6 @@ export default function DashboardVisxPie() {
   const half = width / 2;
 
   const userId = useSelector((state: ReduxState) => {
-    console.log(state.displayCategories);
     return state.displayCategories.userId;
   });
   const partnerId = useSelector((state: ReduxState) => {
@@ -55,7 +54,7 @@ export default function DashboardVisxPie() {
     },
     {
       name: `${partnerFirstName} - Salary`,
-      value: arcCalculator(partnerId, "otherIncome"),
+      value: arcCalculator(partnerId, "salary"),
       color: "#DD6B20",
     },
     {

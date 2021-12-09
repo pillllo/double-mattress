@@ -62,9 +62,7 @@ export default function connectUserForm({ onClose, onOpen, isOpen }: TheProp) {
     setRecieveUser(true);
   };
   const confirmUser = () => {
-
     console.log({userId:user, email:partnerEmail})
-
     ApiServices.sendConnection({userId:user, email:partnerEmail}).then((data:any)=>{
       console.log(data);
     })
