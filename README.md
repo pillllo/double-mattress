@@ -2,7 +2,10 @@
 
 A responsive web app / PWA that helps couples visualise and forecast combined financial infomation.
 
-
+<p align="center">
+  <img src="DM IMG 1.png" />
+  <img src="DM IMG 2.png" />
+</p>
 
 
 This repository is for the Front End part of the project. If you want to also have access to the Back End repository click here.
