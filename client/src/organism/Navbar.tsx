@@ -216,9 +216,7 @@ export default function Navbar() {
               aria-label="Category Info"
               icon={<FaBell color={alert ? "B22222" : undefined} />}
               size={buttonSize}
-              onClick={() =>
-                dispatch({ type: "NEW_NOTIFICATION", payload: false })
-              }
+              onClick={() => dispatch({ type: "NEW_NOTIFICATION", payload:false })}
             />
           </Link>
           <ConnectUserForm
