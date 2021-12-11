@@ -28,7 +28,7 @@ npm install
 ```
 npm start
 ```
-# Front end (`/client` directory)
+# How to use
 
 To use this app follow these steps:
 
