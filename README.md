@@ -8,7 +8,7 @@ A responsive web app / PWA that helps couples visualise and forecast combined fi
 </p>
 
 
-This repository is for the Front End part of the project. If you want to also have access to the Back End repository click [Server Readme link](https://github.com/pillllo/double-mattress-server#readme "here").
+This repository is for the Front End part of the project. If you want to also have access to the Back End repository click [here](https://github.com/pillllo/double-mattress-server#readme "Server Readme link").
 
 
 # Front end (`/client` directory)
