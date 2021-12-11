@@ -48,18 +48,13 @@ const App = function () {
   });
 
   useEffect(() => {
-    console.log("EFFE", userId);
     let Socket = io("https://double-mattress.herokuapp.com");
     Socket.on(EVENTS.CONNECT, () => {
-      console.log("Connected");
       Socket.on(EVENTS.ID.REQUEST, () => {
-        console.log("RECIEVE EVENT", EVENTS.ID.REQUEST);
-        console.log("EMIT EVENT", EVENTS.ID.CONFIRM);
         Socket.emit(EVENTS.ID.CONFIRM, { userId });
         Socket.emit(EVENTS.NOTIFICATIONS.GET);
       });
       Socket.on(EVENTS.NOTIFICATIONS.UPDATED, (notifications: any) => {
-        console.log(EVENTS.NOTIFICATIONS.UPDATED, notifications);
         if (notifications.length) {
           dispatch({ type: "ADD_NOTIFICATION", payload: notifications });
           dispatch({ type: "NEW_NOTIFICATION", payload: true });
@@ -77,14 +72,6 @@ const App = function () {
     }
   });
 
-  // LEAVE HERE FOR NOW
-  // const [paid, setPaid]= useState(false);
-  // useEffect(() => {
-  //     //@ts-ignore
-  //   if(userObj?.activeSubscription){
-  //     setPaid(true);
-  //   }
-  // }, [userObj,paid]);
 
   //@ts-ignore
   const paidPath = userObj?.activeSubscription ? (

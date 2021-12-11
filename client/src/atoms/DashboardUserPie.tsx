@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import { Pie } from "@visx/shape";
 import { Group } from "@visx/group";
@@ -8,26 +7,11 @@ import { useSelector } from "react-redux";
 import { PieUser } from "../types/User";
 import { ReduxState } from "../types/ReduxState";
 
-=======
-import { useState, useEffect } from "react";
-import { Pie } from "@visx/shape";
-import { Group } from "@visx/group";
-import { Text } from "@visx/text";
-import { User, PieUser } from "../types/User";
-import dataObject from "../MockData";
-import { ReduxState } from "../types/ReduxState";
-import { useSelector } from "react-redux";
-
-/*
- Abandon hope all ye who enter here
-*/
->>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
 export default function DashboardVisxPie() {
   const [active, setActive] = useState<PieUser | undefined>(undefined);
   const width = 250;
   const half = width / 2;
 
-<<<<<<< HEAD
   const userId = useSelector((state: ReduxState) => {
     return state.displayCategories.userId;
   });
@@ -76,35 +60,6 @@ export default function DashboardVisxPie() {
     {
       name: `${partnerFirstName} - Other Income`,
       value: arcCalculator(partnerId, "otherIncome"),
-=======
-  const userData = useSelector((state: ReduxState) => {
-    return state.displayCategories.userId;
-  });
-  const income = useSelector((state: ReduxState) => {
-    //@ts-ignore
-    return state.displayCategories.dashboardData?.typeTotals;
-  });
-
-  const transactions: PieUser[] = [
-    {
-      name: "David - Salary",
-      value: income.salary[userData],
-      color: "#E53E3E",
-    },
-    {
-      name: "David - Other Income",
-      value: income.otherIncome[userData],
-      color: "#D69E2E",
-    },
-    {
-      name: "Davina - Salary",
-      value: 200000,
-      color: "#DD6B20",
-    },
-    {
-      name: "Davina - Other Income",
-      value: 200000,
->>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
       color: "#805AD5",
     },
   ];
@@ -142,11 +97,7 @@ export default function DashboardVisxPie() {
           {active ? (
             <>
               <Text textAnchor="middle" fill="#fff" fontSize={40} dy={-20}>
-<<<<<<< HEAD
                 {`€${active.value}`}
-=======
-                {`$${active.value}`}
->>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
               </Text>
 
               <Text
@@ -161,11 +112,7 @@ export default function DashboardVisxPie() {
           ) : (
             <>
               <Text textAnchor="middle" fill="#fff" fontSize={40} dy={-20}>
-<<<<<<< HEAD
                 {`€${transactions?.reduce(
-=======
-                {`$${transactions?.reduce(
->>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
                   (acc, transact) => acc + transact.value,
                   0
                 )}`}

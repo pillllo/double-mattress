@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export const SOCKET_EVENTS = {
   CONNECT: "connect", // client
   CONNECTION: "connection", // server
@@ -15,12 +14,3 @@ export const SOCKET_EVENTS = {
   },
 };
 // Socket.emit()
-=======
-import io from 'socket.io-client';
-
-let Socket= io('https://double-mattress.herokuapp.com')
-
-Socket.on("notifications-updated",(notifications)=>{
-
-})
->>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
