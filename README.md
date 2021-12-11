@@ -36,8 +36,9 @@ React, Redux, Chakra.ui, Socket.io, Apex Charts, Visx Charts.
 
 # Developers
 
-- Natalie Pilling
-- James Foxlee
-- David Longaron
-- Liam Morris
+![OCL Home page](https://i.gyazo.com/6be7407efb193af930aec642a65f157e.png "Home page")
+- [Natalie Pilling](https://github.com/pillllo "Natalie Pilling")
+- [James Foxlee](https://github.com/cortexlock "James Foxlee")
+- [David Longaron](https://github.com/MrDfu "David Longaron")
+- [Liam Morris](https://github.com/Aothe "Liam Morris")
 
