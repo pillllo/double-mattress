@@ -1,6 +1,6 @@
-# Double-Mattress
+# Double Mattress
 
-A responsive web app / PWA that helps couples visualise and forecast combined financial infomation.
+A mobile-first web app that helps couples visualise and forecast combined financial infomation.
 
 <p align="center">
   <img src="DM IMG 1.png" />
