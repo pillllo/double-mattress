@@ -19,20 +19,30 @@ export default function Testomonials() {
       role: "Lizard Tamer",
       img: "https://randomuser.me/api/portraits/women/96.jpg",
       content:
+<<<<<<< HEAD
         "Lizard Tamings a good job mate, and Double-Mattress helps me keep control of all my Lizard bucks",
+=======
+        "Lizard Tamings a good job mate, and Doubl-Mattress helps me keep control of all my Lizard bucks",
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
     },
   ];
 
   return (
     <Flex
+<<<<<<< HEAD
       textAlign="center"
+=======
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
       direction="column"
       align="center"
       justify="space-between"
       overflowY="auto"
       h="90%"
       bgGradient="linear(to-r, blue.200, blue.400)"
+<<<<<<< HEAD
       color="white"
+=======
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
     >
       {data.map((indiv, i) => {
         return (
@@ -69,3 +79,7 @@ export default function Testomonials() {
     </Flex>
   );
 }
+<<<<<<< HEAD
+=======
+//https://randomuser.me/api/portraits/men/97.jpg
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d

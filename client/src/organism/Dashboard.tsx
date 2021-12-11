@@ -1,11 +1,19 @@
 import { Flex, Spinner, Skeleton } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { ReduxState } from "../types/ReduxState";
 
 import ApiServices from "../ApiServices";
 import DashboardCategoryBox from "../molecules/DashboardCategoryBox/DashboardCategoryBox";
+=======
+import DashboardCategoryBox from "../molecules/DashboardCategoryBox/DashboardCategoryBox";
+import ApiServices from "../ApiServices";
+import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import { ReduxState } from "../types/ReduxState";
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
 import {
   DashboardVisxPie,
   DashboardUserPie,
@@ -35,9 +43,15 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+<<<<<<< HEAD
     setLoadCheck(true);
     ApiServices.getDashboard({ userId, date })
       .then((data) => {
+=======
+    ApiServices.getDashboard({ userId, date })
+      .then((data) => {
+        console.log(data);
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
         dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
         setLoadCheck(false);
       })

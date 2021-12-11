@@ -27,7 +27,11 @@ export default function InfoPage() {
 
   return (
     <Box p="4" overflowY="auto" h="90%">
+<<<<<<< HEAD
       <Flex direction="column" color="white">
+=======
+      <Flex direction="column">
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
         {data.map((indiv, i) => {
           return (
             <VStack key={i} bg="gray.800" my="2rem" p={5} rounded="2xl">

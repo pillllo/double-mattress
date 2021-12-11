@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 import { Flex, Icon, Text, HStack, Divider } from "@chakra-ui/react";
+=======
+import {
+  Flex,
+  Icon,
+  Text,
+  HStack,
+  Divider,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
 import {
   FaHouseUser,
   FaHeartBroken,
@@ -21,7 +32,11 @@ export default function ProjectionCategory({
 }: Props) {
   function iconDecider(cat: string) {
     switch (cat) {
+<<<<<<< HEAD
       case "Home":
+=======
+      case "Rent":
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
         return FaHouseUser;
       case "Bills and Services":
         return FaMoneyBill;
@@ -41,11 +56,16 @@ export default function ProjectionCategory({
     switch (cur) {
       case "eur":
         return "€";
+<<<<<<< HEAD
+=======
+        break;
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
 
       default:
         break;
     }
   }
+<<<<<<< HEAD
   return (
     <Flex
       py="10px"
@@ -65,5 +85,34 @@ export default function ProjectionCategory({
       </Flex>
       <Divider />
     </Flex>
+=======
+  const buttonSize = useBreakpointValue(["2rem", "3rem"]);
+  // useEffect(()=>{},[category])
+  console.log("RENDERED");
+  return (
+    <>
+      <Flex
+        direction="row"
+        py="3px"
+        justify="space-between"
+        align="center"
+        width="95%"
+        px="1rem"
+        onClick={() => {}}
+        color="white"
+        my="2"
+      >
+        <Icon as={iconDecider(category)} w={[4, 6]} h={[4, 6]} />
+        <HStack justify="space-between" w="50%">
+          <Text fontSize={[14, 18]}>{category || "Home"}</Text>
+          <Text fontSize={[14, 18]}>
+            {currencyDecider(currency)}
+            {price || 123.5}
+          </Text>
+        </HStack>
+      </Flex>
+      <Divider />
+    </>
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
   );
 }

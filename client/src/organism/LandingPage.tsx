@@ -8,6 +8,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
+<<<<<<< HEAD
 import { useDispatch, useSelector } from "react-redux";
 
 import { ReduxState } from "../types/ReduxState";
@@ -26,6 +27,26 @@ export default function LandingPage() {
 
   return (
     <Flex h="100%" direction="column" overflowY="auto" color="white">
+=======
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import ApiServices from "../ApiServices";
+
+export default function LandingPage() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const userId = "f65f19ed-a0b0-465c-991f-037a7ac6353b";
+    const date = "2021-08-16T23:00:00.000Z";
+
+    ApiServices.getDashboard({ userId, date }).then((data) => {
+      console.log(data);
+      dispatch({ type: "GET_DASHBOARD_DATA", payload: data });
+    });
+  });
+
+  return (
+    <Flex h="100%" direction="column" overflowY="auto">
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
       <Box align="center" boxsize={"420px"}>
         <Image
           src={
@@ -92,7 +113,11 @@ export default function LandingPage() {
               top="-15px"
               transform="rotate(10deg)"
             >
+<<<<<<< HEAD
               Starting at €25/mo
+=======
+              Starting at €999/mo
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
             </Text>
           </Box>
         </Stack>

@@ -3,7 +3,10 @@ import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { ReduxState } from "../types/ReduxState";
 import NotificationSingle from "../atoms/NotificationSingle";
+<<<<<<< HEAD
 import NotificationConnection from "../atoms/NotificationConnection";
+=======
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
 export default function Notifications() {
   const notificationsArr = useSelector((state: ReduxState) => {
     return state.displayCategories.notifications;
@@ -12,6 +15,7 @@ export default function Notifications() {
   const [notifs, setNotifs] = useState<any[]>([]);
 
   useEffect(() => {
+<<<<<<< HEAD
     console.log(notificationsArr);
     const newNotifications = notificationsArr.map((notification) => {
       console.log(notification);
@@ -21,12 +25,20 @@ export default function Notifications() {
           notification={notification}
           notificationsArr={notificationsArr}
         />
+=======
+
+    const newNotifications = notificationsArr.map((notification) => {
+
+      return (
+        <NotificationSingle key={notification.id} notification={notification}/>
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
       );
     });
     setNotifs(newNotifications);
   }, [notificationsArr]);
 
   return (
+<<<<<<< HEAD
     <Flex
       py="5"
       align="center"
@@ -36,6 +48,9 @@ export default function Notifications() {
       w="100vw"
       overflowY="auto"
     >
+=======
+    <Flex align="center" direction="column" h="75vh" w="90vw" overflowY="auto">
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
       {notifs}
     </Flex>
   );

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import { useState, useEffect } from "react";
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
 import { Group } from "@visx/group";
 import { Bar } from "@visx/shape";
 import { scaleLinear, scaleBand } from "@visx/scale";
@@ -18,7 +22,11 @@ export default function DashboardSavingsChart() {
     {
       type: "Savings Total",
       //@ts-ignore
+<<<<<<< HEAD
       savings: dashboardData.savings.totalSinceJoining / 100,
+=======
+      savings: dashboardData.savings.totalSinceJoining,
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
       color: "#DD6B20",
     },
     {
@@ -27,7 +35,11 @@ export default function DashboardSavingsChart() {
       savings: dashboardData.savings.currentMonth,
       color: "#D69E2E",
     },
+<<<<<<< HEAD
     { type: "Monthly Avg.", savings: 2500, color: "#38A169" },
+=======
+    { type: "Monthly Avg.", savings: 350000, color: "#38A169" },
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
   ];
 
   const width = 450;
@@ -58,7 +70,11 @@ export default function DashboardSavingsChart() {
 
   return data.length ? (
     <svg width={450} height={250}>
+<<<<<<< HEAD
       <Group left={40} top={8}>
+=======
+      <Group left={40} top={10}>
+>>>>>>> 01fc2e4ca739c119c2b34748c354f0442b18a91d
         {data.map((datapoint) => {
           const barHeight = height - yPoint(datapoint);
           const type = getType(datapoint);
