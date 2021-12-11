@@ -69,7 +69,7 @@ export default function Projection() {
         </Flex>
         <Tabs isFitted variant="enclosed" w="100%" h="35vh">
           <TabList>
-            <Tab>Projection List</Tab>
+            <Tab>Projections</Tab>
             <Tab>Categories</Tab>
             <Tab>Settings</Tab>
           </TabList>

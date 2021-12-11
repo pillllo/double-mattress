@@ -41,7 +41,7 @@ export default function SubCard({
         fontWeight="600"
       >
         {features.map((feature, i) => {
-          return <Text key={i}>!?!{feature}</Text>;
+          return <Text key={i}>-{feature}</Text>;
         })}
         <form
           action={

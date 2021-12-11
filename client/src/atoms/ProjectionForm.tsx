@@ -161,7 +161,11 @@ export default function ProjectionForm({ onClose, onOpen, isOpen }: TheProp) {
               ></Input>
               <FormLabel>Amount</FormLabel>
               <InputGroup mb="10px">
-                <InputLeftAddon children="€" color="blue.700" />
+                <InputLeftAddon
+                  children="€"
+                  color="whiteAlpha.900"
+                  fontWeight="600"
+                />
                 <Input
                   onChange={handleAmountChange}
                   name={"amount"}
