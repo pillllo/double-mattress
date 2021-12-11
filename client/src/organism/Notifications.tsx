@@ -16,14 +16,26 @@ export default function Notifications() {
     const newNotifications = notificationsArr.map((notification) => {
       console.log(notification);
       return (
-        <NotificationConnection key={notification.notificationId} notification={notification} notificationsArr={notificationsArr}/>
+        <NotificationConnection
+          key={notification.notificationId}
+          notification={notification}
+          notificationsArr={notificationsArr}
+        />
       );
     });
     setNotifs(newNotifications);
   }, [notificationsArr]);
 
   return (
-    <Flex align="center" direction="column" h="75vh" w="90vw" overflowY="auto">
+    <Flex
+      py="5"
+      align="center"
+      justify="flex-start"
+      direction="column"
+      h="90vh"
+      w="100vw"
+      overflowY="auto"
+    >
       {notifs}
     </Flex>
   );

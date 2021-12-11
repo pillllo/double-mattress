@@ -63,9 +63,11 @@ const App = function () {
       });
       Socket.on(EVENTS.NOTIFICATIONS.UPDATED, (notifications: any) => {
         console.log(EVENTS.NOTIFICATIONS.UPDATED, notifications);
+        if(notifications.length>0){
         dispatch({ type: "ADD_NOTIFICATION", payload: notifications });
         dispatch({ type: "NEW_NOTIFICATION", payload: true });
         notify();
+        }
       });
     });
   }, []);

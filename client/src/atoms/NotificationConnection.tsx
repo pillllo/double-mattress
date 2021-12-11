@@ -14,6 +14,7 @@ import {
   ModalCloseButton,
   Text,
   Box,
+  Divider,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import ApiServices from "../ApiServices";

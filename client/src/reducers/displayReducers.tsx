@@ -13,11 +13,11 @@ import {
   addNotifications,
   updateUserId,
   getPartnerData,
-  getPartnerId
+  getPartnerId,
 } from "../actions/displayActions";
 import { State } from "../types/State";
 const initialState: State = {
-  userId: "04981f24-931c-4cfc-af2c-c249f4bd3877",
+  userId: "6e03fc4a-7d78-46cc-b98d-9815961e5840",
   partnerId: "",
   mainUser: {},
   partnerUser: {},
@@ -77,14 +77,14 @@ const displayCategories = (
     case "GET_USER_DATA": {
       return { ...state, mainUser: action.payload };
     }
-    case "UPDATE_USER_ID":{
-      return {...state,userId: action.payload}
+    case "UPDATE_USER_ID": {
+      return { ...state, userId: action.payload };
     }
-    case "GET_PARTNER_DATA":{
-      return {...state,partnerUser:action.payload}
+    case "GET_PARTNER_DATA": {
+      return { ...state, partnerUser: action.payload };
     }
-    case "GET_PARTNER_ID":{
-      return {...state,partnerId:action.payload}
+    case "GET_PARTNER_ID": {
+      return { ...state, partnerId: action.payload };
     }
     default:
       return state;
