@@ -31,7 +31,12 @@ npm start
 
 # Tech Stack
 
-React, Redux, Chakra.ui, Socket.io, Apex Charts, Visx Charts.
+-React 
+-Redux 
+-Chakra.ui 
+-Socket.io 
+-Apex Charts 
+-Visx Charts.
 
 
 # Developers
