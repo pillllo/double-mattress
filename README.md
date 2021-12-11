@@ -32,11 +32,17 @@ npm start
 
 To use this app follow these steps:
 
-* Click get started,
+* Click get started
 
-* Fill in the login page with email: ben@dm.com password:1234 
+* Fill in the login page with 
+  - Email: ben@dm.com 
+  - Password:1234 
 
-* You should now be redirected to the Dashboard, where you can see all the financial information of the account as well as acces the Projection page.
+* You should now be redirected to the Dashboard
+
+* Here you can see all the financial information of the account
+
+* You can then navigate to the Projections page through the navigation bar at the top of the page.
 
 # Tech Stack
 
